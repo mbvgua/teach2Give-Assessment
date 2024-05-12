@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
   <title>Frontend Mentor | Notifications page</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
@@ -20,69 +21,90 @@
     <div class="window">
       <div class="top">
         <div class="top-left">
-          <div class="header"> 
-            <h3> Notification </h3>
+          <div> 
+            <h2> Notifications </h2>
           </div>
-          <div class="label">
-            <label> 3 </label>
+          <div>
+            <span> 3 </span>
           </div>
         </div>
         <div class="top-right">
-          <h3> Mark all as read </h3>
+          <label> <a href="#"> Mark all as read </a> <label>
         </div>
       </div>
 
       <div class="bottom">
 
-        <div class="notification read">
+        <div class="notification unread">
           <div class="avatar">
             <img src="assets/images/avatar-mark-webber.webp" alt="user-avatar">
           </div>
           <div class="text">
-            <p> Mark Webber </p>
-            <p> reacted to your recent post </p>
-            <p> My first tournament today! </p>
-            <br/>
-            <p> 1m ago </p>
+            <div class="inner-text">
+              <h4> Mark Webber </h4>
+              <p class="reaction"> reacted to your recent post </p>
+              <p class="preview"> My first tournament today! </p>
+              <span class="circle"></span>
+              <br/>
+            </div>
+            <div>
+              <p class="time"> 1m ago </p>
+            </div>
           </div>
         </div>
 
-        <div class="notification read">
+        <div class="notification unread">
           <div class="avatar">
             <img src="assets/images/avatar-angela-gray.webp" alt="user-avatar">
           </div>
           <div class="text">
-            <p> Angela Gray </p>
-            <p> followed you </p>
-            <br/>
-            <p> 5m ago </p>
+            <div class="inner-text">
+              <h4> Angela Gray </h4>
+              <p class="reaction"> followed you </p>
+              <span class="circle"></span>
+              <br/>
+            </div>
+            <div>
+              <p class="time"> 5m ago </p>
+            </div>
           </div>
         </div>
 
-        <div class="notification read">
+        <div class="notification unread">
           <div class="avatar">
             <img src="assets/images/avatar-jacob-thompson.webp" alt="user-avatar">
           </div>
           <div class="text">
-            <p> Jacob Thompson </p>
-            <p> has joined your group </p>
-            <p> Chess Club! </p>
-            <br/>
-            <p> 1 day ago </p>
+            <div class="inner-text">
+              <h4> Jacob Thompson </h4>
+              <p class="reaction"> has joined your group </p>
+              <p class="preview" id="chess"> Chess Club </p>
+              <span class="circle"></span>
+              <br/>
+            </div>
+            <div>
+              <p class="time"> 1 day ago </p>
+            </div>
           </div>
         </div>
 
-        <div class="notification read">
+        <div class="notification read" id="rizky">
           <div class="avatar">
             <img src="assets/images/avatar-rizky-hasanuddin.webp" alt="user-avatar">
           </div>
           <div class="text">
-            <p> Rizky Hasanuddin </p>
-            <p> sent you a private message </p>
-            <p> 5 days ago </p>
-            <br/>
-            <p>   Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.
-            </p>
+            <div class="inner-text">
+              <h4> Rizky Hasanuddin </h4>
+              <p class="reaction"> sent you a private message </p>
+              <br/>
+            </div>
+            <div> 
+              <p class="time"> 5 days ago </p>
+            </div>
+            <div>
+              <p class="preview">   Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -91,13 +113,17 @@
             <img src="assets/images/avatar-kimberly-smith.webp" alt="user-avatar">
           </div>
           <div class="text">
-            <p> Kimberly Smith </p>
-            <p> commented on your picture </p>
-            <br/>
-            <p> 1 week ago </p>
-            <div>
-              <img src="assets/images/image-chess.webp" alt="kimberly pic">
+            <div class="inner-text">
+              <h4> Kimberly Smith </h4>
+              <p class="reaction"> commented on your picture </p>
+              <br/>
             </div>
+              <p class="time"> 1 week ago </p>
+            <div>
+          </div>
+          </div>
+          <div class="text-image">
+            <img src="assets/images/image-chess.webp" alt="kimberly pic">
           </div>
         </div>
 
@@ -106,11 +132,15 @@
             <img src="assets/images/avatar-nathan-peterson.webp" alt="user-avatar">
           </div>
           <div class="text">
-            <p> Nathan Peterson </p>
-            <p> reacted to your recent post </p>
-            <p> 5 end-game strategies to increase your win rate </p>
-            <br/>
-            <p> 2 weeks ago </p>
+            <div class="inner-text">
+              <h4> Nathan Peterson </h4>
+              <p class="reaction"> reacted to your recent post </p>
+              <p class="preview"> 5 end-game strategies to increase your win rate </p>
+              <br/>
+            </div>
+            <div>
+              <p class="time"> 2 weeks ago </p>
+            </div>
           </div>
         </div>
 
@@ -119,28 +149,26 @@
             <img src="assets/images/avatar-anna-kim.webp" alt="user-avatar">
           </div>
           <div class="text">
-            <p> Anna Kim </p>
-            <p> left the group </p>
-            <p> Chess Club! </p>
-            <br/>
-            <p> 2 weeks ago </p>
+            <div class="inner-text">
+              <h4> Anna Kim </h4>
+              <p class="reaction"> left the group </p>
+              <p class="preview" id="chess"> Chess Club </p>
+              <br/>
+            </div>
+              <p class="time"> 2 weeks ago </p>
+            <div>
+              
+            </div>
           </div>
         </div>
 
       </div>
     </div>
   </div>
-
-
-
-
-
-  Anna Kim left the group Chess Club
-  2 weeks ago
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#"> Mbugua </a>.
   </div>
 </body>
 </html>
