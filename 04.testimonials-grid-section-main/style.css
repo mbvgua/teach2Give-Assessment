@@ -43,6 +43,14 @@ body{
 	grid-column: 1/5;
 	background-color: var(--moderate-violet);
 }
+
+.background{
+	z-index: 1;
+	grid-row: 1/2;
+	grid-column: 3/5;
+	/*width: 300%;
+	height: 20rem; {how do you make an image bigger than it actually is?}*/
+}
 #jonathan{
 	grid-row: 1/2;
 	grid-column: 5/7;
@@ -103,7 +111,9 @@ body{
 /*	border:1px solid */
 }
 
-
+.top-right p{
+	color: var(--light-gray);
+}
 .content{
 /*	border: 1px solid;*/
 	padding: .2rem;
