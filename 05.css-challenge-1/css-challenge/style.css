@@ -20,6 +20,9 @@
 	box-sizing: border-box;
 	font-family: "Montserrat", sans-serif;}
 
+body{
+	maxwidth: 100vw;
+}
 .container{
 	display: flex;
 	flex-direction: column;
@@ -234,7 +237,7 @@
 /*EMPTY TRANSITION DIV*/
 .main-page-transition{
 	background-color: var(--light-gray);
-	height: 5rem;
+	height: 1rem;
 }
 
 /*INDUSTRY DIV WITH CARDS*/
@@ -671,28 +674,106 @@
 /************************************************/
 
  @media only screen and (max-width: 600px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    width: 100vw;
-  }
-  .main-page{
-  	display: flex;
-  	flex-direction: column;
-  	padding: .4rem;
-  }
-  .nav{
-  	display: flex;
-  	padding: .4rem;
-  }
+	  .container {
+	    display: flex;
+	    flex-direction: column;
+	    gap: .5rem;
+	    width: 100vw;
+	  }
 
+	.main-page .nav{
+		display: flex;
+	/*	flex-direction: column;*/
+		width: fit-content;
+	/*	overflow: word-break ;*/
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.nav .top-left{
+		display: flex;
+	/*	flex-direction	: column;*/
+	}
+
+	.menu-items a{
+		text-decoration: none;
+	}
+
+	.top-right{
+		display: flex;
+		margin: .5rem auto;
+	}
+
+
+	/*CENTER MOST DIV STYLING*/
+	.content{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 5rem auto;
+		gap: 1rem;
+	}
+
+	.main-page .title h1, .text p{
+		overflow: word-break;
+		margin: 0px auto;
+	}
+
+	.main-page .content .button{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	/* STYLE THE THREE HOVERING PLACARDS */
+	.placard{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		justify-content: space-around;
+		grid-gap: .5rem;
+		transform: translateY(-20%);		/*needs to be here so as to overwrite the other transform rule*/
+	}
+
+	.industry-bottom{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		grid-gap: 1rem;
+	}
+
+	.industry-bottom .rating-placard{
+		margin: 0px auto;
+	}
+
+	.industry-bottom .rating-placard img{
+		/*	HOW TO I CENTER THIS IMAGE WITHIN THE DIV?!?! */
+		border: 1px solid var(--light-gray);
+		border-radius: 50%;
+		maxwidth: 100%;
+		maxheight: 100%;
+		margin: 0 auto;
+		justify-content: center;
+	}
+
+	.industry-bottom .rating-placard .stars{
+		width: fit-content;
+		margin: 0px auto;
+	}
+
+	.industry-transition{
+		background-color: var(--white);
+		padding-top: 7rem;
+	}
 
 	/*INDUSTRY DIV WITH CARDS*/
 	.industry{
-		background-color: var(--white);
 		display: flex;
 		flex-direction: column;
+		flex-wrap: wrap;
+		margin: 10px auto;
 	}
 
 	.industry-top{
@@ -703,11 +784,9 @@
 
 	.industry-placard{
 		display: flex;
+		margin: 0px auto;
 		justify-content: center;
 		flex-direction: column;
-		column-gap: .4rem;
-		column-gap: 4rem;
-		justify-content: space-around;
 	}
 
 	.industry-middle{
@@ -764,12 +843,15 @@
 		background-color: var(--white);
 		display: flex;
 		flex-direction: column;
+		margin: 10px auto;
+/*		gap: 1rem;*/
 	}
 
 	.pricing-top .title{
 		justify-content: center;
 		width: fit-content;
 		margin: 0px auto;
+		margin-bottom: 1rem;
 	}
 
 	.pricing-bottom{
@@ -804,7 +886,7 @@
 		width: fit-content;
 		background-color: var(--white);
 		transform: translateY(50%) ;
-	    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
 	}
 
 	.form-right form{
