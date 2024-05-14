@@ -661,3 +661,222 @@
 	justify-content: space-evenly;
 	gap: .7rem;
 }
+
+
+
+
+
+/************************************************/
+/*ADD THE MEDIA QUERIES TO MAKE SITE RESPONSIVE */
+/************************************************/
+
+ @media only screen and (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100vw;
+  }
+  .main-page{
+  	display: flex;
+  	flex-direction: column;
+  	padding: .4rem;
+  }
+  .nav{
+  	display: flex;
+  	padding: .4rem;
+  }
+
+
+	/*INDUSTRY DIV WITH CARDS*/
+	.industry{
+		background-color: var(--white);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.industry-top{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.industry-placard{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		column-gap: .4rem;
+		column-gap: 4rem;
+		justify-content: space-around;
+	}
+
+	.industry-middle{
+		border: 1 px solid;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+
+	/*INDUSTRY TRANSITION STYLING	*/
+	.industry-transition{
+		background-color: var(--white);
+		padding-top: 7rem;
+	}
+
+	.industry-transition .partners{
+		height: fit-content;
+		display: flex;
+		flex-wrap: wrap;
+/*		flex-shrink: shrink;*/
+	}
+
+	.subscription{
+		border: 1px solid;
+		display: flex;
+		width: 80%;
+		height: fit-content;
+	}
+
+	/*	MAJOR PROBLEM HERE WITH INPUT DIV*/
+	/*	********************************/
+	.subscription .text-right input,span{
+/*		flex-shrink: shrink;*/
+		border: 1px solid red;
+		font-size: 30px;
+		margin-right: 0;
+		padding: .4rem;
+	}
+
+	.subscription .text-right span{
+		font-size: 30px;
+	/*	margin: 0;*/
+		border: 1px solid var(--blue);
+		background-color: var(--blue);
+		padding: .4rem .4rem;	/* top:bottom - right:left */
+		color: var(--white);
+	}
+
+
+	/*PRICING DIV*/
+	.pricing{
+		background-color: var(--white);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.pricing-top .title{
+		justify-content: center;
+		width: fit-content;
+		margin: 0px auto;
+	}
+
+	.pricing-bottom{
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	/* STYLE THE BRANCHES MAP */
+	.branch{
+		background-color: var(--very-dark-blackish-blue);
+		display: flex;
+		flex-direction: column;
+		padding: 2rem;
+		height: fit-content;
+	}
+
+
+	.branch-map img{
+		padding: 1rem;
+		width: 95%;
+	}
+
+	/* STYLE THE BOOK APPOINTMENT FORM */
+	.book-appointment{
+		visibility: hidden;
+	}
+
+	.book-appointment .form-right{
+		visibility: visible;
+		padding: 1rem;
+		width: fit-content;
+		background-color: var(--white);
+		transform: translateY(50%) ;
+	    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+	}
+
+	.form-right form{
+		display: grid;
+		gap: 1rem;
+		padding: 1rem;	
+	}
+
+	.form-right label{
+		width: 100%;
+		margin: .5rem;
+		color: var(--black);
+	}
+
+	.form-right input{
+		width: 100%;
+		margin: .5rem;
+		color: var(--black);
+	}
+
+	.form-right label{
+		line-height: 1rem;
+		font-weight: 500;
+	}
+	.form-right input{
+		padding: .4rem;
+		border: 1px solid;
+		height: 2.5rem;
+		border-radius: 5px;
+		background-color: lightgray;
+	}
+	
+	/* STYLE THE FOOTER */
+	.footer{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.footer .top{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.footer .top .top-right button{
+		justify-content: center;
+		margin-left: 2rem;
+	}
+
+	.footer .middle{
+		display: flex;
+		flex-direction: column;
+		line-height: 1.9rem;
+		gap: 1rem;
+	}
+
+	.footer .middle .detail{
+		padding: 1rem;
+		justify-content: space-around;
+		align-items: start;
+	}
+
+	.footer .bottom{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.footer .bottom .bottom-right{
+		display: flex;
+		justify-content: space-evenly;
+		gap: .7rem;
+	}
+}
