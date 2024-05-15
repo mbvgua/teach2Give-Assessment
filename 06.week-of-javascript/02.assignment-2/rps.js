@@ -68,32 +68,30 @@ function determineWinner(){
 		return winner  
 	} else if(actualUserMove === possible_choices[0] && actualCompMove === possible_choices[2]){
 		let winner = 'the user wins'
-		userWins++
 		return winner
 	} else if(actualUserMove === possible_choices[1] && actualCompMove === possible_choices[0]){
 		let winner = 'the user wins'
-		userWins++
 		return winner
 	} else if(actualUserMove === possible_choices[2] && actualCompMove === possible_choices[1]){
 		let winner = 'the user wins'
-		userWins++
 		return winner
 	} else if(actualUserMove === possible_choices[1] && actualCompMove === possible_choices[2]){
 		let winner = 'the computer wins'
-		compWins++
 		return winner
 	} else if(actualUserMove === possible_choices[0] && actualCompMove === possible_choices[1]){
 		let winner = 'the computer wins'
-		compWins++
 		return winner
 	} else if(actualUserMove === possible_choices[2] && actualCompMove === possible_choices[0]){
 		let winner = 'the computer wins'
-		compWins++
 		return winner
 	}
-
 } 
 
+// Function expression
+const incrementWinner = (winner) => {
+    if (winner === 'the computer wins') userWins++;
+    else if (winner === 'the user wins') compWins++;
+};
 
 // Cheat Mode:
  

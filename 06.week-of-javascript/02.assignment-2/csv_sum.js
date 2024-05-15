@@ -6,32 +6,18 @@
 // values as zero.
 // If the input string is empty, return zero.
 
+function sumCommaNumbers(input) {
+    if (!input) return 0; 
+    const numbers = input.split(',').map(Number); 
+    const sum = numbers.reduce((acc, current) => acc + (isNaN(current) ? 0 : current), 0);
 
-function getSum(string_input) {
-    // Check if the numbers is an empty string and return 0
-    if (string_input.trim() === "") {
-        return 0
-    }
-
-    let numbers = string_input.split(',')	// Split the numbers on the comma    
-    let totalSum = 0	// Initialize totalSum to zero
-
-    for (let i of numbers) {
-        
-        num = i.trim();	// Trim whitespaces and convert each value to a float
-        let parsed_number = parseFloat(num);
-
-        // Check if the parsed number is a valid number
-        if (isNaN(parsed_number)) {
-            parsed_number = 0;
-        }
-
-        totalSum += parsed_number;	// Add the parsed number to the sum
-    }
-
-    return totalSum;
+    return sum;
 }
 
-
+console.log(sumCommaNumbers("0,21,42,4,54")); 
+console.log(sumCommaNumbers("15,44,a,442,51")); 
+console.log(sumCommaNumbers("z,44,y,442,51")); 
+console.log(sumCommaNumbers("15,44,l,l,449,51")); 
+console.log(sumCommaNumbers(""));
 
 
