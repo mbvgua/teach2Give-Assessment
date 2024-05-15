@@ -93,6 +93,8 @@ const incrementWinner = (winner) => {
     else if (winner === 'the user wins') compWins++;
 };
 
+
+
 // Cheat Mode:
  
 // Design a "cheat mode" feature that alters the computer's choice in some

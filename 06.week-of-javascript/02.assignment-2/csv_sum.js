@@ -14,6 +14,8 @@ function sumCommaNumbers(input) {
     return sum;
 }
 
+
+//some examples to try 
 console.log(sumCommaNumbers("0,21,42,4,54")); 
 console.log(sumCommaNumbers("15,44,a,442,51")); 
 console.log(sumCommaNumbers("z,44,y,442,51")); 
