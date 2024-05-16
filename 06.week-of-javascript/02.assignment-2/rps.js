@@ -27,12 +27,12 @@ const +user_move = prompt('Interested in a rock,paper,scissors game? \n(Yes/no)'
 				prompt('which will you choose? 1-> rock, 2->paper,3->scissors') :
 				prompt('okay.maybe next time')
 
-let +total_games = prompt('How many rounds would you like to play?')
-// set possible choices as a method
+const +total_games = prompt('How many rounds would you like to play?')
 
 
 while (i< total_games){
 
+	// set possible choices as a method
 	let choices = {
 		'rock':'rock',
 		'paper':'paper',
@@ -118,8 +118,8 @@ while (i< total_games){
 	// mode (e.g., computer always chooses scissors).
 
 	// for all the odd numered games, the computer should pick scissors
-	for(let i=game_number,i<total_games,i++){
-		if(i % 2 === 1){
+	for(let x=game_number,i<total_games,i++){
+		if(x % 2 === 1){
 			compMove = choices.scissors
 			return compMove
 		}

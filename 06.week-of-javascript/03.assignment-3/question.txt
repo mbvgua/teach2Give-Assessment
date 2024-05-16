@@ -1,0 +1,67 @@
+[3:32 PM] Jonathan Ndambuki
+This assignment involves creating a JavaScript application that implements CRUD operations (Create, Read, Update, Delete) for a to-do list. The data will be stored in an array within the JavaScript code.
+ 
+Learning Objectives:
+ 
+Understand CRUD operations.
+
+Practice working with arrays and DOM manipulation.
+
+Implement event listeners for user interaction.
+
+(Optional) Utilize local storage to persist data.
+ 
+ 
+Create a JavaScript file (script.js) to handle the logic.
+
+Declare an array (tasks) to store to-do items as objects.
+
+Each object should have the following properties (optional for basic functionality):
+
+id: A unique identifier (e.g., timestamp).
+
+text: The actual task text.
+
+completed (optional): A boolean flag indicating if the task is completed (true) or not (false).
+ 
+Implement functions for CRUD operations:
+ 
+Create:
+
+When the "Add Task" button is clicked, get the new task text from the input field.
+
+Validate the input (check if a task is entered).
+
+Create a new task object with the entered text and a unique identifier.
+
+Add the new task object to the tasks array.
+ 
+Read:
+
+Display the existing tasks from the tasks array in the unordered list (<ul>).
+
+Use DOM manipulation (e.g., createElement, appendChild) to create list items for each task.
+
+Optionally, display additional information like task completion status using CSS classes.
+ 
+Update
+ 
+Allow users to edit existing tasks. This could be implemented by:
+
+Double-clicking on a task label to prompt for new text.
+
+Update the corresponding task object in the tasks array with the new text.
+
+Update the displayed list to reflect the changes.
+ 
+Delete:
+
+Provide a way for users to remove tasks. This could involve:
+
+A "Delete" button next to each task.
+
+Removing the corresponding task object from the tasks array.
+
+Update the displayed list to remove the deleted task.
+[3:32 PM] Jonathan Ndambuki
+you can do as a group.
