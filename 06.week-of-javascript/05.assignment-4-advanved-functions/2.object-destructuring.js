@@ -1,6 +1,6 @@
 // Given a JavaScript object representing user data like the one below:
  
-  {
+const randomObject =  {
     "id": 1,
     "name": "Leanne Graham",
     "username": "Bret",
@@ -28,5 +28,11 @@
 // Write a single line of JavaScript code that uses destructuring 
 // to extract and store the lat value (-37.3159 in this example) in a 
 // variable named lat.
+
+// perform object destructuring in nested objects
+// get into address, then geo and finally lat
+const {address: {geo : {lat}}} = randomObject
+console.log(lat)
+
  
  
