@@ -65,12 +65,23 @@ body{
     font-size: 23px;
 }
 
+.form-radio-input{
+    padding: .4rem;
+    font-size: 23px;
+}
+
+.form-radio-input label{
+    color: var(--dark-grayish-blue);
+}
+
+
 .bottom{
     /* background-color: blue; */
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem;
+    justify-content: center;
 }
 
 .card{
