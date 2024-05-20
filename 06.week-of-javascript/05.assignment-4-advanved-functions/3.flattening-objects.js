@@ -58,4 +58,4 @@ function getDescendants(randomArray) {
   
 
 const descendants = getDescendants(theJonathans)
-console.log(descendants
+console.log(descendants)
