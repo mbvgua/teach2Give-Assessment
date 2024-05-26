@@ -9,102 +9,130 @@
 <body>
 
     <div class="container">
-        
-        <!-- topmost div -->
-        <div class="top">
+        <!-- topmost navbar-div -->
+        <div class="navbar">
             <div class="logo">
-                <h2> Twitter Clone </h2>
+                <i> WZ </i> <h1> Twitter </h1>
+            </div>
+
+            <!-- searchbar div -->
+            <div class="search-bar">
+                <input type="search" name="search-bar" id="search-bar" placeholder="Search...">
+                <button> Search </button>
             </div>
 
             <div class="search-bar">
-                <form class="search-bar">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" type="submit">Search</button>
+                <form class="search-form">
+                    <span>Pick a User: </span>
+                    <select id="dropdown">
+                        <!-- <option value=""> Select an option </option>
+                        <option value="user 1"> User 1 </option>
+                        <option value="user 2"> User 2 </option>
+                        <option value="user 3"> User 3 </option>
+                        <option value="user 4"> User 4 </option>
+                        <option value="user 5"> User 5 </option>
+                        <option value="user 6"> User 6 </option> -->
+                    </select>
                </form>
             </div>
 
         </div>
 
-        <!-- background pic div -->
-        <div class="background-pic">
-            <img src="" alt="Background Pic">
-        </div>
+        <!-- main-content div -->
+        <div class="main-content">
+            <div class="sidebar-panel"></div>
+            
+            <!-- tweets-panel -->
+            <div class="tweets-panel">
 
-        <!-- avatar -->
-        <div class="avatar">
-            <img src="" alt="User avatar">
-        </div>
-
-        <!-- details div -->
-        <div class="details">
-            <div class="user-details">
-                <div>
-                    <h2> Username </h2>
-                </div>
-
-                <div>
-                    <label> @who </label>
-                </div>
-
-                <div>
-                    <label> website </label>
-                </div>
-
-                <div>
-                    <label> Location </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="bottom">
-            <div class="all-tweets">
                 <div class="tweet-card">
-                    <div class="avatar">
-                        <img src="" alt="User Avatar">
+                    <div class="top">
+                        <img src="" alt="avatar">
+                        <label> Name </label>
+                        <label> @Username </label>
+                        <label> Current Date </label>
+                        <i>WZ</i>
                     </div>
-                    <div class="actual-tweet">
-                        <div class="name">
-                            <label> User Name </label>
-                        </div>
 
-                        <div class="tweet">
-                            <p> Lorem Ipsum moja kubwa </p>
-                        </div>
-
-                        <div class="bottom">
-                            <label> Comments </label>
-                            <label> Retweets </label>
-                            <label> Likes </label>
-                        </div>
+                    <div class="middle">
+                        <p>
+                            In the brightest day, in the darkest night, no evil shall escape my sight
+                            let all those who worship evils might, beware of my power, the green lanterns light!
+                        </p>
                     </div>
-                </div>
-            </div>
 
-            <div class="all-comments">
-                <div class="tweet-card">
-                    <div class="avatar">
-                        <img src="" alt="User Avatar">
-                    </div>
-                    <div class="actual-tweet">
-                        <div class="name">
-                            <label> User Name </label>
+                    <div class="bottom">
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
                         </div>
-
-                        <div class="tweet">
-                            <p> Lorem Ipsum moja kubwa </p>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
                         </div>
-
-                        <div class="bottom">
-                            <label> Comments </label>
-                            <label> Retweets </label>
-                            <label> Likes </label>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
-    </div>
+            <!-- comments div -->
+            <div class="comments-panel">
+                <div class="comment-card">
+                    <div class="top">
+                        <img src="" alt="avatar">
+                        <label> Name </label>
+                        <label> @Username </label>
+                        <label> Current Date </label>
+                        <i>WZ</i>
+                    </div>
+
+                    <div class="middle">
+                        <p>
+                            In the brightest day, in the darkest night, no evil shall escape my sight
+                            let all those who worship evils might, beware of my power, the green lanterns light!
+                        </p>
+                    </div>
+                    
+                    <div class="bottom">
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i>WZ</i>
+                            <label> 100</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!--end of comments-panel div-->
+
+        </div><!-- end of main content div-->
+    </div><!--end of container div-->
     
     <script src="script.js"></script>
 </body>
