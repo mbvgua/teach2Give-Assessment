@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Twitter Clone </title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
@@ -12,14 +13,14 @@
         <!-- topmost navbar-div -->
         <div class="navbar">
             <div class="logo">
-                <i> WZ </i> <h1> Twitter </h1>
+                <i class='bx bxl-twitter bx-lg' ></i> <h1> Twitter </h1>
             </div>
 
             <!-- searchbar div -->
-            <div class="search-bar">
+            <!-- <div class="search-bar">
                 <input type="search" name="search-bar" id="search-bar" placeholder="Search...">
                 <button> Search </button>
-            </div>
+            </div> -->
 
             <div class="search-bar">
                 <form class="search-form">
@@ -40,10 +41,78 @@
 
         <!-- main-content div -->
         <div class="main-content">
-            <div class="sidebar-panel"></div>
+            <div class="sidebar-panel">
+
+                    <!-- topmost logo part -->
+                    <div class="top">
+                        <i class='bx bxl-twitter bx-md' ></i> <label> Welcome </label>
+                    </div>
+                       
+                    <!-- list of menu panel -->
+                    <div class="menu">
+            
+                        <ul>
+            
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-home-alt-2'></i>
+                                    <span class="nav-item">Home </span>
+                                </a>
+                            </li>
+            
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-search'></i>
+                                    <span class="nav-item">Explore </span>
+                                </a>
+                            </li>
+            
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-bell'></i>
+                                    <span class="nav-item">Notifications </span>
+                                </a>
+                            </li>
+            
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-chat'></i>
+                                    <span class="nav-item">Messages </span>
+                                </a>
+                            </li>
+            
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-user'></i>
+                                    <span class="nav-item">Profile </span>
+                                </a>
+                            </li>
+            
+            
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-message-rounded-dots'></i>
+                                    <span class="nav-item">More </span>
+                                </a>
+                            </li>
+            
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-log-out-circle'></i>
+                                    <span class="nav-item"> Logout </span>
+                                </a>
+                            </li>
+            
+                        </ul>
+            
+                    </div>
+                
+            </div>
             
             <!-- tweets-panel -->
             <div class="tweets-panel">
+
+                <h2> Tweets</h2>
 
                 <div class="tweet-card">
                     <div class="top">
@@ -51,7 +120,7 @@
                         <label> Name </label>
                         <label> @Username </label>
                         <label> Current Date </label>
-                        <i>WZ</i>
+                        <i class='bx bx-dots-horizontal-rounded'></i>
                     </div>
 
                     <div class="middle">
@@ -63,39 +132,82 @@
 
                     <div class="bottom">
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-chat'></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-collapse-alt'></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-heart'></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-bookmark-alt' ></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-upload' ></i>
                             <label> 100</label>
                         </div>
                     </div>
                 </div>
 
+                <!-- card 2 -->
+                <div class="tweet-card">
+                    <div class="top">
+                        <img src="" alt="avatar">
+                        <label> Name </label>
+                        <label> @Username </label>
+                        <label> Current Date </label>
+                        <i class='bx bx-dots-horizontal-rounded'></i>
+                    </div>
+
+                    <div class="middle">
+                        <p>
+                            In the brightest day, in the darkest night, no evil shall escape my sight
+                            let all those who worship evils might, beware of my power, the green lanterns light!
+                        </p>
+                    </div>
+
+                    <div class="bottom">
+                        <div>
+                            <i class='bx bx-chat'></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-collapse-alt'></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-heart'></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-bookmark-alt' ></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-upload' ></i>
+                            <label> 100</label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+                    
             <!-- comments div -->
             <div class="comments-panel">
+
+                <h2> Comments </h2>
                 <div class="comment-card">
                     <div class="top">
                         <img src="" alt="avatar">
                         <label> Name </label>
                         <label> @Username </label>
                         <label> Current Date </label>
-                        <i>WZ</i>
+                        <i class='bx bx-dots-horizontal-rounded'></i>
                     </div>
 
                     <div class="middle">
@@ -107,33 +219,83 @@
                     
                     <div class="bottom">
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-chat'></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-collapse-alt'></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-heart'></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-bookmark-alt' ></i>
                             <label> 100</label>
                         </div>
                         <div>
-                            <i>WZ</i>
+                            <i class='bx bx-upload' ></i>
                             <label> 100</label>
                         </div>
                     </div>
+
                 </div>
 
+                <!-- comments 2 -->
+                <div class="comment-card">
+                    <div class="top">
+                        <img src="" alt="avatar">
+                        <label> Name </label>
+                        <label> @Username </label>
+                        <label> Current Date </label>
+                        <i class='bx bx-dots-horizontal-rounded'></i>
+                    </div>
+
+                    <div class="middle">
+                        <p>
+                            In the brightest day, in the darkest night, no evil shall escape my sight
+                            let all those who worship evils might, beware of my power, the green lanterns light!
+                        </p>
+                    </div>
+                    
+                    <div class="bottom">
+                        <div>
+                            <i class='bx bx-chat'></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-collapse-alt'></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-heart'></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-bookmark-alt' ></i>
+                            <label> 100</label>
+                        </div>
+                        <div>
+                            <i class='bx bx-upload' ></i>
+                            <label> 100</label>
+                        </div>
+                    </div>
+
+                </div>
             </div><!--end of comments-panel div-->
 
         </div><!-- end of main content div-->
     </div><!--end of container div-->
     
+    <!-- to be used icons -->
+    <!-- <i class='bx bx-chat'></i>
+    <i class='bx bx-heart'></i>
+    <i class='bx bx-bookmarks'></i>
+    <i class='bx bx-bookmark-alt' ></i>
+    <i class='bx bx-upload' ></i>
+    <i class='bx bx-dots-horizontal-rounded'></i>
+    <i class='bx bxl-twitter' ></i> -->
     <script src="script.js"></script>
 </body>
 </html>
