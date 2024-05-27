@@ -10,3 +10,10 @@ if (userInput % 2 === 0) {
 else if (userInput % 2 !== 0) {
     alert("Number ".concat(userInput, " is not a multiple of 2"));
 }
+else if (userInput === null) {
+    alert("please input a number");
+}
+else
+    (function (userInput) {
+        alert("please input a valid number");
+    });
