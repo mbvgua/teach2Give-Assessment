@@ -1,4 +1,4 @@
-console.log('hello world')
+console.log('🎉')
 
 const usersURL = 'http://localhost:3000/users'
 const postsURL = 'http://localhost:3000/posts'
