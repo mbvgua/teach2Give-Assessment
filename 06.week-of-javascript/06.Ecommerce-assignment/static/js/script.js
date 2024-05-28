@@ -79,8 +79,15 @@ class DisplayUi{
 
 }
 
-// store data locally
-class StoreData{
+// store data locally to prevent erasal on refresh
+class Storage{
+    // function to store data in local storage
+    static storeData(products){
+        // nani amezima stima?
+        localStorage.setItem("products",JSON.stringify(products))
+
+    }
+
 
 }
 
@@ -103,5 +110,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // products.getProducts().then(products => console.log(products))
 
     // allow display of products in home page
-    products.getProducts().then(products => displayUi.displayProducts(products))
+    products.getProducts().then(products => {
+        displayUi.displayProducts(products)
+        Storage.storeData(products)     //static method thus no need to create an instance
+    })
 })
