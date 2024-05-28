@@ -241,8 +241,8 @@ body {
   color: grey;
   cursor: pointer;
 }
-.fa-chevron-up,
-.fa-chevron-down {
+.bx-chevron-up,
+.bx-chevron-down {
   color: var(--primaryColor);
   cursor: pointer;
 }

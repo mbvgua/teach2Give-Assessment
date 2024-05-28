@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Comfy House : Homepage </title>
     <link rel="stylesheet" href="./static/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
@@ -12,12 +13,12 @@
     <div class="navbar">
         <div class="navbar-center">
             <span class="nav-icon">
-                <i> WZ </i>
+                <i class='bx bx-menu'></i>
             </span>
             <img src="./static/images/logo.svg" alt="Store Logo">
             <div class="cart-btn">
                 <span class="nav-icon">
-                    <i> WZ </i>
+                    <i class='bx bx-cart bx-sm'></i>
                 </span>
                 <div class="cart-items"> 0 </div>
             </div>
@@ -41,12 +42,13 @@
         </div>
 
         <div class="products-center">
+
             <!-- product 1 -->
             <article class="product">
                 <div class="img-container">
                     <img src="./static/images/product-1.jpeg" alt="product" class="product-img">
                     <button class="bag-btn" data-id="1">
-                        <i> WZ  </i>
+                        <i class='bx bx-cart-add'></i>
                         add to bag
                     </button>
                 </div>
@@ -55,34 +57,47 @@
             </article>
             <!-- end of product 1 -->
 
-            <article class="product">
-                <div class="img-container">
-                    <img src="./static/images/product-1.jpeg" alt="product" class="product-img">
-                    <button class="bag-btn" data-id="1">
-                        <i> WZ  </i>
-                        add to bag
-                    </button>
-                </div>
-                <h3> queen bed </h3>
-                <h4> $ 69 </h4>
-            </article>
-            <!-- end of product 1 -->
-
-            <article class="product">
-                <div class="img-container">
-                    <img src="./static/images/product-1.jpeg" alt="product" class="product-img">
-                    <button class="bag-btn" data-id="1">
-                        <i> WZ  </i>
-                        add to bag
-                    </button>
-                </div>
-                <h3> queen bed </h3>
-                <h4> $ 69 </h4>
-            </article>
-            <!-- end of product 1 -->
         </div>
     </div>
     <!-- end products section -->
+
+    <!-- begin the cart section -->
+    <div class="cart-overlay">
+        <div class="cart">
+            <span class="close-cart">
+                <i class='bx bx-window-close' ></i>
+            </span>
+            <h2> your cart</h2>
+            <div class="cart-content">
+                <!-- cart item -->
+                <div class="cart-item">
+                    <img src="./static/images/product-1.jpeg" alt="product">
+                    <div>
+                        <h4> king bed </h4>
+                        <h5> $9.00 </h5>
+                        <!-- instead of remove words.. place the delete icon instead -->
+                        <span class="remove-item"> remove </span>
+                        <i class='bx bx-trash'></i>
+                    </div>
+
+                    <div>
+                        <i class='bx bx-chevron-up bx-md'></i>
+                            <p class="item-amount"> 1 </p>
+                        <i class='bx bx-chevron-down bx-md' ></i>
+                    </div>
+                </div>
+                <!-- end cart items -->
+            </div>
+
+            <!-- cart footer -->
+            <div class="cart-footer">
+                <h3> your total : $ <span class="cart-total"> 0 </span></h3>
+                <button class="clear-cart banner-btn"> clear cart </button>
+            </div>
+            <!-- end of footer -->
+        </div>
+    </div>
+    <!-- end the cart section -->
     <script src="./static/js/script.js"></script>
 </body>
 </html>
