@@ -75,7 +75,31 @@ class DisplayUi{
         
     }
 
-    // 
+    // get the add to cart button ids
+    getAddToCartButton(){
+        // use spread operator to get nodelist of all buttons
+        const buttons = [...document.querySelectorAll('.bag-btn')]
+
+        // get unque id of @button using forEach
+        buttons.forEach(button =>{
+            let id = button.dataset.id
+            // console.log(id)
+            
+            //check if item is alreaady existing in cart
+            let inCart = cart.find(item => item.id === id)
+
+            if(inCart){
+                button.innerText = 'In Cart'
+                button.disabled = true
+            } else {
+                button.addEventListener('click', event=>{
+                    event.target.innerText = 'In Cart'
+                    event.target.disabled = true
+                })
+            }
+            button.innerHTML = html
+        })
+    }
 
 }
 
@@ -113,5 +137,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     products.getProducts().then(products => {
         displayUi.displayProducts(products)
         Storage.storeData(products)     //static method thus no need to create an instance
+    }).then(()=>{
+        // allow method to run only after buttons have a value
+        displayUi.getAddToCartButton()
     })
 })
