@@ -50,7 +50,32 @@ class Products{
 }
 
 // display the products
-class DisplayUI{
+// should contain bulk of the methods, 
+class DisplayUi{
+
+    // funtion to display products in main webpage
+    displayProducts(products){  //essential to place the products parameter
+        let html = ''
+
+        // since we get back an array, use array method to loop through @ product
+        products.forEach(product => {
+            html += `<article class="product">
+                        <div class="img-container">
+                            <img src="${product.image}" alt="${product.title}" class="product-img">
+                            <button class="bag-btn" data-id="${product.id}">
+                                <i class='bx bx-cart-add'></i>
+                                add to bag
+                            </button>
+                        </div>
+                        <h3> ${product.title} </h3>
+                        <h4> $ ${product.price} </h4>
+                    </article> `
+        })
+        productsDom.innerHTML = html
+        
+    }
+
+    // 
 
 }
 
@@ -70,10 +95,13 @@ class StoreData{
 // add the eventListener to start entire project
 document.addEventListener('DOMContentLoaded', ()=>{
     // define instances of the classes
-    const displayUi = new DisplayUI()
+    const displayUi = new DisplayUi()
     const products = new Products
 
 
     // get products using now available methods
-    products.getProducts().then(data => console.log(data))
+    // products.getProducts().then(products => console.log(products))
+
+    // allow display of products in home page
+    products.getProducts().then(products => displayUi.displayProducts(products))
 })
