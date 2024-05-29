@@ -1,0 +1,64 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	width: 100%;
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	margin: 1rem auto;
+	padding: 1rem;
+	max-width: 80vw;
+	grid-gap: 2rem;
+}
+
+.title{
+	font-size: 2.5rem;
+}
+
+.title h1{
+/*	border: 1px solid;*/
+	display: flex;
+	justify-content: center;
+}
+
+.middle{
+/*	background-color: teal;*/
+	font-size: 2rem;
+	justify-content: center;
+	display: flex;
+}
+
+.middle table,thead,tbody,th,td{
+	border: 1px solid;
+	padding: .4rem;
+}
+
+.middle table tbody tr td button{
+	background-color: lightblue;
+	padding: .3rem;
+
+}
+
+.bottom{
+	display: flex;
+	flex-direction: column;
+	font-size: 2rem;
+}
+
+.bottom .bottom-1,.bottom-2{
+	display: flex;
+	justify-content: center;
+}
+
+.bottom button{
+	background-color: lightblue;
+	margin: 0px center;
+	padding: .3rem;
+}
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Streak App </title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<!-- main div container -->
+	<div class="container">
+
+		<!-- top div -->
+		<div class="top">
+			<div class="title">
+				<h1> Happy Streak </h1>
+			</div>
+
+		</div>
+
+		<!-- middle div -->
+		<div class="middle">
+
+			<div class="habit-entry">
+				<form class="form">
+
+					<div class="form-input">
+						<label for="habit-name"> Habit: </label>
+						<select name="dropdown-choices" class="dropdown-choices" id="dropdown">
+							<option value="fitness">Fitness</option>
+							<option value="smoking">Smoking</option>
+							<option value="cycling">Cycling</option>
+							<option value="walks"> Walks</option>
+							<option value="enough sleep"> Enough Sleep </option>
+							<option value="healty eating"> Healty Eating </option>
+						</select>
+					</div>
+
+					<div class="form-radio-input">
+						<label for="habit-type"> Virtue or Vice? </label> <br/>
+						<input type="radio" class="habit-type" name="habit-type" value="vice"> Vice
+						<input type="radio" class="habit-type" name="habit-type" value="virtue"> Virtue
+					</div>
+
+					<div class="form-input">
+						<label for="habit-description"> Description: </label>
+						<textarea name="habit-description" id="habit-description" rows="4" cols="10"></textarea>
+					</div>
+
+					<div class="form-input">
+						<label for="habit-time"> Since: </label>
+						<input type="date" name="habit-time" id="habit-time">
+					</div>
+
+					<div class="form-input">
+						<button class="btn btn-primary"> Submit </button>
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+
+		<!-- bottom div -->
+		<div class="bottom">
+			<!-- card 1 -->
+			<!-- <div class="card">
+				<div class="habit-image">
+					<img src="images/health.jpg" alt="Habit Picture" id="image">
+				</div>
+				<div class="habit-title">
+					<h3 id="title"> Day Drinking </h3>
+				</div>
+				<div class="habit-description">
+					<p id="description"> no wahalla mahn! </p>
+				</div>
+				<div class="bottom-button">
+					<button class="btn btn-primary" id="update"> Update </button>
+					<button class="btn btn-primary" id="delete"> Delete </button>
+				</div>
+			</div> -->
+
+
+		</div>
+	</div>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+:root{
+	--red: hsl(1, 90%, 64%);
+	--blue: hsl(219, 85%, 26%);
+	--white: hsl(0, 0%, 100%);
+	--very-light-grayish-blue: hsl(210, 60%, 98%);
+	--light-grayish-blue-1: hsl(211, 68%, 94%);
+	--light-grayish-blue-2: hsl(205, 33%, 90%);
+	--grayish-blue: hsl(219, 14%, 63%);
+	--dark-grayish-blue: hsl(219, 12%, 42%);
+	--very-dark-blue: hsl(224, 21%, 14%);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    width: 100vw;
+    background-color: var(--light-grayish-blue-2);
+}
+
+.container{
+    width: 80%;
+    padding: 1rem;
+    margin: 2rem auto;
+    /* border: 1px solid; */
+    background-color: var(--white);
+    border-radius: 20px ;
+    /* box-shadow: 2px 2px 12pxs 1px rgba(140,140,140,.5); */
+    /* background-color: red; */
+}
+
+.top .title{
+    display: flex;
+    justify-content: center;
+}
+
+.top .title h1{
+    color: var(--very-dark-blue);
+}
+
+.middle {
+    padding: .9rem;
+}
+
+.middle .habit-entry{
+    /* background-color: red; */
+    width: 500px;
+    padding: .3rem 2rem;
+    margin: 0px auto;
+}
+
+.habit-entry .form-input{
+    line-height: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* border: 1px solid; */
+    padding: .4rem;
+    color: var(--dark-grayish-blue);
+    font-size: 23px;
+}
+
+.form-radio-input{
+    padding: .4rem;
+    font-size: 23px;
+}
+
+.form-radio-input label{
+    color: var(--dark-grayish-blue);
+}
+
+
+.bottom{
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.card{
+    /* border: 1px solid; */
+    border-radius: 10px;
+    padding: .4rem;
+    width: 12rem;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+
+}
+
+.card .habit-image{
+    /* background-color: brown; */
+    width: 220px;
+    height: 220px;
+    overflow: hidden;
+    flex-shrink: inherit;
+    border-radius: 50%;
+}
+
+.card .habit-description{
+    color: var(--dark-grayish-blue);
+}
+.btn{
+    background-color: dodgerblue;
+    border: 1px solids dodgerblue;
+    border-radius: 17px;
+    padding: .2rem .4rem;   /*top:bottom right:left*/   
+}
