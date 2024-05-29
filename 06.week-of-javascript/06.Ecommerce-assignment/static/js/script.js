@@ -15,6 +15,7 @@ const productsDom = document.querySelector('.products-center')
 // define empty arrays of both products and cart items
 // let products = []
 let cart = []
+let buttonsDom = []
 
 // get the products
 class Products{
@@ -79,6 +80,7 @@ class DisplayUi{
     getAddToCartButton(){
         // use spread operator to get nodelist of all buttons
         const buttons = [...document.querySelectorAll('.bag-btn')]
+        buttonsDom = buttons
 
         // get unque id of @button using forEach
         buttons.forEach(button =>{
@@ -95,12 +97,38 @@ class DisplayUi{
                 button.addEventListener('click', event=>{
                     event.target.innerText = 'In Cart'
                     event.target.disabled = true
+
+                    // get product from products
+                    let cartItem = {...Storage.getProduct(id),amount:1}
+                    // console.log(cartItem)
+
+                    // add item to empty cart array
+                    cart = [...cart,cartItem]
+                    // console.log(cart)
+
+                    // save cart to the local storage
+                    Storage.saveToCart(cart)
+
+                    // set cart values number to increase/decrease
+                    this.setCartValues(cart)
+
                 })
             }
-            button.innerHTML = html
         })
     }
 
+
+    setCartValues(cart){
+        // function to auto-increment cart items number
+        let tempTotal = 0
+        let itemsTotal = 0
+        cart.map(item => {
+            tempTotal += item.price * item.amount
+            itemsTotal += item.amount
+        })
+        cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
+        cartItems.innerText = itemsTotal
+    }
 }
 
 // store data locally to prevent erasal on refresh
@@ -110,6 +138,16 @@ class Storage{
         // nani amezima stima?
         localStorage.setItem("products",JSON.stringify(products))
 
+    }
+
+    // function to get unique product id
+    static getProduct(id){
+        let products = JSON.parse(localStorage.getItem('products'))
+        return products.find(product => product.id === id)
+    }
+
+    static saveToCart(cart){
+        localStorage.setItem('cart',JSON.stringify(cart))
     }
 
 
