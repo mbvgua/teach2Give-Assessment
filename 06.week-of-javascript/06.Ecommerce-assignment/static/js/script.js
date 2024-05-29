@@ -3,7 +3,7 @@ console.log('Hello world')
 // get all the variables
 const cartBtn = document.querySelector('.cart-btn')
 const closeCartBtn = document.querySelector('.close-cart')
-const clearCart = document.querySelector('.clear-cart')
+const clearCartBtn = document.querySelector('.clear-cart')
 const cartDom = document.querySelector('.cart')
 const cartOverlay = document.querySelector('.cart-overlay')
 const cartItems = document.querySelector('.cart-items')
@@ -66,7 +66,7 @@ class DisplayUi{
                             <img src="${product.image}" alt="${product.title}" class="product-img">
                             <button class="bag-btn" data-id="${product.id}">
                                 <i class='bx bx-cart-add'></i>
-                                add to bag
+                                add to cart
                             </button>
                         </div>
                         <h3> ${product.title} </h3>
@@ -140,22 +140,24 @@ class DisplayUi{
         // function to add products to cart
         let html = ''
         html += `
-            <img src="${item.image}" alt="product">
-            <div>
-                <h4> ${item.title} </h4>
-                <h5> $${item.price} </h5>
-                <!-- instead of remove words.. place the delete icon instead -->
-                <span class="remove-item" data-id="${item.id}"> remove </span>
-                <i class='bx bx-trash'></i>
-            </div>
+            <div class="cart-item">
+                <img src="${item.image}" alt="product">
+                <div>
+                    <h4> ${item.title} </h4>
+                    <h5> $${item.price} </h5>
+                    <!-- instead of remove words.. place the delete icon instead -->
+                    <span class="remove-item" data-id="${item.id}"> remove </span>
+                    <i class='bx bx-trash'></i>
+                </div>
 
-            <div>
-                <i class='bx bx-chevron-up bx-md' data-id="${item.id}"></i>
-                    <p class="item-amount"> ${item.amount} </p>
-                <i class='bx bx-chevron-down bx-md' data-id="${item.id}"></i>
+                <div>
+                    <i class='bx bx-chevron-up bx-md' data-id="${item.id}"></i>
+                        <p class="item-amount"> ${item.amount} </p>
+                    <i class='bx bx-chevron-down bx-md' data-id="${item.id}"></i>
+                </div>
             </div>`
 
-        cartDiv.innerHTML += html
+        cartContent.innerHTML += html
         // console.log(cartDiv)
     }
 
@@ -183,7 +185,50 @@ class DisplayUi{
     populateCart(cart){
         cart.forEach(item => this.addCartItem(item))
     }
+
+    cartLogic(){
+        clearCartBtn.addEventListener('click', () =>{
+            this.clearCart() })
+    }
+
+    clearCart(){
+        /*---MAJOR BUG---
+        console.log(this) -> used to trouble shoot bug
+        would not clear cart items. needed to put this.() in the arrow
+        function above
+        */
+        let cartItems = cart.map(item => item.id)
+        console.log(cartItems)  //get unique id of each items in cart
+
+        // loop over the array, removing each items
+        cartItems.forEach( id => this.removeItem(id))
+
+        // console.log(cartContent.children) 
+        // remove item from cart
+        while(cartContent.children.length > 0){
+            cartContent.removeChild(cartContent.children[0])
+        }
+
+        // hide the cart
+        this.hideCartItems()
+    }
+
+    removeItem(id){
+        // remove items based on the unique id
+        cart = cart.filter(item => item.id !== id)
+        this.setCartValues(cart)
+        Storage.saveToCart(cart)
+        let button = this.getSingleButton(id)
+        button.disabled = false
+        button.innerHTML = `<i class='bx bx-cart-add'></i> add to cart`
+    }
+
+    getSingleButton(id){
+        return buttonsDom.find(button => button.dataset.id === id)
+    }
 }
+
+
 
 // store data locally to prevent erasal on refresh
 class Storage{
@@ -234,5 +279,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }).then(()=>{
         // allow method to run only after buttons have a value
         displayUi.getAddToCartButton()
+        displayUi.cartLogic()
     })
 })
