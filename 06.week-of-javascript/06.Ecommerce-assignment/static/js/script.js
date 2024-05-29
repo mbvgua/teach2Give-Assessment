@@ -113,9 +113,11 @@ class DisplayUi{
                     // set cart values number to increase/decrease
                     this.setCartValues(cart)
 
-                    // display cart items
+                    // add cart items
                     this.addCartItem(cartItem)
 
+                    // display items in the cart
+                    this.showCartItems()
                 })
             }
         })
@@ -154,7 +156,13 @@ class DisplayUi{
             </div>`
 
         cartDiv.innerHTML = html
-        console.log(cartDiv)
+        // console.log(cartDiv)
+    }
+
+    showCartItems(){
+        // basically change css styling to bring cart to foreground
+        cartOverlay.classList.add('transparentBcg')
+        cartDom.classList.add('showCart')
     }
 }
 
