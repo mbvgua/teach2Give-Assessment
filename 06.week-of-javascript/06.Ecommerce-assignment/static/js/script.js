@@ -147,7 +147,6 @@ class DisplayUi{
                     <h5> $${item.price} </h5>
                     <!-- instead of remove words.. place the delete icon instead -->
                     <span class="remove-item" data-id="${item.id}"> remove </span>
-                    <i class='bx bx-trash'></i>
                 </div>
 
                 <div>
@@ -189,6 +188,46 @@ class DisplayUi{
     cartLogic(){
         clearCartBtn.addEventListener('click', () =>{
             this.clearCart() })
+
+        // cart functionality.remove.increase.decrease
+        cartContent.addEventListener('click', (event) => {
+            // console.log(event)  //see the event
+
+            // removing items
+            if(event.target.classList.contains("remove-item")){
+                let removeThisItem = event.target
+                let id = removeThisItem.dataset.id
+                
+                cartContent.removeChild(removeThisItem.parentElement.parentElement)// remove item from DOM
+                this.removeItem(id) // remove item from cart array
+            } else if(event.target.classList.contains("bx-chevron-up")){
+                // increment items
+                let incrementThisItem = event.target
+                let id = incrementThisItem.dataset.id
+                let tempItem = cart.find(item => item.id === id)
+                tempItem.amount = tempItem.amount + 1
+                Storage.saveToCart(cart)    //save to storage
+                this.setCartValues(cart)    //save to cart
+                incrementThisItem.nextElementSibling.innerText = tempItem.amount
+
+            } else if(event.target.classList.contains("bx-chevron-down")){
+                // decrement items
+                let decrementThisItem = event.target
+                let id = decrementThisItem.dataset.id
+                let tempItem = cart.find(item => item.id === id)
+                tempItem.amount = tempItem.amount - 1
+                if(tempItem.amount > 0){
+                    Storage.saveToCart(cart)    //save to storage
+                    this.setCartValues(cart)    //save to cart
+                    decrementThisItem.previousElementSibling.innerText = tempItem.amount
+                } else {
+                    this.removeItem(id) //remove from cart
+                    cartContent.removeChild(decrementThisItem.parentElement.parentElement) //remove from DOM
+
+                }
+
+            }
+        })
     }
 
     clearCart(){
