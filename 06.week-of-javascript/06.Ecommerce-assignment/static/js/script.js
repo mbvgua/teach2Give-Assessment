@@ -7,6 +7,7 @@ const clearCart = document.querySelector('.clear-cart')
 const cartDom = document.querySelector('.cart')
 const cartOverlay = document.querySelector('.cart-overlay')
 const cartItems = document.querySelector('.cart-items')
+const cartDiv = document.querySelector('.cart-item')
 const cartContent = document.querySelector('.cart-content')
 const cartTotal = document.querySelector('.cart-total')
 const productsDom = document.querySelector('.products-center')
@@ -112,6 +113,9 @@ class DisplayUi{
                     // set cart values number to increase/decrease
                     this.setCartValues(cart)
 
+                    // display cart items
+                    this.addCartItem(cartItem)
+
                 })
             }
         })
@@ -128,6 +132,29 @@ class DisplayUi{
         })
         cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
         cartItems.innerText = itemsTotal
+    }
+
+    addCartItem(item){
+        // function to add products to cart
+        let html = ''
+        html += `
+            <img src="${item.image}" alt="product">
+            <div>
+                <h4> ${item.title} </h4>
+                <h5> $${item.price} </h5>
+                <!-- instead of remove words.. place the delete icon instead -->
+                <span class="remove-item" data-id="${item.id}"> remove </span>
+                <i class='bx bx-trash'></i>
+            </div>
+
+            <div>
+                <i class='bx bx-chevron-up bx-md' data-id="${item.id}"></i>
+                    <p class="item-amount"> ${item.amount} </p>
+                <i class='bx bx-chevron-down bx-md' data-id="${item.id}"></i>
+            </div>`
+
+        cartDiv.innerHTML = html
+        console.log(cartDiv)
     }
 }
 
