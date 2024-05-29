@@ -155,7 +155,7 @@ class DisplayUi{
                 <i class='bx bx-chevron-down bx-md' data-id="${item.id}"></i>
             </div>`
 
-        cartDiv.innerHTML = html
+        cartDiv.innerHTML += html
         // console.log(cartDiv)
     }
 
@@ -163,6 +163,25 @@ class DisplayUi{
         // basically change css styling to bring cart to foreground
         cartOverlay.classList.add('transparentBcg')
         cartDom.classList.add('showCart')
+    }
+
+    hideCartItems(){
+        cartOverlay.classList.remove('transparentBcg')
+        cartDom.classList.remove('showCart')
+    }
+
+    setUpApp(){
+        // setup  all the button event listeners
+        cart = Storage.getCart()
+        this.setCartValues(cart)
+        this.populateCart(cart)
+        cartBtn.addEventListener('click', this.showCartItems)
+        closeCartBtn.addEventListener('click', this.hideCartItems)
+
+    }
+
+    populateCart(cart){
+        cart.forEach(item => this.addCartItem(item))
     }
 }
 
@@ -185,13 +204,12 @@ class Storage{
         localStorage.setItem('cart',JSON.stringify(cart))
     }
 
+    static getCart(){
+        return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+    }
+
 
 }
-
-
-
-
-
 
 
 
@@ -205,6 +223,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     // get products using now available methods
     // products.getProducts().then(products => console.log(products))
+
+    // call setUp function to first
+    displayUi.setUpApp()
 
     // allow display of products in home page
     products.getProducts().then(products => {
