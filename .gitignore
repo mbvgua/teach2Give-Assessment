@@ -1,8 +1,10 @@
 #ignore the reports folder
 reports/
 
-#ignore the collaboratory projects folder
-00.collabs/
+#ignore the vscode build files
+.vscode/
+*.vscode/
+
 
 
 
