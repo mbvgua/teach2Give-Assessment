@@ -1,78 +1,48 @@
-console.log('Hello there!🐧')
+// get all the variables
+const cartBtn = document.querySelector('.cart-btn')! as HTMLButtonElement;
+const closeCartBtn = document.querySelector('.close-cart')! as HTMLButtonElement;
+const clearCartBtn = document.querySelector('.clear-cart')! as HTMLButtonElement;
+const cartDom = document.querySelector('.cart')! as HTMLElement;
+const cartOverlay = document.querySelector('.cart-overlay')! as HTMLElement;
+const cartItems = document.querySelector('.cart-items')! as HTMLElement;
+const cartDiv = document.querySelector('.cart-item')! as HTMLElement;
+const cartContent = document.querySelector('.cart-content')! as HTMLElement;
+const cartTotal = document.querySelector('.cart-total')! as HTMLElement;
+const productsDom = document.querySelector('.products-center')! as HTMLElement;
 
-// get constants from the html 
-const cartCount = document.querySelector('#cart-count')	//grab the cart menu icon
-const mainDiv = document.querySelector('.main-content')!
-const cartBtn = document.querySelector('#add-cart')  //add to cart
-let productHtml = document.querySelector('.card')   //adding html
-const cartItem = document.querySelector('.cart-items')
-const totalPrice = document.getElementById('total-cart-price')
-const searchBar = document.querySelector('.search-bar')
+// define empty arrays of both products and cart items
+let cart: Product[] = [];
+let buttonsDom: HTMLButtonElement[] = [];
 
-// define all the possible URLs
-const productsURL:string = './database/db.json'
-let cart = []
-
-
-// define structure of products objects 
-interface Product{
-    // id: string
-    id:number
-    title: string
-    image:string
-    description:string
-    price:number
+// Interface for product data structure
+interface Product {
+  id: string | number;
+  title: string;
+  price: number;
+  image: string;
+  amount?: number; // optional property for amount in cart
 }
 
-interface cartItems{
-    id:number
-    // id: string
-    title: string
-    image:string
-    description:string
-    price:number
-    productAmount:number
+// Products class
+class Products {
+  // function to fetch data
+  async getProducts(): Promise<Product[]> {
+    try {
+      // fetch data using promises
+      let result = await fetch('./database/db.json');
+      let data = await result.json() as { items: any[] };  //get data in json format
+
+      // destructure the response, which is in the form of an object
+      let products = data.items;
+      products = products.map((item: any) => {
+        // destructure using object destructuring
+        const { id,title,price,image } = item;
+        return { title, price, id, image };
+      });
+      return products;
+    } catch (error) {
+      console.log(error);
+      return []; 
+    }
+  }
 }
-
-
-// get the products
-class getProducts{
-    constructor (private product:Product){
-
-    }
-    render(){
-        let html = ''
-
-        html = `
-            <div class="card">
-            <div class="image">
-                <img src=${this.product.image} alt="Image">
-            </div>
-                <p class="title"> ${this.product.title} </p>
-            <div class="price">
-                <label> Ksh. ${this.product.price}/= </label>
-            </div>
-            <div>
-                <button id="add-cart" onclick="addCartItems('${this.product.id}')" class="add-cart"> Add to Cart </button>
-            </div>
-            </div>`
-
-        
-        return html
-    }
-
-    
-    // function to fetch data
-    fetchProducts(){
-        return new Promise<Product[]> ((resolve,reject) => {
-            fetch(productsURL)
-            .then((response) => response.json())
-            .then((data) =>  console.log(data))
-            .catch((error) => reject(error))
-        })
-
-    }
-}
-
-const mainClass = new getProducts()
-mainClass.fetchProducts()
