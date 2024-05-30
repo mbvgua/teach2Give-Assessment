@@ -1,3 +1,6 @@
+console.log('hello world')
+
+
 // get all the variables
 const cartBtn = document.querySelector('.cart-btn')! as HTMLButtonElement;
 const closeCartBtn = document.querySelector('.close-cart')! as HTMLButtonElement;
@@ -12,37 +15,90 @@ const productsDom = document.querySelector('.products-center')! as HTMLElement;
 
 // define empty arrays of both products and cart items
 let cart: Product[] = [];
-let buttonsDom: HTMLButtonElement[] = [];
+let productsUrl: string = 'http://localhost:3000/products'
 
 // Interface for product data structure
 interface Product {
-  id: string | number;
+  id: number;
   title: string;
   price: number;
   image: string;
   amount?: number; // optional property for amount in cart
 }
 
-// Products class
-class Products {
-  // function to fetch data
-  async getProducts(): Promise<Product[]> {
-    try {
-      // fetch data using promises
-      let result = await fetch('./database/db.json');
-      let data = await result.json() as { items: any[] };  //get data in json format
 
-      // destructure the response, which is in the form of an object
-      let products = data.items;
-      products = products.map((item: any) => {
-        // destructure using object destructuring
-        const { id,title,price,image } = item;
-        return { title, price, id, image };
-      });
-      return products;
-    } catch (error) {
-      console.log(error);
-      return []; 
+class getProducts{
+
+  constructor (){
+    this.init()
+  }
+
+  async init(){
+    await this.fetchProducts()
+  }
+
+  // get products from db
+  async fetchProducts(){
+    try{
+      const response = await fetch(productsUrl)
+      const products = await response.json() as Product[]
+      console.log(products) //not working why?
+      return products
+    } catch(error){
+      console.log(error)
+      return []
     }
   }
+
+  async displayProducts(){
+    let products = await this.fetchProducts()
+    let html = ''
+  
+    products.forEach(product => {
+      html += `<article class="product">
+                <div class="img-container">
+                    <img src="${product.image}" alt="${product.title}" class="product-img">
+                    <button class="bag-btn" data-id="${product.id}">
+                        <i class='bx bx-cart-add'></i>
+                        add to cart
+                    </button>
+                </div>
+                <h3> ${product.title} </h3>
+                <h4> $ ${product.price} </h4>
+              </article> `
+    })
+    productsDom.innerHTML = html
+    }
+
+
 }
+
+// // allow for local storage of data
+// class Storage(){
+
+//   //store data in local storage 
+//   static storeData(products){
+//     localStorage.setItem('products', JSON.stringify(products))
+
+//   }
+
+//     // function to get unique product id
+//     static getProduct(id){
+//       let products = JSON.parse(localStorage.getItem('products'))
+//       return products.find(product => product.id === id)
+//   }
+
+// }
+
+// add the eventListener to start entire project
+document.addEventListener('DOMContentLoaded', ()=>{
+  // define instances of the classes
+  const productsInstance = new getProducts()
+
+  // get products using now available methods
+  productsInstance.fetchProducts()
+  .then(() =>{
+    productsInstance.displayProducts()
+  })
+
+})
