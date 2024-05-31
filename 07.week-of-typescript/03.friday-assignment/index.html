@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> To-Do App </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- heading section -->
+        <div class="header">
+            <h1> ToDo App </h1>
+        </div>
+        
+        <!-- form for inputting new todo task -->
+        <div class="new-todo-section">
+            <h2> Add New Task </h2>
+            <form class="todo-form">
+                <textarea name="task" id="task"></textarea>
+                <button> Add Task </button>
+            </form>
+        </div>
+
+        <!-- section to show already existing tasks -->
+        <div class="existing-todo-section">
+            <h2> Already Existing Tasks</h2>
+
+            <table class="todo-list">
+                <thead class="thead">
+                    <tr>
+                        <th> Existing task </th>
+                        <th> Date Added </th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="./dist/script.js"></script>
+    
+</body>
+</html>
