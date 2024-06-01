@@ -21,7 +21,7 @@ interface task {
 
 // main class to house all the methods
 class todoApp{
-    private constructor{
+    private constructor(){
         this.getTask()
     }
         

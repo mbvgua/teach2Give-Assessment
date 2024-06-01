@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,109 +8,229 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-console.log('hello world');
+console.log('Hello there!🐧');
 // get all the variables
-var cartBtn = document.querySelector('.cart-btn');
-var closeCartBtn = document.querySelector('.close-cart');
-var clearCartBtn = document.querySelector('.clear-cart');
-var cartDom = document.querySelector('.cart');
-var cartOverlay = document.querySelector('.cart-overlay');
-var cartItems = document.querySelector('.cart-items');
-var cartDiv = document.querySelector('.cart-item');
-var cartContent = document.querySelector('.cart-content');
-var cartTotal = document.querySelector('.cart-total');
-var productsDom = document.querySelector('.products-center');
+const cartBtn = document.querySelector('.cart-btn');
+const closeCartBtn = document.querySelector('.close-cart');
+const clearCartBtn = document.querySelector('.clear-cart');
+const cartDom = document.querySelector('.cart');
+const cartOverlay = document.querySelector('.cart-overlay');
+const cartItems = document.querySelector('.cart-items');
+const cartDiv = document.querySelector('.cart-item');
+const cartContent = document.querySelector('.cart-content');
+const cartTotal = document.querySelector('.cart-total');
+const productsDom = document.querySelector('.products-center');
 // define empty arrays of both products and cart items
-var cart = [];
-var productsUrl = 'http://localhost:3000/products';
-var getProducts = /** @class */ (function () {
-    function getProducts() {
+let cart = [];
+let buttonsDom = [];
+let productsUrl = 'http://localhost:3000/products';
+class getProducts {
+    constructor() {
         this.init();
     }
-    getProducts.prototype.init = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.fetchProducts()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
+    init() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.fetchProducts();
         });
-    };
+    }
     // get products from db
-    getProducts.prototype.fetchProducts = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var response, products, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, fetch(productsUrl)];
-                    case 1:
-                        response = _a.sent();
-                        return [4 /*yield*/, response.json()];
-                    case 2:
-                        products = _a.sent();
-                        console.log(products); //not working why?
-                        return [2 /*return*/, products];
-                    case 3:
-                        error_1 = _a.sent();
-                        console.log(error_1);
-                        return [2 /*return*/, []];
-                    case 4: return [2 /*return*/];
-                }
-            });
+    fetchProducts() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch(productsUrl);
+                const products = yield response.json();
+                // console.log(products) 
+                return products;
+            }
+            catch (error) {
+                console.log(error);
+                return [];
+            }
         });
-    };
-    getProducts.prototype.displayProducts = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var products, html;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.fetchProducts()];
-                    case 1:
-                        products = _a.sent();
-                        html = '';
-                        products.forEach(function (product) {
-                            html += "<article class=\"product\">\n                <div class=\"img-container\">\n                    <img src=\"".concat(product.image, "\" alt=\"").concat(product.title, "\" class=\"product-img\">\n                    <button class=\"bag-btn\" data-id=\"").concat(product.id, "\">\n                        <i class='bx bx-cart-add'></i>\n                        add to cart\n                    </button>\n                </div>\n                <h3> ").concat(product.title, " </h3>\n                <h4> $ ").concat(product.price, " </h4>\n              </article> ");
-                        });
-                        productsDom.innerHTML = html;
-                        return [2 /*return*/];
-                }
+    }
+    displayProducts() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let products = yield this.fetchProducts();
+            let html = '';
+            products.forEach(product => {
+                html += `<article class="product">
+                <div class="img-container">
+                    <img src="${product.image}" alt="${product.title}" class="product-img">
+                    <button class="bag-btn" data-id="${product.id}">
+                        <i class='bx bx-cart-add'></i>
+                        add to cart
+                    </button>
+                </div>
+                <h3> ${product.title} </h3>
+                <h4> $ ${product.price} </h4>
+              </article> `;
             });
+            productsDom.innerHTML = html;
         });
-    };
-    return getProducts;
-}());
+    }
+    // get the add to cart button ids
+    getAddToCartButton() {
+        // use spread operator to get nodelist of all buttons
+        const buttons = [...document.querySelectorAll('.bag-btn')];
+        buttonsDom = buttons;
+        // get unque id of @button using forEach
+        buttons.forEach(button => {
+            let id = button.dataset.id;
+            // console.log(id)
+            //check if item is alreaady existing in cart
+            let inCart = cart.find(item => item.id === id);
+            if (inCart) {
+                button.innerText = 'In Cart';
+                button.disabled = true;
+            }
+            else {
+                button.addEventListener('click', event => {
+                    event.target.innerText = 'In Cart';
+                    event.target.disabled = true;
+                    // get product from products
+                    let cartItem = Object.assign(Object.assign({}, Storage.getProduct(id)), { amount: 1 });
+                    // console.log(cartItem)
+                    // add item to empty cart array
+                    cart = [...cart, cartItem];
+                    // console.log(cart)
+                    // save cart to the local storage
+                    Storage.saveToCart(cart);
+                    // set cart values number to increase/decrease
+                    this.setCartValues(cart);
+                    // add cart items
+                    this.addCartItem(cartItem);
+                    // display items in the cart
+                    this.showCartItems();
+                });
+            }
+        });
+    }
+    setCartValues(cart) {
+        // function to auto-increment cart items number
+        let tempTotal = 0;
+        let itemsTotal = 0;
+        cart.map(item => {
+            tempTotal += item.price * item.amount;
+            itemsTotal += item.amount;
+        });
+        cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
+        cartItems.innerText = itemsTotal;
+    }
+    addCartItem(item) {
+        // function to add products to cart
+        let html = '';
+        html += `
+              <div class="cart-item">
+                  <img src="${item.image}" alt="product">
+                  <div>
+                      <h4> ${item.title} </h4>
+                      <h5> $${item.price} </h5>
+                      <!-- instead of remove words.. place the delete icon instead -->
+                      <span class="remove-item" data-id="${item.id}"> remove </span>
+                  </div>
+  
+                  <div>
+                      <i class='bx bx-chevron-up bx-md' data-id="${item.id}"></i>
+                          <p class="item-amount"> ${item.amount} </p>
+                      <i class='bx bx-chevron-down bx-md' data-id="${item.id}"></i>
+                  </div>
+              </div>`;
+        cartContent.innerHTML += html;
+        // console.log(cartDiv)
+    }
+    showCartItems() {
+        // basically change css styling to bring cart to foreground
+        cartOverlay.classList.add('transparentBcg');
+        cartDom.classList.add('showCart');
+    }
+    hideCartItems() {
+        cartOverlay.classList.remove('transparentBcg');
+        cartDom.classList.remove('showCart');
+    }
+    setUpApp() {
+        // setup  all the button event listeners
+        cart = Storage.getCart();
+        this.setCartValues(cart);
+        this.populateCart(cart);
+        cartBtn.addEventListener('click', this.showCartItems);
+        closeCartBtn.addEventListener('click', this.hideCartItems);
+    }
+    populateCart(cart) {
+        cart.forEach(item => this.addCartItem(item));
+    }
+    cartLogic() {
+        clearCartBtn.addEventListener('click', () => {
+            this.clearCart();
+        });
+        // cart functionality.remove.increase.decrease
+        cartContent.addEventListener('click', (event) => {
+            // console.log(event)  //see the event
+            // removing items
+            if (event.target.classList.contains("remove-item")) {
+                let removeThisItem = event.target;
+                let id = removeThisItem.dataset.id;
+                cartContent.removeChild(removeThisItem.parentElement.parentElement); // remove item from DOM
+                this.removeItem(id); // remove item from cart array
+            }
+            else if (event.target.classList.contains("bx-chevron-up")) {
+                // increment items
+                let incrementThisItem = event.target;
+                let id = incrementThisItem.dataset.id;
+                let tempItem = cart.find(item => item.id === id);
+                tempItem.amount = tempItem.amount + 1;
+                Storage.saveToCart(cart); //save to storage
+                this.setCartValues(cart); //save to cart
+                incrementThisItem.nextElementSibling.innerText = tempItem.amount;
+            }
+            else if (event.target.classList.contains("bx-chevron-down")) {
+                // decrement items
+                let decrementThisItem = event.target;
+                let id = decrementThisItem.dataset.id;
+                let tempItem = cart.find(item => item.id === id);
+                tempItem.amount = tempItem.amount - 1;
+                if (tempItem.amount > 0) {
+                    Storage.saveToCart(cart); //save to storage
+                    this.setCartValues(cart); //save to cart
+                    decrementThisItem.previousElementSibling.innerText = tempItem.amount;
+                }
+                else {
+                    this.removeItem(id); //remove from cart
+                    cartContent.removeChild(decrementThisItem.parentElement.parentElement); //remove from DOM
+                }
+            }
+        });
+    }
+    clearCart() {
+        /*---MAJOR BUG---
+        console.log(this) -> used to trouble shoot bug
+        would not clear cart items. needed to put this.() in the arrow
+        function above
+        */
+        let cartItems = cart.map(item => item.id);
+        console.log(cartItems); //get unique id of each items in cart
+        // loop over the array, removing each items
+        cartItems.forEach(id => this.removeItem(id));
+        // console.log(cartContent.children) 
+        // remove item from cart
+        while (cartContent.children.length > 0) {
+            cartContent.removeChild(cartContent.children[0]);
+        }
+        // hide the cart
+        this.hideCartItems();
+    }
+    removeItem(id) {
+        // remove items based on the unique id
+        cart = cart.filter(item => item.id !== id);
+        this.setCartValues(cart);
+        Storage.saveToCart(cart);
+        let button = this.getSingleButton(id);
+        button.disabled = false;
+        button.innerHTML = `<i class='bx bx-cart-add'></i> add to cart`;
+    }
+    getSingleButton(id) {
+        return buttonsDom.find(button => button.dataset.id === id);
+    }
+}
 // // allow for local storage of data
 // class Storage(){
 //   //store data in local storage 
@@ -123,12 +244,12 @@ var getProducts = /** @class */ (function () {
 //   }
 // }
 // add the eventListener to start entire project
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     // define instances of the classes
-    var productsInstance = new getProducts();
+    const productsInstance = new getProducts();
     // get products using now available methods
     productsInstance.fetchProducts()
-        .then(function () {
+        .then(() => {
         productsInstance.displayProducts();
     });
 });

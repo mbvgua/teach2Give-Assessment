@@ -1,4 +1,4 @@
-console.log('hello world')
+console.log('Hello there!🐧')
 
 
 // get all the variables
@@ -42,7 +42,7 @@ class getProducts{
     try{
       const response = await fetch(productsUrl)
       const products = await response.json() as Product[]
-      console.log(products) //not working why?
+      // console.log(products) 
       return products
     } catch(error){
       console.log(error)
@@ -70,25 +70,8 @@ class getProducts{
     productsDom.innerHTML = html
     }
 
-
 }
 
-// // allow for local storage of data
-// class Storage(){
-
-//   //store data in local storage 
-//   static storeData(products){
-//     localStorage.setItem('products', JSON.stringify(products))
-
-//   }
-
-//     // function to get unique product id
-//     static getProduct(id){
-//       let products = JSON.parse(localStorage.getItem('products'))
-//       return products.find(product => product.id === id)
-//   }
-
-// }
 
 // add the eventListener to start entire project
 document.addEventListener('DOMContentLoaded', ()=>{
