@@ -1,0 +1,61 @@
+{
+    "products": [
+        {
+          "id" : 1,
+          "title": "Queen Panel bed",
+          "image": "./static/images/product-1.jpeg",
+          "description": "Best bananase this side of the sahara :)",
+          "price": 100
+        },
+        {
+          "id" : 2,
+          "title": "King panel bed",
+          "image": "./static/images/product-2.jpeg",
+          "description": "Protect your head on the diamond!",
+          "price": 3500
+        },
+        {
+          "id" : 3,
+          "title": "single panel bed",
+          "image": "./static/images/product-3.jpeg",
+          "description": "not just a possesion, its an experience!",
+          "price": 90000
+        },
+        {
+          "id" : 4,
+          "title": "twin panel bed",
+          "image": "./static/images/product-4.jpeg",
+          "description": "to those who want more",
+          "price": 200000
+        },
+        {
+          "id" : 5,
+          "title": "fridge",
+          "image": "./static/images/product-5.jpeg",
+          "description": "the phone beside you is always a samsung",
+          "price": 250000
+        },
+        {
+          "id" : 6,
+          "title": "dresser",
+          "image": "./static/images/product-6.jpeg",
+          "description": "we offe quality at affordable prices",
+          "price": 50000
+        },
+        {
+          "id" : 7,
+          "title": "couch",
+          "image": "./static/images/product-7.jpeg",
+          "description": "a taste of america at your doorstep",
+          "price": 900
+        },
+        {
+          "id" : 8,
+          "title": "table",
+          "image": "./static/images/product-8.jpeg",
+          "description": "comfort at your desk",
+          "price": 7090
+        }
+      ]
+
+}

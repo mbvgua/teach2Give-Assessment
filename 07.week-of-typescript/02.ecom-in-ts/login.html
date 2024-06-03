@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login Page </title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    
+</head>
+<body class="form-background">
+
+
+	<form method="POST">
+
+		<fieldset class="form-wrapper">
+
+			<h1 align="center"> Login </h1>
+
+			<div class="form-group">
+                <label> Email: </label> <br/>
+                <input type="text" id="email" class="form-control" placeholder=" Enter Email">
+				<div class="error"></div>
+			</div>
+
+			<div class="form-group">
+                <label> Password: </label> <br/>
+                <input type="password" id="password" class="form-control" placeholder=" Enter Password">
+				<div class="error"></div>
+			</div>
+
+			<div class="remember-forgot">
+				<a href="#"> Forgot Password? </a>
+			</div>
+
+			<div align="center" class="form-group">
+                <button id="login" class="btn btn-primary"> Login </button>
+			</div>
+
+
+			<div class="signup-link">
+				<p>
+					Don't have an account? <a href="./signup.html"> Sign Up </a> now
+				</p>
+			</div>
+
+
+		</fieldset>
+
+
+	</form>
+
+
+   <script src="./static/js/login.js"></script> 
+</body>
+</html>
