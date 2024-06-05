@@ -29,12 +29,8 @@ interface Product {
 
 class getProducts{
 
-  constructor (){
-    this.init()
-  }
-
-  async init(){
-    await this.fetchProducts()
+  public constructor (){
+    this.fetchProducts()
   }
 
   // get products from db
