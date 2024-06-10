@@ -1,0 +1,6 @@
+node_modules 
+#it can be recreated
+##heavy folder-- gbs
+.env
+## secrets -- db pssword , Token signature
+dist
