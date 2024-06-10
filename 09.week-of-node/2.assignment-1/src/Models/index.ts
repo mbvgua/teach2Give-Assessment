@@ -1,21 +1,21 @@
 import {Request} from 'express'
 
-export interface Todo{
+export interface Products{
     id:number
     title:string
     description:string
-    completed:boolean
+    price:number
 }
 
 
-export interface AddTodo{
-
+export interface AddProducts{
     title:string
     description:string
-   
+    price: number  
 }
-export interface TypedBody extends Request{
 
-    body:AddTodo
+
+export interface TypedBody extends Request{
+    body:AddProducts
 }
 

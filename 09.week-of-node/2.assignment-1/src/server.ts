@@ -5,7 +5,7 @@ import router from './Routes'
 const app= express()
 
 app.use(json())// midleware adds a body property to all requests
-app.use("/todos", router)
+app.use("/products", router)
 
 app.listen(4000,()=>{
     console.log("App Running...");
