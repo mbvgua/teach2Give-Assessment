@@ -1,0 +1,24 @@
+#####
+# add a category
+POST  http://localhost:4000/categories
+Content-Type: application/json
+
+{
+    "name":"malooku"
+}
+
+
+
+######
+# get all the categories
+GET http://localhost:4000/categories
+
+
+######
+# get a specific category
+GET http://localhost:4000/categories/246bec79-5605-4f47-bbcb-75ca00f09d72
+
+
+# ######
+# # delete a specific category
+# DELETE ttp://localhost:4000/categories/246bec79-5605-4f47-bbcb-75ca00f09d72

@@ -1,4 +1,4 @@
-import {Request,Response,RequestHandler} from 'express'
+import {Request,Response} from 'express'
 import mssql from 'mssql'
 import {v4 as uid} from 'uuid'
 import {sqlConfig} from '../config'
