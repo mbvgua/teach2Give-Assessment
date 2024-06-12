@@ -19,12 +19,13 @@ export async function addProduct (request:ProductRequest,response:Response){
     try{
         const id = uid()
         // const category_id = uid()
-        const {name,price} = request.body
+        const {name,price,category_id} = request.body
     
         const pool = await mssql.connect(sqlConfig)
         await pool.request()
         .input('id',id)
         .input('p_name',name)
+        .input('category_id',category_id)
         .input('price',price)
         // .input('category_id',category_id)    //-> do i need to input this? OR is is automatically by databse?!?!
         .execute('addProduct')
@@ -82,11 +83,12 @@ export async function updateProduct  (request:Request<{id:string}>,response:Resp
         .recordset[0] as Array<Product>
 
         if (product){
-            const {name,price} = request.body
+            const {name,price,category_id} = request.body
             await pool.request()
             .input('id',id)
             .input('p_name',name)
             .input('price',price)
+            .input('category_id',category_id)
             // .input('category_id',category_id)
             .execute('updateProduct')
 
