@@ -7,5 +7,5 @@ import {Product} from '../models/productsModels'
 // export const addProducts:RequestHandler (request:Request,response:Response){
 export const addProducts = (request:Product,response:Response){
     const id = uid()
-    const {name} = 
+    const {name} = request.body
 }
