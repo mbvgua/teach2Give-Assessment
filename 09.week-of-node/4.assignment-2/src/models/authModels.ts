@@ -1,4 +1,4 @@
-// import {Request} from 'express'
+import {Request} from 'express'
 
 export interface User{
     id:string,
@@ -12,4 +12,8 @@ export interface User{
 export interface Payload{
     id: string,
     name: string
+}
+
+export interface ExtendedRequest extends Request{
+    info?: Payload
 }

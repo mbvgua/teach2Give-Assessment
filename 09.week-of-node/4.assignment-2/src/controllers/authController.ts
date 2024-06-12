@@ -62,9 +62,10 @@ export async function loginUser (request:Request, response:Response){
                     name: user[0].name
                 }
 
-                const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'30s'})
+                const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'1h'})
 
-                return response.status(200).send({message:"login successful!",token})
+                return response.status(200).send({message:"login successful!"})
+                // return response.status(200).send({message:"login successful!",token})
             } else{
             return response.status(500).send({message:"invalid login credentials.try again?"})
         }

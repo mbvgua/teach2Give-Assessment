@@ -1,13 +1,14 @@
 import {Router} from 'express'
 import { deleteUser, getUser, getUsers, loginUser, registerUser } from '../controllers/authController'
+import { verifyToken } from '../middleware'
 
 const authRouter = Router()
 
 authRouter.post("/register",registerUser)
-authRouter.post("/login",loginUser)
-authRouter.get("/users",getUsers)
-authRouter.get("/user",getUser)
+authRouter.post("/login",verifyToken,loginUser)
+authRouter.get("/users",verifyToken,getUsers)
+authRouter.get("/user",verifyToken,getUser)
 // authRouter.put("/:id",updateUser)
-authRouter.delete("/:id",deleteUser)
+authRouter.delete("/:id",verifyToken,deleteUser)
 
 export default authRouter
