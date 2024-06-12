@@ -1,11 +1,11 @@
-import {Router} from 'express'
-import {addCategory, getCategory,getCategories} from '../controllers/categoriesController'
+// import {Router} from 'express'
+// import {addCategory, getCategory,getCategories} from '../controllers/categoriesController'
 
-const categoriesRouter = Router()
+// const categoriesRouter = Router()
 
-categoriesRouter.post("", addCategory)
-categoriesRouter.get("", getCategories)
-categoriesRouter.get("/:id", getCategory)
+// categoriesRouter.post("", addCategory)
+// categoriesRouter.get("", getCategories)
+// categoriesRouter.get("/:id", getCategory)
 
 
-export default categoriesRouter
+// export default categoriesRouter
