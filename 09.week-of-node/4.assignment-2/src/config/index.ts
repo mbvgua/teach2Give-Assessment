@@ -1,4 +1,3 @@
-
 import mssql from 'mssql'
 import path from 'path'
 import dotenv from 'dotenv'

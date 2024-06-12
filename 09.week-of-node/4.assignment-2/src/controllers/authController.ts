@@ -1,10 +1,15 @@
 import {Request, Response } from 'express'
-import {v4 as uid} from 'uuid' 
 import {sqlConfig} from '../config'
 import mssql from 'mssql'
-import bcrypt from 'bcrypt'
 import { registerSchema } from '../helpers'
-import { User } from '../models/authModels'
+import { Payload, User } from '../models/authModels'
+import {v4 as uid} from 'uuid' 
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import path from 'path'
+import dotenv from 'dotenv'
+dotenv.config({path:path.resolve(__dirname,"../../.env")})
+
 
 export async function registerUser(request:Request,response:Response) {
     const id = uid()
@@ -50,9 +55,16 @@ export async function loginUser (request:Request, response:Response){
             // this had too much nesting. decided to use an array instaed
             
             const isValid = await bcrypt.compare(password,user[0].u_password)
-
+            
             if(isValid){
-                return response.status(200).send({message:"login successful!"})
+                const payload:Payload = {
+                    id: user[0].id,
+                    name: user[0].name
+                }
+
+                const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'30s'})
+
+                return response.status(200).send({message:"login successful!",token})
             } else{
             return response.status(500).send({message:"invalid login credentials.try again?"})
         }
