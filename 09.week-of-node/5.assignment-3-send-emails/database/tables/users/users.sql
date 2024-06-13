@@ -8,3 +8,5 @@ CREATE TABLE users (
     isDeleted INT DEFAULT 0,
     isEmailSent INT DEFAULT 0
 )
+
+GO;
