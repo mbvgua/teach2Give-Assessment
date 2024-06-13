@@ -5,9 +5,9 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05Z
 Content-Type: application/json
 
 {
-    "name":"mandizi sasa",
-    "category_id": "0c4bf7e3-be8f-41cd-af0c-61a0d21c99ca",
-    "price":10
+    "name":"Jordan 1s",
+    "category_id": "a83dc5f8-d226-4c97-9815-68dfb0d30910",
+    "price":2800
 }
 
 
@@ -21,26 +21,26 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05Z
 
 ######
 # get a single product 
-GET http://localhost:4000/products/05d3468b-ed39-465f-a1f8-ca88c7f334f0
+GET http://localhost:4000/products/c275aa19-9c87-4219-9260-7eabc70b48a1
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 
 
 
 ##########
 # update a product
-PUT http://localhost:4000/products/05d3468b-ed39-465f-a1f8-ca88c7f334f0
+PUT http://localhost:4000/products/c275aa19-9c87-4219-9260-7eabc70b48a1
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 Content-Type: application/json
 
 {
-    "name":"mandizi",
+    "name":"sth updated",
     "price":10000
 }
 
 
 #########
 # delete a product
-DELETE http://localhost:4000/products/05d3468b-ed39-465f-a1f8-ca88c7f334f0
+DELETE http://localhost:4000/products/c275aa19-9c87-4219-9260-7eabc70b48a1
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 
 

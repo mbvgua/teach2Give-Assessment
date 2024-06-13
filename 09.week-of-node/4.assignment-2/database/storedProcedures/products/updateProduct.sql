@@ -25,5 +25,6 @@ AS
 BEGIN
 UPDATE products SET p_name=@p_name, price=@price
 WHERE id=@id
-END
-GO
+END;
+
+GO;

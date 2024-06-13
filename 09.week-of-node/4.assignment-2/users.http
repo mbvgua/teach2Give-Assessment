@@ -4,10 +4,10 @@ POST  http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "name": "Mark Mende",
-    "email": "markmende@yahoo.com",
-    "password": "niKumotomazee!"
-},
+    "name": "Skegua",
+    "email": "ayesdfc@gmail.com",
+    "password": "@Shinra13K)"
+}
 
 
 ########
@@ -17,8 +17,8 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05Z
 Content-Type: application/json
 
 {
-    "email": "ShinraK@gmail.com",
-    "password": "Alah17!"
+    "email": "shinraku@gmail.com",
+    "password": "@Shinra13K)"
 }
 
 
@@ -35,11 +35,11 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05Z
 Content-Type: application/json
 
 {
-    "email": "ShinraK@gmail.com"
+    "email": "shinraku@yahoo.com"
 }
 
 ###########
 # delete a user
-DELETE http://localhost:4000/auth/4d8dff0d-f456-4b5a-9706-81368cbbe720
+DELETE http://localhost:4000/auth/558b526c-a63a-49d2-975b-11e2f7ced09e
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 
