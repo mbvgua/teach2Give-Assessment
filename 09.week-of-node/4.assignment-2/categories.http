@@ -1,6 +1,7 @@
 #####
 # add a category
 POST  http://localhost:4000/categories
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 Content-Type: application/json
 
 {
@@ -12,11 +13,13 @@ Content-Type: application/json
 ######
 # get all the categories
 GET http://localhost:4000/categories
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 
 
 ######
 # get a specific category
 GET http://localhost:4000/categories/246bec79-5605-4f47-bbcb-75ca00f09d72
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 
 
 # ######

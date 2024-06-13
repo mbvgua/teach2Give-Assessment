@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer'
 import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
+import ejs from 'ejs'
 
 // 1.create a configuration object
 let configObject = {
@@ -9,8 +10,8 @@ let configObject = {
     service: "gmail",
     port: 587,
     auth :{
-        user:process.env.EMAIL,
-        pass:process.env.PASSWORD 
+        user:process.env.MAIL_HOST,
+        pass:process.env.SMTP_PASSWORD 
     }
 }
 
@@ -34,11 +35,37 @@ async function sendEmail(messageOption:any){
 }
 
 
-let messageOptions = {
-    to:process.env.EMAIL,
-    from:process.env.EMAIL,
-    subject: "Experimental.ish",
-    html: '<h1> Niaje mahn </h1>'
-}
+// let messageOptions = {
+//     to:process.env.MAIL_HOST ,
+//     from:process.env.MAIL_HOST,
+//     subject: "Experimental.ish",
+//     html: '<h1> Top coder mwenyewe </h1>'
+// }
 
-sendEmail(messageOptions)
+// sendEmail(messageOptions)
+
+ejs.renderFile("../../templates/register.ejs", {title:"Registration",
+    name:"Hiro Nakamura",
+    message:"Thanks for signing up for Nice App. We're very excited to have you on board.",
+    confirmation_url : "www.diyeemm.com",
+    company_name:"Kata Tenje Enterpreneurs"}, (err,data)=>{
+        // console.log(data)
+        // console.log(err) -> runs if not all placeholders are present
+
+        let messageOptions = {
+            to:process.env.MAIL_HOST ,
+            from:process.env.MAIL_HOST,
+            subject: "Better UI email",
+            html: data
+        }
+
+        sendEmail(messageOptions)
+})
+
+
+
+
+
+
+
+// Thanks for signing up for Nice App. We're very excited to have you on board.

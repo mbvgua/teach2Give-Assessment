@@ -1,6 +1,7 @@
 #####
 # add a product
 POST  http://localhost:4000/products
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 Content-Type: application/json
 
 {
@@ -14,16 +15,21 @@ Content-Type: application/json
 ######
 # get all the products
 GET http://localhost:4000/products
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
+
 
 
 ######
 # get a single product 
 GET http://localhost:4000/products/05d3468b-ed39-465f-a1f8-ca88c7f334f0
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
+
 
 
 ##########
 # update a product
 PUT http://localhost:4000/products/05d3468b-ed39-465f-a1f8-ca88c7f334f0
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
 Content-Type: application/json
 
 {
@@ -35,4 +41,6 @@ Content-Type: application/json
 #########
 # delete a product
 DELETE http://localhost:4000/products/05d3468b-ed39-465f-a1f8-ca88c7f334f0
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
+
 

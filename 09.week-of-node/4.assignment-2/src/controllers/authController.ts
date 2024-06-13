@@ -62,7 +62,7 @@ export async function loginUser (request:Request, response:Response){
                     name: user[0].name
                 }
 
-                const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'1h'})
+                const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'30h'})
 
                 return response.status(200).send({message:"login successful!"})
                 // return response.status(200).send({message:"login successful!",token})
