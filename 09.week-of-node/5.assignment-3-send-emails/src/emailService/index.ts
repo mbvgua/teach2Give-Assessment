@@ -11,7 +11,8 @@ export async function run(){
         // console.log('Running on a loop every 5 secs.. ')
         let pool = await mssql.connect(sqlConfig)
         let users = (await pool.request()
-        .query("SELECT * FROM users WHERE dbo.users.isEmailSent = 0"))  //->change to stored procedure
+        // .query("SELECT * FROM users WHERE dbo.users.isEmailSent = 0"))  //->change to stored procedure
+        .execute('getEmailNotSent'))
         .recordset as Array<User>
 
         // console.log(users)
@@ -35,9 +36,11 @@ export async function run(){
 
         sendEmail(messageOptions) //send email to
 
-        // update emails sent to
+        // update emails sent to -> uncomment if it works?
         await pool.request()
-        .query(`UPDATE users SET isEmailSent = 1 WHERE id='${user.id}'`)
+        .input('email',user.email)
+        .execute('updateEmailSent')
+        // .query(`UPDATE users SET isEmailSent = 1 WHERE id='${user.id}'`)
         })
         console.log('eureka!')
         }) 
