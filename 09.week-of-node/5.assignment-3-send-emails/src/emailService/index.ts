@@ -18,11 +18,11 @@ export async function run(){
         // console.log(users)
         users.forEach( (user)=>{
             // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
-            ejs.renderFile("templates/register.ejs", {title:"Registration",
+            ejs.renderFile("templates/register.ejs", {title:"Registration Success!",
                 name:user.u_name,
-                message:"Thanks for signing up for Nice App. We're very excited to have you on board.",
-                confirmation_url : "www.diyeemm.com",
-                company_name:"Kata Tenje Enterpreneurs"},
+                message:"Thanks for signing up for e-commerce. We're very excited to have you on board.",
+                confirmation_url : "www.teach2give.com",
+                company_name:"Dream Weavers"},
                 async (err,data)=>{
                 // console.log(data) //->display s name well
                 // console.log(err) //-> runs if not all placeholders are present
