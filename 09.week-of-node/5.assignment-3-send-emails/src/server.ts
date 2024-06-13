@@ -4,9 +4,9 @@ import { run } from './emailService';
 
 const app = express()
 
-cron.schedule('*/5 * * * * *', async () => {
+cron.schedule('*/1 * * * *', async () => {
     // '*/5 * * * * *' -> runs after every 5 seconds
-    // ''*/5 * * * *' -> runs after every 5 minutes
+    // '*/5 * * * *' -> runs after every 5 minutes
     // '0 * * * *' -> runs after every hour
     await run()
 

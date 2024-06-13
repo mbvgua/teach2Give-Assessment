@@ -3,7 +3,7 @@
 
 export interface User{
     id:string,
-    name:string,
+    u_name:string,
     email:string,
     u_password:string,
     isDeleted?:string,  //set property to optional
