@@ -3,18 +3,12 @@
 POST  http://localhost:4000/auth/register
 Content-Type: application/json
 
-[
-    {
-        "name": "Mark Mende",
-        "email": "markmende@yahoo.com",
-        "password": "niKumotomazee!"
-    },
-    {
-        "name": "J Cole",
-        "email": "thewarmup2@microsoft.com",
-        "password": "niKumotomazee!"
-    }
-]
+{
+    "name": "Mark Mende",
+    "email": "markmende@yahoo.com",
+    "password": "niKumotomazee!"
+},
+
 
 ########
 # login an existing user
