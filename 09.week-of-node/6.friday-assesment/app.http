@@ -19,7 +19,7 @@ GET http://localhost:4000/products
 
 #######
 # search a certain product
-GET http://localhost:4000/products/:search 
+GET http://localhost:4000/products/search 
 Content-Type: application/json
 
 {
