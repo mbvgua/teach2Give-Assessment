@@ -4,8 +4,8 @@ POST  http://localhost:4000/products
 Content-Type: application/json
 
 {
-    "name":"kitunguu",
-    "price":4
+    "name":"ngombe",
+    "price":4000
 }
 
 
@@ -18,13 +18,14 @@ GET http://localhost:4000/products
 
 
 #######
-# search a certain product
-GET http://localhost:4000/products/search 
+#search
+GET http://localhost:4000/products/search
 Content-Type: application/json
 
 {
     "name" : "kitunguu"
 }
+
 
 #######
 # pagination
@@ -32,7 +33,7 @@ GET http://localhost:4000/products/filter
 Content-Type: application/json
 
 {
-    "page_size" : 4,
+    "page_size" : 2,
     "page_number" : 1
 }
 
