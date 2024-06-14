@@ -2,7 +2,7 @@ import {Request,Response} from 'express'
 import mssql from 'mssql'
 import {v4 as uid} from 'uuid'
 import {sqlConfig} from '../config'
-import {Product, ProductRequest} from '../models/productModels'
+import {Product, ProductPagination, ProductRequest} from '../models/productModels'
 
 
 export async function addProduct (request:ProductRequest,response:Response){
@@ -102,6 +102,27 @@ export async function searchProduct (request:Request,response:Response){
             response.status(200).send({message:"user not found"})
         }
 
+
+    } catch(error) {
+        response.status(500).send(error)
+    }
+}
+
+
+
+export async function paginateProducts (request:ProductPagination,response:Response){
+    try{
+        const pool = await mssql.connect(sqlConfig)
+        const {page_number,page_size} = request.body
+        const page = (await pool.request()
+        .input("pageNumber",page_number)
+        .input("pageSize",page_size)
+        .execute('productsPagination')).recordset 
+        console.log(page)
+        if (page ){
+            response.status(200).send(page)
+
+        } 
 
     } catch(error) {
         response.status(500).send(error)

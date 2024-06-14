@@ -14,4 +14,14 @@ export interface ProductRequest extends Request{
     }
 }
 
+
+export interface ProductPagination extends Request{
+    body:{
+        page_size: number,
+        page_number: number
+    }
+}
+
+
+
 // export default Product
