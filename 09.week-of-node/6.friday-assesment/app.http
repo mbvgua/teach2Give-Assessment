@@ -1,0 +1,34 @@
+#####
+# add a product
+POST  http://localhost:4000/products
+Content-Type: application/json
+
+{
+    "name":"kitunguu",
+    "price":4
+}
+
+
+
+#######
+# get all the products
+GET http://localhost:4000/products
+
+
+
+
+#######
+# search a certain product
+GET http://localhost:4000/products/:search 
+Content-Type: application/json
+
+{
+    "name" : "kitunguu"
+}
+
+
+#########
+# delete a product
+DELETE http://localhost:4000/products/c9d7f85f-5b60-48fb-a04f-c55cfeb3c1ac
+
+

@@ -1,7 +1,5 @@
 import express, {json} from 'express'
-// import productRouter from './routes/productRoutes'
-// import categoriesRouter from './routes/categoryRoutes'
-// import authRouter from './routes/authRoutes'
+import productRouter from './routes/productRoutes'
 
 
 const app = express()   // initialize the application
@@ -9,10 +7,8 @@ const app = express()   // initialize the application
 app.use(json())          //add a body to the requests
 
 
-// // add all the middlewares and urls
-// app.use("/products",productRouter)
-// app.use("/categories", categoriesRouter)
-// app.use("/auth", authRouter)
+// add all the middlewares and urls
+app.use("/products",productRouter)
 
 
 // start the application
