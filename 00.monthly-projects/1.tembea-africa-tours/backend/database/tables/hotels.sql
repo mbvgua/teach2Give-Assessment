@@ -5,7 +5,8 @@ CREATE TABLE hotels (
     h_name VARCHAR(255) NOT NULL,
     h_image_url VARCHAR(255) NOT NULL,
     h_rating INT DEFAULT 0,
-    h_price INT NOT NULL
+    h_price INT NOT NULL,
+    isDeleted INT DEFAULT 0
 )
 
 GO;

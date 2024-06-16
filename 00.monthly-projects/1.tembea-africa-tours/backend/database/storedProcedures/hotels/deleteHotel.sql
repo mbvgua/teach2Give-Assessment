@@ -5,7 +5,8 @@ CREATE OR ALTER PROCEDURE deleteHotel(
 )
 AS
 BEGIN
-DELETE FROM hotels WHERE id=@id
+UPDATE hotels SET isDeleted=1 
+WHERE id=@id
 END;
 
 GO;
