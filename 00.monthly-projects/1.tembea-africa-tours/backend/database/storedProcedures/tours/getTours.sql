@@ -1,0 +1,10 @@
+USE tembeaAfrica;
+
+CREATE OR ALTER PROCEDURE getTours
+
+AS
+BEGIN 
+SELECT * FROM tours
+END;
+
+GO;
