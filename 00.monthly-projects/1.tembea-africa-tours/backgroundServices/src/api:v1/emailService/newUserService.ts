@@ -1,20 +1,18 @@
-import mssql from 'mssql'
 import ejs from 'ejs'
-import { sqlConfig } from '../../config'
 import { User } from '../models/userModels'
 import { sendUserEmail } from '../helpers'
+import { DbHelper } from '../databaseHelpers'
 
+// instatitate the database helpers class
+const dbInstance = new DbHelper()
 
 
 export async function newUser(){
     try{
         // console.log('Running on a loop every 5 secs.. ')
-        let pool = await mssql.connect(sqlConfig)
-        let users = (await pool.request()
-        .execute('getNewUser'))
-        .recordset as Array<User>
+        let users = (await dbInstance.get('getNewUser')).recordset as Array<User>        
 
-        // console.log(users) //-> confirm code is get the users it should send email to
+        // console.log(users) //-> confirm code gets the users it should send email to
         users.forEach( (user)=>{
             // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
             ejs.renderFile("templates/register.ejs", {title:"Registration Success!",
@@ -34,9 +32,10 @@ export async function newUser(){
         sendUserEmail(messageOptions) 
 
         // update emails sent to prevent continous loop
-        await pool.request()
-        .input('id',user.id)
-        .execute('updateUserEmailSent')
+        await dbInstance.exec('updateUserEmailSent',{
+            id:user.id
+        })
+    
         })
         console.log('Completed sending emails to all new users!')
         }) 

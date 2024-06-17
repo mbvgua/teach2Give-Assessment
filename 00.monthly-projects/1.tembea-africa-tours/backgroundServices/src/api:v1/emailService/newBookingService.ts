@@ -1,26 +1,25 @@
-import mssql from 'mssql'
 import ejs from 'ejs'
-import { sqlConfig } from '../../config'
 import { Booking, BookingEmail } from '../models/bookingModels'
 import { sendBookingEmail } from '../helpers'
+import { DbHelper } from '../databaseHelpers'
 
+// instatitate the database helpers class
+const dbInstance = new DbHelper()
 
 
 export async function newBooking(){
     try{
         // console.log('Running on a loop every 5 secs.. ')
-        let pool = await mssql.connect(sqlConfig)
-        let bookings = (await pool.request()
-        .execute('getNewBooking'))
-        .recordset as Array<Booking>
+        let bookings = (await dbInstance.get('getNewBooking')).recordset as Array<Booking>
 
         // console.log(bookings)
         bookings.forEach( async (booking)=>{
 
             // procedure to get the username from the user id
-            let user = (await pool.request()
-            .input('id',booking.user_id)
-            .execute('getUserName')).recordset[0]
+
+            let user = (await dbInstance.exec('getUserName',{
+                id:booking.user_id
+            })).recordset[0]
             // console.log(user.u_name)
             // console.log(user.u_email)
 
@@ -43,11 +42,12 @@ export async function newBooking(){
         sendBookingEmail(messageOptions) //send email to
 
         // update emails sent to -to avoid infinite loop
-        await pool.request()
-        .input('id',booking.id)
-        .execute('updateBookingEmailSent')
+        await dbInstance.exec('updateBookingEmailSent',{
+            id:booking.id
         })
-        console.log('All Bookings hav been sent succesfully!')
+
+        })
+        console.log('All Bookings have been sent succesfully!')
         }) 
 
     } catch(error) {
