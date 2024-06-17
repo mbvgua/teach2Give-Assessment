@@ -1,0 +1,44 @@
+# #######
+# add a new booking
+POST  http://localhost:4000/bookings
+Content-Type: application/json
+
+{
+    "user_id": "396683fe-66a5-4f5d-8760-e17f5630ffa0",
+    "tour_id": "23bd47c7-97e4-413e-ae3a-b34cde17b4cd",
+    "hotel_id": "480f692d-6ad3-4d00-bd92-0c364c2f0e08"
+}
+
+
+#######
+# get all bookings
+GET http://localhost:4000/bookings
+
+
+#######
+# get a specific booking
+GET http://localhost:4000/bookings/87b9ef73-f3c9-4dee-842c-f7e9723166e0
+
+
+#######
+# update a booking
+PUT http://localhost:4000/bookings/87b9ef73-f3c9-4dee-842c-f7e9723166e0
+Content-Type: application/json
+
+{
+    "user_id": "396683fe-66a5-4f5d-8760-e17f5630ffa0",
+    "tour_id": "23bd47c7-97e4-413e-ae3a-b34cde17b4cd",
+    "hotel_id": "480f692d-6ad3-4d00-bd92-0c364c2f0e08"
+}
+
+
+##############
+# cancel a booking
+PUT http://localhost:4000/bookings/61faba16-a714-41b6-8d37-ce49b4eb1154
+
+
+
+###########
+# delete a hotel
+DELETE http://localhost:4000/bookings/87b9ef73-f3c9-4dee-842c-f7e9723166e0
+

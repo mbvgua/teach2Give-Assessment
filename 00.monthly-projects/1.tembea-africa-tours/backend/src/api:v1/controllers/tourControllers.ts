@@ -42,7 +42,7 @@ export async function getTours (request:Request,response:Response){
     try{
         const pool = await mssql.connect(sqlConfig)
         const tours = (await pool.request().execute('getTours'))
-        .recordset as Array<Hotel>
+        .recordset as Array<Tour>
 
         response.status(200).send(tours)
 

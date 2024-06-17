@@ -78,7 +78,7 @@ export async function getHotel (request:Request<{id:string}>,response:Response){
 export async function updateHotel  (request:Request<{id:string}>,response:Response){
     const pool = await mssql.connect(sqlConfig)
     const id = request.params.id
-    const product = (await pool.request().input("id",id).execute('getHotel'))//.recordset
+    const hotel = (await pool.request().input("id",id).execute('getHotel'))//.recordset
     .recordset[0] as Array<Hotel>
     
     const { error } = hotelSchema.validate(request.body)
@@ -131,39 +131,3 @@ export async function deleteHotel (request:Request<{id:string}>,response:Respons
 }
 
 
-
-// // function for login
-// export async function loginUser (request:Request<{id:string}>, response:Response){
-//     try{
-//         const {id,u_password} = request.body
-//         let pool = await mssql.connect(sqlConfig)
-//         let user = (await pool.request()
-//         .input('id',id)
-//         .execute('getUser')).recordset as Array<User>
-//         // console.log(user.u_password)
-
-//         // user validation
-        
-//         if(user.length !== 0 ){
-//             // this had too much nesting. decided to use an array instaed
-            
-//             const isValid = await bcrypt.compare(u_password,user[0].u_password)
-            
-//             if(isValid){
-//                 const payload:Payload = {
-//                     id: user[0].id,
-//                     name: user[0].u_name
-//                 }
-
-//                 const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'10d'})
-
-//                 return response.status(200).send({message:"login successful!"})
-//                 // return response.status(200).send({message:"login successful!",token})
-//             } else{
-//             return response.status(500).send({message:"invalid login credentials.try again?"})
-//         }
-//         }
-//     } catch(error){
-//         response.status(500).send(error)
-//     }
-// } 
