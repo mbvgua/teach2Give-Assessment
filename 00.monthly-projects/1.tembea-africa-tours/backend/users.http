@@ -1,0 +1,44 @@
+# #######
+# register a new user
+POST  http://localhost:4000/auth/register
+Content-Type: application/json
+
+{
+    "name": "Sir Lancelot",
+    "email": "lancelot@gmail.com",
+    "password": "@Shinra13K)"
+}
+
+
+########
+# login an existing user
+POST  http://localhost:4000/auth/login
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
+Content-Type: application/json
+
+{
+    "email": "shinraku@gmail.com",
+    "password": "@Shinra13K)"
+}
+
+
+#######
+# get all users
+GET http://localhost:4000/auth/users
+
+
+#######
+# get a specific user
+GET http://localhost:4000/auth/user
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
+Content-Type: application/json
+
+{
+    "email": "shinraku@yahoo.com"
+}
+
+###########
+# delete a user
+DELETE http://localhost:4000/auth/558b526c-a63a-49d2-975b-11e2f7ced09e
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxZTQ0YTMyLTU4MmMtNDQyYy05ZTg3LWU4NTk2MDViZTA4YSIsImlhdCI6MTcxODIzODMyMCwiZXhwIjoxNzE4MzQ2MzIwfQ.neFgg-hLxtQQl4Aov6Gf14x3_dV59chXqhH1DUbgLNg
+
