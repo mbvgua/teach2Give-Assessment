@@ -22,7 +22,7 @@ GET http://localhost:4000/bookings/87b9ef73-f3c9-4dee-842c-f7e9723166e0
 
 #######
 # update a booking
-PUT http://localhost:4000/bookings/87b9ef73-f3c9-4dee-842c-f7e9723166e0
+PATCH http://localhost:4000/bookings/87b9ef73-f3c9-4dee-842c-f7e9723166e0
 Content-Type: application/json
 
 {

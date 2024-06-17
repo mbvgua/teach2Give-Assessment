@@ -4,8 +4,8 @@ POST  http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "u_name": "Sir Gawain",
-    "u_email": "mkurugenzi@gmail.com",
+    "u_name": "Sir Maguire",
+    "u_email": "maguire@gmail.com",
     "u_password": "@Shinra13K)"
 }
 
@@ -18,23 +18,23 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5MjZlMGM1LTc0MGItNGYwZC1iO
 
 #######
 # get a specific user
-GET http://localhost:4000/auth/3e9aade9-7560-494b-aa2f-d0fcc0447df5
+GET http://localhost:4000/auth/faaab895-41fa-4af3-b50e-94765da678d7
 
 
 #######
 # update a user
-PUT http://localhost:4000/auth/3e9aade9-7560-494b-aa2f-d0fcc0447df5
+PUT http://localhost:4000/auth/faaab895-41fa-4af3-b50e-94765da678d7
 Content-Type: application/json
 
 {
-    "u_name": "Sir Lancelot",
-    "u_email": "lancelot@gmail.com",
+    "u_name": "Failure",
+    "u_email": "failuremaguire@gmail.com",
     "u_password": "@Shinra13K)"
 }
 
 
 ###########
 # delete a user
-DELETE http://localhost:4000/auth/31e3bc9e-c7b1-4505-818d-d7c7a779cf14
+DELETE http://localhost:4000/auth/faaab895-41fa-4af3-b50e-94765da678d7
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5MjZlMGM1LTc0MGItNGYwZC1iOTRlLWE3ZjZmN2U4M2U1YyIsIm5hbWUiOiJTaXIgR2F3YWluIiwiZW1haWwiOiJta3VydWdlbnppQGdtYWlsLmNvbSIsImlhdCI6MTcxODYxMDYyNSwiZXhwIjoxNzE5MjE1NDI1fQ.wct_WfzhWO3-KWUgTDTBESQVhSxUqGvabrDKMT8qOvQ
 

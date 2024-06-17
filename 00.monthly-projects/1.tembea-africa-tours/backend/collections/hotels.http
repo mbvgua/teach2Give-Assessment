@@ -5,7 +5,7 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1NDE0YWU2LTMyMTMtNGU4NC05N
 Content-Type: application/json
 
 {
-    "h_name": "Kwa Tosh",
+    "h_name": "Kwangu bana",
     "h_image_url": "https://cdn.pixabay.com/photo/2014/07/21/19/20/lobby-398845_640.jpg",
     "h_rating": 1,
     "h_price": 1000
@@ -30,7 +30,7 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1NDE0YWU2LTMyMTMtNGU4NC05N
 Content-Type: application/json
 
 {
-    "h_name": "the Intercontinental ",
+    "h_name": "Weston hotel",
     "h_image_url": "https://cdn.pixabay.com/photo/2014/07/21/19/20/lobby-398845_640.jpg",
     "h_rating": 0,
     "h_price": 1

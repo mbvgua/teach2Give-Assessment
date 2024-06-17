@@ -5,7 +5,7 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04O
 Content-Type: application/json
 
 {
-    "t_name": "Greece in Summer",
+    "t_name": "Slovakia in winter",
     "t_image_url": "https://cdn.pixabay.com/photo/2022/08/26/07/57/tavern-7411977_640.jpg",
     "t_rating": 5,
     "t_price": 12000000
@@ -31,7 +31,7 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04O
 Content-Type: application/json
 
 {
-    "t_name": "MaasaiMara on Valentines",
+    "t_name": "MaasaiMara on Easter",
     "t_image_url": "https://cdn.pixabay.com/photo/2014/04/10/15/37/snowman-321034_640.jpg",
     "t_rating": 4,
     "t_price": 120000
