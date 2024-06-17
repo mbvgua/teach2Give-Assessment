@@ -6,8 +6,8 @@ import { newBooking } from './api:v1/emailService/newBookingService';
 const app = express()
 
 // configure server to run after every 5 minutes
-cron.schedule('*/5 * * * *', async () => {
-    // '*/5 * * * * *' -> runs after every 5 seconds
+// cron.schedule('*/5 * * * *', async () => {
+cron.schedule('*/5 * * * * *', async () => {    //-> runs after every 5 seconds
  
     await newUser()
     await newBooking()

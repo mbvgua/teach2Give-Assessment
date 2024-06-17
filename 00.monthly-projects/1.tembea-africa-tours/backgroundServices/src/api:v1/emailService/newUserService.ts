@@ -1,21 +1,20 @@
 import mssql from 'mssql'
 import ejs from 'ejs'
 import { sqlConfig } from '../../config'
-import { UserEmail } from '../models/userModels'
+import { UserEmail,User } from '../models/userModels'
 import { sendUserEmail } from '../helpers'
 
 
 
 export async function newUser(){
     try{
-        console.log('Running on a loop every 5 secs.. ')
-        // let pool = await mssql.connect(sqlConfig)
-        // let users = (await pool.request()
-        // // .query("SELECT * FROM users WHERE dbo.users.isEmailSent = 0"))  //->change to stored procedure
-        // .execute('getEmailNotSent'))
-        // .recordset as Array<User>
+        // console.log('Running on a loop every 5 secs.. ')
+        let pool = await mssql.connect(sqlConfig)
+        let users = (await pool.request()
+        .execute('getNewUser'))
+        .recordset as Array<User>
 
-        // // console.log(users)
+        console.log(users)
         // users.forEach( (user)=>{
         //     // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
         //     ejs.renderFile("templates/register.ejs", {title:"Registration Success!",

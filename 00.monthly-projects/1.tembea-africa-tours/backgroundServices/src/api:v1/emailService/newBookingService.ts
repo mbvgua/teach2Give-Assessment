@@ -1,21 +1,21 @@
 import mssql from 'mssql'
 import ejs from 'ejs'
 import { sqlConfig } from '../../config'
-import { BookingEmail } from '../models/bookingModels'
+import { Booking, BookingEmail } from '../models/bookingModels'
 import { sendBookingEmail } from '../helpers'
 
 
 
 export async function newBooking(){
     try{
-        console.log('Running on a loop every 5 secs.. ')
-        // let pool = await mssql.connect(sqlConfig)
-        // let users = (await pool.request()
-        // .execute('getEmailNotSent'))
-        // .recordset as Array<User>
+        // console.log('Running on a loop every 5 secs.. ')
+        let pool = await mssql.connect(sqlConfig)
+        let bookings = (await pool.request()
+        .execute('getNewBooking'))
+        .recordset as Array<Booking>
 
-        // // console.log(users)
-        // users.forEach( (user)=>{
+        console.log(bookings)
+        // bookings.forEach( (booking)=>{
         //     // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
         //     ejs.renderFile("templates/register.ejs", {title:"Registration Success!",
         //         name:user.u_name,
