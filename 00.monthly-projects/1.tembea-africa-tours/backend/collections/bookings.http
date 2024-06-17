@@ -13,7 +13,7 @@ Content-Type: application/json
 #######
 # get all bookings
 GET http://localhost:4000/bookings
-
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyMDcyOTlhLWFiMGQtNDg5Ny04YjMxLTJmMWNlMjE3ZTQ2NSIsInVzZXJfaWQiOiIzOTY2ODNmZS02NmE1LTRmNWQtODc2MC1lMTdmNTYzMGZmYTAiLCJpYXQiOjE3MTg2MTM4MDksImV4cCI6MTcxOTIxODYwOX0.e-F6AQcBxfHnTbTG150vwITaXcy-3Z2qkpqtxskn75Q
 
 #######
 # get a specific booking

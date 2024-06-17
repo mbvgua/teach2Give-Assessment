@@ -8,7 +8,7 @@ import dotenv from 'dotenv'
 
 import {sqlConfig} from '../../config'
 import { registerSchema } from '../validation/authValidation'
-import { Payload, User } from '../models/authModels'
+import { User, UserPayload } from '../models/authModels'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
 
 
@@ -22,6 +22,7 @@ export async function registerUser(request:Request,response:Response) {
             return response.status(400).send(error.details[0].message)
         } else {
             const hashedPassword = await bcrypt.hash(u_password,9)    //salt MUST be below 10 to save on time
+            
             let pool = await mssql.connect(sqlConfig)
             await pool.request()
             .input('id',id)
@@ -30,7 +31,16 @@ export async function registerUser(request:Request,response:Response) {
             .input('u_password',hashedPassword)
             .execute('addUser')
 
-            return response.status(200).send({message:"New User added succesfully!"})
+            const payload:UserPayload = {
+                id: id,
+                name: u_name,
+                email: u_email
+            }
+
+            const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'7d'})
+
+            // return response.status(200).send({message:"New User added succesfully!"})
+            return response.status(200).send({message:"New User added succesfully!",token})
         }
 
     } catch(error){

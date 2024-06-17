@@ -1,13 +1,13 @@
 import {Request, Response } from 'express'
 import mssql from 'mssql'
 import {v4 as uid} from 'uuid' 
-import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import path from 'path'
 import dotenv from 'dotenv'
 
 import {sqlConfig} from '../../config'
 import { hotelSchema } from '../validation/hotelValidation'
-import { Hotel } from '../models/hotelModels'
+import { Hotel, HotelPayload} from '../models/hotelModels'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
 
 
@@ -29,7 +29,17 @@ export async function addHotel(request:Request,response:Response) {
             .input('h_price',h_price)
             .execute('addHotel')
 
+            const payload:HotelPayload = {
+                id: id,
+                h_name: h_name,
+                h_price: h_price
+            }
+
+            const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'7d'})
+
+
             return response.status(200).send({message:"New Hotel added succesfully!"})
+            // return response.status(200).send({message:"New Hotel added succesfully!",token})
         }
 
     } catch(error){

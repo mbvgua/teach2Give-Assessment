@@ -1,0 +1,44 @@
+# #######
+# register a new hotel
+POST  http://localhost:4000/hotels
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1NDE0YWU2LTMyMTMtNGU4NC05NzRjLThmNGY2NWE4M2Q2NSIsImhfbmFtZSI6Ikt3YSBUb3NoIiwiaF9wcmljZSI6MTAwMCwiaWF0IjoxNzE4NjEyODAyLCJleHAiOjE3MTkyMTc2MDJ9.Vd-5M40GIL5Mgl86dB2q5h2nBpli9ejNqdnFfNupEjs
+Content-Type: application/json
+
+{
+    "h_name": "Kwa Tosh",
+    "h_image_url": "https://cdn.pixabay.com/photo/2014/07/21/19/20/lobby-398845_640.jpg",
+    "h_rating": 1,
+    "h_price": 1000
+}
+
+
+#######
+# get all hotels
+GET http://localhost:4000/hotels
+
+
+#######
+# get a specific hotel
+GET http://localhost:4000/hotels/9e17653a-45de-4989-8c8e-801964d21b8a
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1NDE0YWU2LTMyMTMtNGU4NC05NzRjLThmNGY2NWE4M2Q2NSIsImhfbmFtZSI6Ikt3YSBUb3NoIiwiaF9wcmljZSI6MTAwMCwiaWF0IjoxNzE4NjEyODAyLCJleHAiOjE3MTkyMTc2MDJ9.Vd-5M40GIL5Mgl86dB2q5h2nBpli9ejNqdnFfNupEjs
+
+
+#######
+# update a hotel
+PUT http://localhost:4000/hotels/9e17653a-45de-4989-8c8e-801964d21b8a
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1NDE0YWU2LTMyMTMtNGU4NC05NzRjLThmNGY2NWE4M2Q2NSIsImhfbmFtZSI6Ikt3YSBUb3NoIiwiaF9wcmljZSI6MTAwMCwiaWF0IjoxNzE4NjEyODAyLCJleHAiOjE3MTkyMTc2MDJ9.Vd-5M40GIL5Mgl86dB2q5h2nBpli9ejNqdnFfNupEjs
+Content-Type: application/json
+
+{
+    "h_name": "the Intercontinental ",
+    "h_image_url": "https://cdn.pixabay.com/photo/2014/07/21/19/20/lobby-398845_640.jpg",
+    "h_rating": 0,
+    "h_price": 1
+}
+
+
+###########
+# delete a hotel
+DELETE http://localhost:4000/hotels/9e17653a-45de-4989-8c8e-801964d21b8a
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1NDE0YWU2LTMyMTMtNGU4NC05NzRjLThmNGY2NWE4M2Q2NSIsImhfbmFtZSI6Ikt3YSBUb3NoIiwiaF9wcmljZSI6MTAwMCwiaWF0IjoxNzE4NjEyODAyLCJleHAiOjE3MTkyMTc2MDJ9.Vd-5M40GIL5Mgl86dB2q5h2nBpli9ejNqdnFfNupEjs
+

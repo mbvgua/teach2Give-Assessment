@@ -10,11 +10,12 @@ export interface User{
     bookingsMade?:number
 }
 
-export interface Payload{
+export interface UserPayload{
     id: string,
-    name: string
+    name: string,
+    email:string
 }
 
 export interface ExtendedRequest extends Request{
-    info?: Payload
+    info?: UserPayload
 }

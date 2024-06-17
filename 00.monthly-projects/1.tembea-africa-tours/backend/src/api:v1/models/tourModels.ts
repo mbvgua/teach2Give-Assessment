@@ -8,11 +8,12 @@ export interface Tour{
     t_price:number
 }
 
-// export interface Payload{
-//     id: string,
-//     name: string
-// }
+export interface TourPayload{
+    id: string,
+    t_name: string,
+    t_price: number
+}
 
-// export interface ExtendedRequest extends Request{
-//     info?: Payload
-// }
+export interface ExtendedRequest extends Request{
+    info?: TourPayload
+}

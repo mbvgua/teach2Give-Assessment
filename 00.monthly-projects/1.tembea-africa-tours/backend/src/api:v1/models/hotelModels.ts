@@ -8,11 +8,12 @@ export interface Hotel{
     h_price:number
 }
 
-// export interface Payload{
-//     id: string,
-//     name: string
-// }
+export interface HotelPayload{
+    id: string,
+    h_name: string,
+    h_price: number
+}
 
-// export interface ExtendedRequest extends Request{
-//     info?: Payload
-// }
+export interface ExtendedRequest extends Request{
+    info?: HotelPayload
+}

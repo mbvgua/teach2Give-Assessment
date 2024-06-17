@@ -1,12 +1,12 @@
 import {Request, Response } from 'express'
 import mssql from 'mssql'
 import {v4 as uid} from 'uuid' 
-import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import path from 'path'
 import dotenv from 'dotenv'
 
 import {sqlConfig} from '../../config'
-import { Tour } from '../models/tourModels'
+import { Tour, TourPayload } from '../models/tourModels'
 import { tourSchema } from '../validation/tourValidation'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
 
@@ -29,7 +29,17 @@ export async function addTour(request:Request,response:Response) {
             .input('t_price',t_price)
             .execute('addTour')
 
+            const payload:TourPayload = {
+                id: id,
+                t_name: t_name,
+                t_price: t_price
+            }
+
+            const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'7d'})
+
+
             return response.status(200).send({message:"New Tour added succesfully!"})
+            // return response.status(200).send({message:"New Tour added succesfully!",token})
         }
 
     } catch(error){

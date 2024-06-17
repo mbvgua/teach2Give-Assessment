@@ -1,0 +1,46 @@
+# #######
+# add a new tour
+POST  http://localhost:4000/tours
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+Content-Type: application/json
+
+{
+    "t_name": "Greece in Summer",
+    "t_image_url": "https://cdn.pixabay.com/photo/2022/08/26/07/57/tavern-7411977_640.jpg",
+    "t_rating": 5,
+    "t_price": 12000000
+}
+
+
+#######
+# get all tours
+GET http://localhost:4000/tours
+
+
+#######
+# get a specific tour
+GET http://localhost:4000/tours/23bd47c7-97e4-413e-ae3a-b34cde17b4cd
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+
+
+
+#######
+# update a tour
+PUT http://localhost:4000/tours/23bd47c7-97e4-413e-ae3a-b34cde17b4cd
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+Content-Type: application/json
+
+{
+    "t_name": "MaasaiMara on Valentines",
+    "t_image_url": "https://cdn.pixabay.com/photo/2014/04/10/15/37/snowman-321034_640.jpg",
+    "t_rating": 4,
+    "t_price": 120000
+}
+
+
+###########
+# delete a tour
+DELETE http://localhost:4000/tours/23bd47c7-97e4-413e-ae3a-b34cde17b4cd
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+
+

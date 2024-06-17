@@ -1,13 +1,13 @@
 import {Router} from 'express'
 import { addTour, deleteTour, getTour, getTours, updateTour } from '../controllers/tourControllers'
-// import { verifyToken } from '../middleware'
+import { verifyTourToken } from '../middleware/tourMiddleware'
 
 const tourRouter = Router()
 
-tourRouter.post("",addTour)
+tourRouter.post("",verifyTourToken,addTour)
 tourRouter.get("",getTours)
-tourRouter.get("/:id",getTour)
-tourRouter.put("/:id",updateTour)
-tourRouter.delete("/:id",deleteTour)
+tourRouter.get("/:id",verifyTourToken,getTour)
+tourRouter.put("/:id",verifyTourToken,updateTour)
+tourRouter.delete("/:id",verifyTourToken,deleteTour)
 
 export default tourRouter

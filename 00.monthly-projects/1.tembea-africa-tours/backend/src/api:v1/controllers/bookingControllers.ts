@@ -1,12 +1,13 @@
 import {Request, Response } from 'express'
 import mssql from 'mssql'
 import {v4 as uid} from 'uuid' 
+import jwt from 'jsonwebtoken'
 import path from 'path'
 import dotenv from 'dotenv'
 
 import {sqlConfig} from '../../config'
 import { bookingSchema } from '../validation/bookingValidation'
-import { Booking } from '../models/bookingModels'
+import { Booking, BookingPayload } from '../models/bookingModels'
 import { User } from '../models/authModels'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
 
@@ -28,7 +29,15 @@ export async function addBooking(request:Request,response:Response) {
             .input('hotel_id',hotel_id)
             .execute('addBooking')
 
+            const payload:BookingPayload = {
+                id: id,
+                user_id: user_id
+            }
+
+            const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'7d'})
+
             return response.status(200).send({message:"New booking has been made!"})
+            // return response.status(200).send({message:"New booking has been made!",token})
         }
 
     } catch(error){
