@@ -1,8 +1,9 @@
 
 export interface UserEmail{
-    id:string,
-    u_name:string,
-    u_email: string
+    to:string,
+    from:any,   //-> change this layer
+    subject: string,
+    html: any   //-> change this layer
 }
 
 

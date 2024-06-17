@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 650px;
+            margin: 2rem auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px;
+        }
+        .header {
+            text-align: center;
+            /* background: #f4f4f4; */
+            padding: 10px;
+            background: url(https://cdn.pixabay.com/photo/2021/08/23/14/50/online-shopping-6567977_640.png) center/cover no-repeat;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1><%= title %></h1>
+            </div>
+            <div class="content">
+                <p>Dear <%= name %>,</p>
+                <p><%= message %></p>
+                <p>To get started using Nice App, please confirm your account below:</p>
+                <p>
+                  <a href="<%= confirmation_url %>">Confirm you account</a>
+                </p>
+            </div>
+            <div class="footer">
+                <p>Best regards,<br><%= company_name %></p>
+            </div>
+        </div>

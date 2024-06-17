@@ -18,7 +18,7 @@ export async function newBooking(){
         // bookings.forEach( (booking)=>{
         //     // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
         //     ejs.renderFile("templates/register.ejs", {title:"Registration Success!",
-        //         name:user.u_name,
+        //         name:booking.user_id.,
         //         message:"Thanks for signing up for e-commerce. We're very excited to have you on board.",
         //         confirmation_url : "www.teach2give.com",
         //         company_name:"Dream Weavers"},

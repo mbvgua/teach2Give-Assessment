@@ -14,35 +14,32 @@ export async function newUser(){
         .execute('getNewUser'))
         .recordset as Array<User>
 
-        console.log(users)
-        // users.forEach( (user)=>{
-        //     // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
-        //     ejs.renderFile("templates/register.ejs", {title:"Registration Success!",
-        //         name:user.u_name,
-        //         message:"Thanks for signing up for e-commerce. We're very excited to have you on board.",
-        //         confirmation_url : "www.teach2give.com",
-        //         company_name:"Dream Weavers"},
-        //         async (err,data)=>{
-        //         // console.log(data) //->display s name well
-        //         // console.log(err) //-> runs if not all placeholders are present
+        // console.log(users) //-> confirm code is get the users it should send email to
+        users.forEach( (user)=>{
+            // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
+            ejs.renderFile("templates/register.ejs", {title:"Registration Success!",
+                name:user.u_name,
+                message:"Thanks for signing up to our website. We're very excited to have you on board.",
+                confirmation_url : "www.tembeafrica.co.ke",
+                company_name:"Tembea Africa Safaris"},
+                async (err,data)=>{
 
-        // let messageOptions = {
-        //     to:user.email,
-        //     from:process.env.MAIL_HOST,
-        //     subject: "Mambo ni Laivu",
-        //     html: data
-        // }
+        let messageOptions = {
+            to:user.u_email,
+            from:process.env.MAIL_HOST,
+            subject: "Getting Started",
+            html: data
+        }
 
-        // sendEmail(messageOptions) //send email to
+        sendUserEmail(messageOptions) 
 
-        // // update emails sent to -> uncomment if it works?
-        // await pool.request()
-        // .input('email',user.email)
-        // .execute('updateEmailSent')
-        // // .query(`UPDATE users SET isEmailSent = 1 WHERE id='${user.id}'`)
-        // })
-        // console.log('eureka!')
-        // }) 
+        // update emails sent to prevent continous loop
+        await pool.request()
+        .input('id',user.id)
+        .execute('updateUserEmailSent')
+        })
+        console.log('Completed sending emails to new users!')
+        }) 
 
     } catch(error) {
         console.log(error)
