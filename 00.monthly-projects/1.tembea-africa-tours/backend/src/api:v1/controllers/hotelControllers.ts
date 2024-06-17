@@ -1,14 +1,16 @@
 import {Request, Response } from 'express'
-import mssql from 'mssql'
 import {v4 as uid} from 'uuid' 
 import jwt from 'jsonwebtoken'
 import path from 'path'
 import dotenv from 'dotenv'
 
-import {sqlConfig} from '../../config'
 import { hotelSchema } from '../validation/hotelValidation'
 import { Hotel, HotelPayload} from '../models/hotelModels'
+import { DbHelper } from '../databaseHelpers'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
+
+// instatiate the bd helpers class
+const dbInstance = new DbHelper()
 
 
 export async function addHotel(request:Request,response:Response) {
@@ -20,14 +22,13 @@ export async function addHotel(request:Request,response:Response) {
         if(error){
             return response.status(400).send(error.details[0].message)
         } else {
-            let pool = await mssql.connect(sqlConfig)
-            await pool.request()
-            .input('id',id)
-            .input('h_name',h_name)
-            .input('h_image_url',h_image_url)
-            .input('h_rating',h_rating)
-            .input('h_price',h_price)
-            .execute('addHotel')
+            await dbInstance.exec('addHotel',{
+                id:id,
+                h_name:h_name,
+                h_image_url:h_image_url,
+                h_rating:h_rating,
+                h_price:h_price
+            })
 
             const payload:HotelPayload = {
                 id: id,
@@ -50,9 +51,7 @@ export async function addHotel(request:Request,response:Response) {
 
 export async function getHotels (request:Request,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
-        const hotels = (await pool.request().execute('getHotels'))
-        .recordset as Array<Hotel>
+        const hotels = (await dbInstance.get('getHotels')).recordset as Array<Hotel>
 
         response.status(200).send(hotels)
 
@@ -65,11 +64,10 @@ export async function getHotels (request:Request,response:Response){
 
 export async function getHotel (request:Request<{id:string}>,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
-        const hotel = (await pool.request()
-        .input("id",id)
-        .execute('getHotel')).recordset[0] as Array<Hotel>
+        const hotel = (await dbInstance.exec('getHotel',{
+            id:id
+        })).recordset[0] as Array<Hotel>
         console.log(hotel)
         if (hotel ){
             response.status(200).send(hotel)
@@ -86,10 +84,11 @@ export async function getHotel (request:Request<{id:string}>,response:Response){
 
 
 export async function updateHotel  (request:Request<{id:string}>,response:Response){
-    const pool = await mssql.connect(sqlConfig)
+    // const pool = await mssql.connect(sqlConfig)
     const id = request.params.id
-    const hotel = (await pool.request().input("id",id).execute('getHotel'))//.recordset
-    .recordset[0] as Array<Hotel>
+
+    // const hotel = (await pool.request().input("id",id).execute('getHotel'))//.recordset
+    // .recordset[0] as Array<Hotel>
     
     const { error } = hotelSchema.validate(request.body)
     
@@ -99,13 +98,13 @@ export async function updateHotel  (request:Request<{id:string}>,response:Respon
         } else {
 
             const {h_name,h_image_url,h_rating,h_price} = request.body
-            await pool.request()
-            .input('id',id)
-            .input('h_name',h_name)
-            .input('h_image_url',h_image_url)
-            .input('h_rating',h_rating)
-            .input('h_price',h_price)
-            .execute('updateHotel')
+            await dbInstance.exec('updateHotel',{
+                id:id,
+                h_name:h_name,
+                h_image_url:h_image_url,
+                h_rating:h_rating,
+                h_price:h_price
+            })
     
             response.status(200).send({message:"Existing hotel updated succesfully!"})
         }
@@ -119,14 +118,15 @@ export async function updateHotel  (request:Request<{id:string}>,response:Respon
 
 export async function deleteHotel (request:Request<{id:string}>,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
-        const hotel = (await pool.request().input("id",id).execute('getHotel'))
-        
+        const hotel = (await dbInstance.exec('getHotel',{
+            id:id
+        }))
+    
         if (hotel){
-            await pool.request()
-            .input('id',id)
-            .execute('deleteHotel')
+            await dbInstance.exec('deleteHotel',{
+                id:id
+            })
 
             response.status(200).send({message:"hotel deleted succesfully!"})
             

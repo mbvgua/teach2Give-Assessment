@@ -5,10 +5,13 @@ import jwt from 'jsonwebtoken'
 import path from 'path'
 import dotenv from 'dotenv'
 
+import { DbHelper } from '../databaseHelpers'
 import {sqlConfig} from '../../config'
 import { Tour, TourPayload } from '../models/tourModels'
 import { tourSchema } from '../validation/tourValidation'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
+
+const dbInstance = new DbHelper()
 
 
 export async function addTour(request:Request,response:Response) {
@@ -20,14 +23,13 @@ export async function addTour(request:Request,response:Response) {
         if(error){
             return response.status(400).send(error.details[0].message)
         } else {
-            let pool = await mssql.connect(sqlConfig)
-            await pool.request()
-            .input('id',id)
-            .input('t_name',t_name)
-            .input('t_image_url',t_image_url)
-            .input('t_rating',t_rating)
-            .input('t_price',t_price)
-            .execute('addTour')
+            await dbInstance.exec('addTour',{
+                id:id,
+                t_name:t_name,
+                t_image_url:t_image_url,
+                t_rating:t_rating,
+                t_price:t_price
+            })
 
             const payload:TourPayload = {
                 id: id,
@@ -50,9 +52,8 @@ export async function addTour(request:Request,response:Response) {
 
 export async function getTours (request:Request,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
-        const tours = (await pool.request().execute('getTours'))
-        .recordset as Array<Tour>
+        const tours = (await dbInstance.get('getTours')).recordset as Array<Tour>
+
 
         response.status(200).send(tours)
 
@@ -65,11 +66,10 @@ export async function getTours (request:Request,response:Response){
 
 export async function getTour (request:Request<{id:string}>,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
-        const tour = (await pool.request()
-        .input("id",id)
-        .execute('getTour')).recordset[0] as Array<Tour>
+        const tour = (await dbInstance.exec('getTour',{
+            id:id
+        })).recordset[0] as Array<Tour>
         console.log(tour)
         if (tour ){
             response.status(200).send(tour)
@@ -88,8 +88,8 @@ export async function getTour (request:Request<{id:string}>,response:Response){
 export async function updateTour  (request:Request<{id:string}>,response:Response){
     const pool = await mssql.connect(sqlConfig)
     const id = request.params.id
-    const tour = (await pool.request().input("id",id).execute('getHotel'))//.recordset
-    .recordset[0] as Array<Tour>
+    // const tour = (await pool.request().input("id",id).execute('getTour'))//.recordset
+    // .recordset[0] as Array<Tour>
     
     const { error } = tourSchema.validate(request.body)
     
@@ -99,13 +99,13 @@ export async function updateTour  (request:Request<{id:string}>,response:Respons
         } else {
 
             const {t_name,t_image_url,t_rating,t_price} = request.body
-            await pool.request()
-            .input('id',id)
-            .input('t_name',t_name)
-            .input('t_image_url',t_image_url)
-            .input('t_rating',t_rating)
-            .input('t_price',t_price)
-            .execute('updateTour')
+            await dbInstance.exec('updateTour',{
+                id:id,
+                t_name:t_name,
+                t_image_url:t_image_url,
+                t_rating:t_rating,
+                t_price:t_price
+            })
     
             response.status(200).send({message:"Existing tour updated succesfully!"})
         }
@@ -119,14 +119,15 @@ export async function updateTour  (request:Request<{id:string}>,response:Respons
 
 export async function deleteTour (request:Request<{id:string}>,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
-        const tour = (await pool.request().input("id",id).execute('getTour'))
+        const tour = (await dbInstance.exec('getTour',{
+            id:id
+        }))
         
         if (tour){
-            await pool.request()
-            .input('id',id)
-            .execute('deleteTour')
+            await dbInstance.exec('deleteTour',{
+                id:id
+            })
 
             response.status(200).send({message:"tour deleted succesfully!"})
             

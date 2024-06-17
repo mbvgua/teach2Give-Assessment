@@ -1,16 +1,18 @@
 import {Request, Response } from 'express'
-import mssql from 'mssql'
 import {v4 as uid} from 'uuid' 
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import path from 'path'
 import dotenv from 'dotenv'
 
-import {sqlConfig} from '../../config'
+import { DbHelper } from '../databaseHelpers'
 import { registerSchema } from '../validation/authValidation'
 import { User, UserPayload } from '../models/authModels'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
 
+
+// initialize the database helpers
+const dbInstance = new DbHelper()
 
 export async function registerUser(request:Request,response:Response) {
     const id = uid()
@@ -23,13 +25,12 @@ export async function registerUser(request:Request,response:Response) {
         } else {
             const hashedPassword = await bcrypt.hash(u_password,9)    //salt MUST be below 10 to save on time
             
-            let pool = await mssql.connect(sqlConfig)
-            await pool.request()
-            .input('id',id)
-            .input('u_name',u_name)
-            .input('u_email',u_email)
-            .input('u_password',hashedPassword)
-            .execute('addUser')
+            await dbInstance.exec('addUser',{
+                id: id,
+                u_name:u_name,
+                u_email: u_email,
+                u_password:hashedPassword
+            })
 
             const payload:UserPayload = {
                 id: id,
@@ -39,8 +40,8 @@ export async function registerUser(request:Request,response:Response) {
 
             const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'7d'})
 
-            // return response.status(200).send({message:"New User added succesfully!"})
-            return response.status(200).send({message:"New User added succesfully!",token})
+            return response.status(200).send({message:"New User added succesfully!"})
+            // return response.status(200).send({message:"New User added succesfully!",token})
         }
 
     } catch(error){
@@ -51,9 +52,7 @@ export async function registerUser(request:Request,response:Response) {
 
 export async function getUsers (request:Request,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
-        const users = (await pool.request().execute('getUsers'))
-        .recordset as Array<User>
+        const users = (await dbInstance.get('getUsers')).recordset as Array<User>
 
         response.status(200).send(users)
 
@@ -66,12 +65,12 @@ export async function getUsers (request:Request,response:Response){
 
 export async function getUser (request:Request<{id:string}>,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
-        const user = (await pool.request()
-        .input("id",id)
-        .execute('getUser')).recordset[0] as Array<User>
+        const user = (await dbInstance.exec('getUser',{
+            id:id
+        })).recordset[0] as Array<User>
         console.log(user)
+
         if (user ){
             response.status(200).send(user)
 
@@ -88,20 +87,21 @@ export async function getUser (request:Request<{id:string}>,response:Response){
 
 export async function updateUser  (request:Request<{id:string}>,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
         // console.log(id)
-        const product = (await pool.request().input("id",id).execute('getUser'))//.recordset
-        .recordset[0] as Array<User>
+        const user = (await dbInstance.exec('getUser',{
+            id:id
+        })).recordset[0] as Array<User>
 
-        if (product){
+
+        if (user){
             const {u_name,u_email,u_password} = request.body
-            await pool.request()
-            .input('id',id)
-            .input('u_name',u_name)
-            .input('u_email',u_email)
-            .input('u_password',u_password)
-            .execute('updateUser')
+            dbInstance.exec('updateUser',{
+                id: id,
+                u_name: u_name,
+                u_email:u_email,
+                u_password:u_password
+            })
 
             response.status(200).send({message:"Existing user updated succesfully!"})
 
@@ -118,14 +118,15 @@ export async function updateUser  (request:Request<{id:string}>,response:Respons
 
 export async function deleteUser (request:Request<{id:string}>,response:Response){
     try{
-        const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
-        const user = (await pool.request().input("id",id).execute("getUser"))
+        const user = (await dbInstance.exec('getUser',{
+            id:id
+        })).recordset[0] as Array<User>
         
         if (user){
-            await pool.request()
-            .input('id',id)
-            .execute('deleteUser')
+            await dbInstance.exec('deleteUser',{
+                id:id
+            })
 
             response.status(200).send({message:"user deleted succesfully!"})
             
