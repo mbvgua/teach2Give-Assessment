@@ -1,11 +1,10 @@
 import {Router} from 'express'
-import { registerUser, loginUser, updateUser, deleteUser, getUser, getUsers} from '../controllers/authControllers'
+import { registerUser, updateUser, deleteUser, getUser, getUsers} from '../controllers/authControllers'
 // import { verifyToken } from '../middleware'
 
 const authRouter = Router()
 
 authRouter.post("/register",registerUser)
-authRouter.post("/login",loginUser)
 authRouter.get("/users",getUsers)
 authRouter.get("/:id",getUser)
 authRouter.put("/:id",updateUser)
