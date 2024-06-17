@@ -110,9 +110,7 @@ export async function deleteUser (request:Request<{id:string}>,response:Response
     try{
         const pool = await mssql.connect(sqlConfig)
         const id = request.params.id
-        const user = (await pool.request().input("id",id))//.recordset
-        // const user = (await pool.request().input("id",id).execute('deleteUser'))//.recordset
-        // .recordset[0] as Array<Product>  -> was the purpose of recordset?!?!
+        const user = (await pool.request().input("id",id).execute("getUser"))
         
         if (user){
             await pool.request()
