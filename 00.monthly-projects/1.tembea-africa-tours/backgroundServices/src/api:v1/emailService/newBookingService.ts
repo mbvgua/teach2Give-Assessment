@@ -14,35 +14,41 @@ export async function newBooking(){
         .execute('getNewBooking'))
         .recordset as Array<Booking>
 
-        console.log(bookings)
-        // bookings.forEach( (booking)=>{
-        //     // ejs.renderFile("../../templates/register.ejs" -> did not work!!!
-        //     ejs.renderFile("templates/register.ejs", {title:"Registration Success!",
-        //         name:booking.user_id.,
-        //         message:"Thanks for signing up for e-commerce. We're very excited to have you on board.",
-        //         confirmation_url : "www.teach2give.com",
-        //         company_name:"Dream Weavers"},
-        //         async (err,data)=>{
-        //         // console.log(data) //->display s name well
-        //         // console.log(err) //-> runs if not all placeholders are present
+        // console.log(bookings)
+        bookings.forEach( async (booking)=>{
 
-        // let messageOptions = {
-        //     to:user.email,
-        //     from:process.env.MAIL_HOST,
-        //     subject: "Mambo ni Laivu",
-        //     html: data
-        // }
+            // procedure to get the username from the user id
+            let user = (await pool.request()
+            .input('id',booking.user_id)
+            .execute('getUserName')).recordset[0]
+            // console.log(user.u_name)
+            // console.log(user.u_email)
 
-        // sendEmail(messageOptions) //send email to
+            ejs.renderFile("templates/register.ejs", {title:"New Booking Added!",
+                name:user.u_name,
+                message:"Thanks for booking a tour with Tembea Africa Safaris. We look forward to seeing you soon!",
+                confirmation_url : "www.tembeaafrica.com",
+                company_name:"Tembea Africa Safaris"},
+                async (err,data)=>{
+                // console.log(data) //->display s name well
+                // console.log(err) //-> runs if not all placeholders are present
 
-        // // update emails sent to -> uncomment if it works?
-        // await pool.request()
-        // .input('email',user.email)
-        // .execute('updateEmailSent')
-        // // .query(`UPDATE users SET isEmailSent = 1 WHERE id='${user.id}'`)
-        // })
-        // console.log('eureka!')
-        // }) 
+            let messageOptions = {
+                to:user.u_email,
+                from:process.env.MAIL_HOST,
+                subject: "Now Leave the rest to Us!",
+                html: data
+            }
+
+        sendBookingEmail(messageOptions) //send email to
+
+        // update emails sent to -to avoid infinite loop
+        await pool.request()
+        .input('id',booking.id)
+        .execute('updateBookingEmailSent')
+        })
+        console.log('All Bookings hav been sent succesfully!')
+        }) 
 
     } catch(error) {
         console.log(error)

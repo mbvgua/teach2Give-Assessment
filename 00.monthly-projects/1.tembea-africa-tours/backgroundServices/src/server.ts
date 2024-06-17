@@ -10,7 +10,7 @@ const app = express()
 cron.schedule('*/5 * * * * *', async () => {    //-> runs after every 5 seconds
  
     await newUser()
-    // await newBooking()
+    await newBooking()
 
 });
 

@@ -2,8 +2,7 @@ import nodemailer from 'nodemailer'
 import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
-import ejs from 'ejs'
-import { BookingEmail } from '../models/bookingModels'
+import { BookingEmail, ConfigDetails } from '../models/bookingModels'
 import { UserEmail } from '../models/userModels'
 
 
@@ -19,7 +18,7 @@ let configObject = {
 }
 
 // 2.create a transporter
-function createTransporter (config:any){    //
+function createTransporter (config:ConfigDetails){   
     return nodemailer.createTransport(config)
 }
 

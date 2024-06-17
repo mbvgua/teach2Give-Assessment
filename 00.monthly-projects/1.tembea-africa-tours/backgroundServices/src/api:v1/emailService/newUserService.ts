@@ -1,7 +1,7 @@
 import mssql from 'mssql'
 import ejs from 'ejs'
 import { sqlConfig } from '../../config'
-import { UserEmail,User } from '../models/userModels'
+import { User } from '../models/userModels'
 import { sendUserEmail } from '../helpers'
 
 
@@ -38,10 +38,10 @@ export async function newUser(){
         .input('id',user.id)
         .execute('updateUserEmailSent')
         })
-        console.log('Completed sending emails to new users!')
+        console.log('Completed sending emails to all new users!')
         }) 
 
     } catch(error) {
-        console.log(error)
+        console.log('An error occured:',error)
     }
 }
