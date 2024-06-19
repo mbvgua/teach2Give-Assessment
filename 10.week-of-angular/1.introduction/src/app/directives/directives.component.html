@@ -1,0 +1,63 @@
+<p>directives works!</p>
+
+<!-- structural directives -->
+<div class="component">
+    <label for="name"> Name </label>
+    <input type="text" [(ngModel)]="personName"> <!-- pass the input to the .ts -->
+
+    <label for="name"> Age </label>
+    <input type="number" [(ngModel)]="personAge">   <!-- pass the input to the .ts -->
+
+    <button (click)="addPerson()"> Add </button>
+
+</div>
+
+<!-- <h1> List of Existing people</h1> -->
+<!-- <p *ngIf="persons.length"> {{persons[0].name }} {{persons[0].age}}</p> -->
+<!-- <p *ngIf="persons.length"></p> -->
+<!-- <p *ngIf="!persons.length"> <i> Kindly add a person . Your list seems to be empty!</i></p> -->
+
+<!-- <div *ngIf="persons.length; else noPersons">
+    <h1> List of Existing people</h1>
+
+    <div *ngFor="let person of persons">
+        {{person.name}} {{person.age}} <br/>
+    </div>
+    
+
+</div> -->
+
+<!-- while passing the index  -->
+<div *ngIf="persons.length; else noPersons">
+    <h1> List of Existing people</h1>
+
+    <div *ngFor="let person of persons;let i = index">
+        {{person.name}} {{person.age}} <button (click)="deletePerson(i)"> Delete </button><br/>
+    </div>
+    
+
+</div>
+
+<ng-template #noPersons>
+    <p>Kindly add a person . Your list seems to be empty!</p>
+</ng-template>
+
+<!-- ngSwitch -->
+<h2> using ngswitch </h2>
+<div [ngSwitch] = 'day'>
+    <p *ngSwitchCase="'Monday'"> Its Monday </p>
+    <p *ngSwitchCase="'Tuesday'"> Its Tuesday </p>
+    <p *ngSwitchCase="'Wednesday'"> Its Wednesday </p>
+    <p *ngSwitchDefault> Just a normal day </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
