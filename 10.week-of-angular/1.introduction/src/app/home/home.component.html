@@ -1,1 +1,25 @@
 <p>home works!</p>
+
+<!-- string interpolation -- >
+<h2>String Interpolation</h2>
+{{greetings}}  <br/>
+{{isLying}} <br/>
+{{sayHello()}}  <br/>
+{{people}}  <br/>
+
+<!-- propertybinding -->
+<h2>Property Binding</h2>
+<button [disabled]="disable"> Click Bait </button>
+<!-- <p class="experimental"> Will this color change?</p> -->
+
+<!-- event binding -->
+<h2>Event Binding</h2>
+<input type="text" (input)="takeInput($event)">
+<button (click)="AddThem()"> Add Me </button>
+
+<!-- 2 way data binding -->
+<h2> 2 way data binding</h2>
+<input type="text" [(ngModel)]="workWithThis">
+{{workWithThis}}
+
+
