@@ -1,0 +1,15 @@
+<p>display-people works!</p>
+
+<div *ngIf="persons.length; else noPersons">
+    <h1> List of Existing people</h1>
+
+    <div *ngFor="let person of persons;let i = index">
+        {{person.name}} {{person.age}} <button (click)="deletePerson(i)"> Delete </button><br/>
+    </div>
+    
+
+</div>
+
+<ng-template #noPersons>
+    <p>Kindly add a person . Your list seems to be empty!</p>
+</ng-template>

@@ -1,0 +1,12 @@
+<p>add-people works!</p>
+
+<div class="component">
+    <label for="name"> Name </label>
+    <input type="text" [(ngModel)]="personName"> <!-- pass the input to the .ts -->
+
+    <label for="name"> Age </label>
+    <input type="number" [(ngModel)]="personAge">   <!-- pass the input to the .ts -->
+
+    <button (click)="addPerson()"> Add </button>
+
+</div>
