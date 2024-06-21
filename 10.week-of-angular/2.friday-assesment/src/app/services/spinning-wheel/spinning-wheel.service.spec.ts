@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MessageService } from './message.service';
+import { SpinningWheelService } from './spinning-wheel.service';
 
-describe('MessageService', () => {
-  let service: MessageService;
+describe('SpinningWheelService', () => {
+  let service: SpinningWheelService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MessageService);
+    service = TestBed.inject(SpinningWheelService);
   });
 
   it('should be created', () => {
