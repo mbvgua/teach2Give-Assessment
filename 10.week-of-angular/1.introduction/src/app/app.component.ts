@@ -4,13 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { DirectivesComponent } from "./directives/directives.component";
 import { AddPeopleComponent } from "./add-people/add-people.component";
 import { DisplayPeopleComponent } from "./display-people/display-people.component";
+import { PipesComponent } from "./pipes/pipes.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HomeComponent, DirectivesComponent, AddPeopleComponent, DisplayPeopleComponent]
+    imports: [RouterOutlet, HomeComponent, DirectivesComponent, AddPeopleComponent, DisplayPeopleComponent, PipesComponent]
 })
 export class AppComponent {
   title = '1.introduction';
@@ -25,4 +26,7 @@ export class AppComponent {
   deletePerson(eventData:{id:number}){
     this.peopleList.splice(eventData.id,1)
   }
+
+  // pipes
+  
 }
