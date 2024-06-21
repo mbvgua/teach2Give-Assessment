@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
 import { MessageService } from '../services/messages/messages.service';
 
 @Directive({
@@ -9,7 +9,9 @@ export class TalkativeDirective {
 
   constructor(private el: ElementRef, private messageService: MessageService) {}
 
-  @HostListener('click') onClick() {
+  @Output() showMessage:EventEmitter<{}> = new Emitter()
+
+  showMessage(eventData) {
     const message = this.messageService.getRandomMessage();
     this.el.nativeElement.innerText = message;
   }
