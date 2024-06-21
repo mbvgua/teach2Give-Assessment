@@ -1,0 +1,7 @@
+<!-- <p>spinning-wheel works!</p> -->
+
+<div>
+    <button (click)="spin()">Spin</button>
+    <p *ngIf="result">{{ result }}</p>
+    <button *ngIf="extraSpin" (click)="spin()">Extra Spin</button>
+</div>

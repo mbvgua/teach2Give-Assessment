@@ -12,6 +12,9 @@ import { MessageService } from '../services/messages/messages.service'
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+showMessage($event: MouseEvent) {
+throw new Error('Method not implemented.');
+}
 
 }
 
