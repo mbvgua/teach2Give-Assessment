@@ -29,4 +29,25 @@ export class CategoriesProductComponent {
     console.log(this.form)
   }
 
+  // prepolulate the form
+  prepopulate(){
+    // setValue - > update all the inputs
+    // downside it overwrites our own existing values
+    this.form.setValue({
+      predefinedData : {
+        username: 'John Kiriamiti',
+        category: this.categories[2],
+        price: this.prices[2],
+        password: 'Huna Ideas!'
+      }
+    })
+
+    // setValue - > update some of the inputs without updating the rest
+    // this.form.form.patchValue({
+    //   predefinedData : {
+    //     username : 'Nicholas Cage'
+    //   }
+    // })
+  }
+
 }

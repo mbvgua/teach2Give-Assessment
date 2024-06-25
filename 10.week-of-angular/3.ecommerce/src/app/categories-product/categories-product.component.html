@@ -3,45 +3,48 @@
 <!-- template driven forms -->
 <!-- <form (ngSubmit)="onSubmit(form)" #form> -->
 <!-- <form (ngSubmit)="onSubmit(form)" #form="ngForm"> -->
-<form (ngSubmit)="onSubmit()" #form="ngForm">
+<form (ngSubmit)="onSubmit()" #form="ngForm" >
 
-    <fieldset class="form-wrapper">
+    <!-- PREpopulate form. MUST be within one div -->
+    <fieldset class="form-wrapper" ngModelGroup="predefinedData">
 
 
         <h1 align="center"> Product-Categories </h1>
 
         <div class="form-group">
             <label> Product: </label> <br/>
-            <input name="username" type="text"  ngModel class="form-control" placeholder=" Enter product name">
-            <div class="error"></div>
+            <input name="username" type="text" ngModel required #username="ngModel" class="form-control" placeholder=" Enter product name">
+            <!-- display only when the name is touched and not valid -->
+            <div class="error" *ngIf="username.touched && username.invalid"> product name is required</div>
         </div>
 
         <div class="form-group">
             <label> Category: </label> <br/>
-            <select name="category" ngModel >
+            <select name="category" ngModel required #category="ngModel">
                 <option value="" selected disabled> Choose your category </option>
                 <option *ngFor="let category of categories" value="{{category}}"> {{category}}</option>
             </select>
-            <div class="error"></div>
+            <div class="error" *ngIf="category.touched && category.invalid">please seelct a category</div>
         </div>
 
         <div class="form-group">
             <label > Price Range: </label>
             <span *ngFor="let price of prices"> <br/>
-                <input name="price-range" type="radio"  ngModel class="form-control"  value="{{price}}">{{price}}
+                <input name="price" type="radio"  ngModel required class="form-control"  value="{{price}}">{{price}}
             </span>
-            <div class="error"></div>
         </div>
 
 
         <div class="form-group">
             <label> Password: </label> <br/>
-            <input name="password" type="password"  ngModel class="form-control" placeholder=" Enter Password">
-            <div class="error"></div>
+            <input name="password" type="password"  ngModel required #password="ngModel" class="form-control" placeholder=" Enter Password">
+            <div class="error" *ngIf="password.touched && password.invalid">password is required</div>
         </div>
 
         <div align="center" class="form-group">
-            <button class="btn btn-primary" id="signup"> Add Product </button>
+            <button class="btn btn-secondary" (click)="prepopulate()"> Prepopulate </button>
+            <!-- disable button if form is not valid -->
+            <button class="btn btn-primary" id="signup" [disabled]="!form.invalid"> Add Product </button>
         </div>
 
 
