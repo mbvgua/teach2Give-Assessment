@@ -1,0 +1,10 @@
+<p>lifecycle-methods works!</p>
+
+<ng-content></ng-content>
+
+<div *ngFor="let product of products" class="products">
+    <p> {{product.id}} </p>
+    <p> {{product.name | uppercase}} </p>
+    <p> {{product.description | shortenDescription: 15}} </p>
+    <p> {{product.price | currency:'Ksh'}} </p>
+</div>

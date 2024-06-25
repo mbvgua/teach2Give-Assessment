@@ -11,8 +11,12 @@
 <app-display-people [persons]="peopleList" (onDelete)="deletePerson($event)"></app-display-people> -->
 
 <!-- pipes -->
-<app-pipes></app-pipes>
+<!-- <app-pipes></app-pipes> -->
 
+<!-- lifecycle methods -->
+<app-lifecycle-methods [products]="products">
+    <button (click)="addProduct"> Make Changes </button>
+</app-lifecycle-methods>
 
 
 

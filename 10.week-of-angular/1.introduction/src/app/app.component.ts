@@ -5,13 +5,16 @@ import { DirectivesComponent } from "./directives/directives.component";
 import { AddPeopleComponent } from "./add-people/add-people.component";
 import { DisplayPeopleComponent } from "./display-people/display-people.component";
 import { PipesComponent } from "./pipes/pipes.component";
+import { LifecycleMethodsComponent } from "./lifecycle-methods/lifecycle-methods.component";
+import { Product } from './models';
+
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HomeComponent, DirectivesComponent, AddPeopleComponent, DisplayPeopleComponent, PipesComponent]
+    imports: [RouterOutlet, HomeComponent, DirectivesComponent, AddPeopleComponent, DisplayPeopleComponent, PipesComponent, LifecycleMethodsComponent]
 })
 export class AppComponent {
   title = '1.introduction';
@@ -27,6 +30,31 @@ export class AppComponent {
     this.peopleList.splice(eventData.id,1)
   }
 
-  // pipes
+  // lifecycle methods
+  products:Array<Product> = [
+    {
+      id: 1,
+      name: 'Mizuno Baseball Glove',
+      description: 'take your sport to another level',
+      price:5000
+    },
+    {
+      id: 2,
+      name: 'Grays hockey Stick',
+      description: 'the only stick youll ever need',
+      price:17000
+    },
+    {
+      id: 3,
+      name: 'Nike Sport Shoes',
+      description: 'Very comfortable nike running shoes' ,
+      price:3500
+    }
+  ]
+
+  //  make changes to the products
+  addProduct(){
+    this.products = []
+  }
   
 }
