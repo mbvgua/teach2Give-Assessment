@@ -1,7 +1,7 @@
 <p>register works!</p>
 
 <!-- template driven form -->
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
 
     <fieldset class="form-wrapper">
 
@@ -10,27 +10,28 @@
 
         <div class="form-group">
             <label> Username: </label> <br/>
-            <input id="username" type="text" class="form-control" placeholder=" Enter Username">
-            <div class="error"></div>
+            <input name="username" type="text" formControlName="username" placeholder=" Enter Username">
+            <div class="error" *ngIf="form.get('username')?.touched && form.get('username')?.invalid"> please enter a valid username</div>
         </div>
 
         <div class="form-group">
             <label> Email: </label> <br/>
-            <input id="email" type="email" class="form-control" placeholder=" Enter Email">
-            <div class="error"></div>
+            <input name="email" type="email" formControlName="email" class="form-control" placeholder=" Enter Email">
+            <div class="error" *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')"> please enter an email adress</div>
+            <div class="error" *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')"> please enter a valid email address</div>
         </div>
 
 
         <div class="form-group">
             <label> Password: </label> <br/>
-            <input id="password" type="password" class="form-control" placeholder=" Enter Password">
-            <div class="error"></div>
+            <input name="password" type="password" formControlName="password" class="form-control" placeholder=" Enter Password">
+            <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid"> please enter a valid password</div>
         </div>
 
         <div class="form-group">
             <label> Confirm Password: </label> <br/>
-            <input id="confirm_password" type="password" class="form-control" placeholder=" Confirm Password">
-            <div class="error"></div>
+            <input name="confirm_password" type="password" formControlName="confirm_password" class="form-control" placeholder=" Confirm Password">
+            <div class="error" *ngIf="form.get('confirm_password')?.touched && form.get('confirm_password')?.invalid"> please confirm your password</div>
         </div>
 
 
