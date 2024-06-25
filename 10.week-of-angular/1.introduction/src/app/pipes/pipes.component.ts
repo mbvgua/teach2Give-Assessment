@@ -40,5 +40,25 @@ export class PipesComponent {
     }
   ]
 
+  // search bar functionality
   search = ''
+
+  // adding the products
+  addProduct(){
+    this.products.push(
+      {
+          id: 4,
+          name: 'Barbell',
+          description: 'Stop being a skinny bitch!' ,
+          price:3500
+      }
+    )
+  }
+
+  // ASYNCHRONOUS PIPE
+  greetings = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve('Niaje Mahn!')
+    },1500)
+  })
 }

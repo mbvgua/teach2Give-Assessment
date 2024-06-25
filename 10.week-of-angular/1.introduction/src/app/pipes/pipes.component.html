@@ -25,10 +25,19 @@
 <!-- <p>{{decimals | de }} </p> -->
 
 <hr>
+<!-- async pipe -->
+ <!-- {{greetings}}  not resolved hence just displays object promise -->
+ {{greetings | async}}
+ 
+<hr>
 
 <h2> Custom Pipes </h2>
 <label> Search: </label>
-<input type="text" [(ngModel)]="search">
+<input type="text" [(ngModel)]="search">    <br/>
+
+<!-- adding products using a button. useful in admin to user interface 
+ next time try to use this dynamically-->
+<button (click)="addProduct()"> Add Product </button>
 
 <div *ngFor="let product of products | searchItem:search" class="products">
     <p> {{product.id}} </p>
@@ -36,3 +45,4 @@
     <p> {{product.description | shortenDescription: 15}} </p>
     <p> {{product.price | currency:'Ksh'}} </p>
 </div>
+
