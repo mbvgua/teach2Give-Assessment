@@ -1,0 +1,10 @@
+<p>display-products works!</p>
+
+<div *ngIf="products">
+    <div *ngFor="let product of products">
+        <h2> {{product.id }}. {{product.name}} </h2>
+        <p> {{product.description}}</p>
+        <p> {{product.price}}</p>
+        <button (click)="deleteProduct(product.id)"> Delete </button>
+    </div>
+</div>
