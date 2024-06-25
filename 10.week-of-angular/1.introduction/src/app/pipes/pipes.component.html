@@ -1,3 +1,38 @@
 <p>pipes works!</p>
 
+<!-- uppercase pipes -->
 <h3> {{ title | uppercase}} </h3>
+<h3> {{ title | lowercase}} </h3>
+
+<hr>
+
+<p> {{todaysDate | date:'dd-MM-YYYY-hh'}}</p>
+<p> {{todaysDate | date:'fullDate'}}</p>
+<p> {{todaysDate | date:'shortDate'}}</p>
+
+<hr>
+
+<p> {{price | currency}}</p>
+<p> {{price | currency: 'ksh'}}</p>
+<p> {{price | currency: '7s'}}</p>
+
+<hr>
+
+<p> {{percentage | percent}}</p>
+
+<hr>
+
+<!-- <p>{{decimals | de }} </p> -->
+
+<hr>
+
+<h2> Custom Pipes </h2>
+<label> Search: </label>
+<input type="text" [(ngModel)]="search">
+
+<div *ngFor="let product of products | searchItem:search" class="products">
+    <p> {{product.id}} </p>
+    <p> {{product.name | uppercase}} </p>
+    <p> {{product.description | shortenDescription: 15}} </p>
+    <p> {{product.price | currency:'Ksh'}} </p>
+</div>
