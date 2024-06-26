@@ -4,11 +4,12 @@ import { TourService } from '../services/tours/tour.service';
 import { CommonModule } from '@angular/common';
 import { Hotel } from '../models/hotels';
 import { Tour } from '../models/tours';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

@@ -45,6 +45,7 @@
 
 .choose-tour .bottom{
     display: flex;
+    justify-content: center;
     /* border: 1px solid; */
     padding: .9rem;
     gap: .9rem;

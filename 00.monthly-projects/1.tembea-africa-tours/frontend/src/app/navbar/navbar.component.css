@@ -167,3 +167,12 @@
     display: block;
   }
 /*------end header main styling*/
+
+/* add this to show active links  */
+.current{
+  /* these dont work?Being overun by rest of styling. add important tags */
+  color: var(--black) !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+  text-underline-offset: .5rem !important;
+}
