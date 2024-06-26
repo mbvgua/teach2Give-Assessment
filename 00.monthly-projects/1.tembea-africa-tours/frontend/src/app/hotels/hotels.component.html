@@ -1,0 +1,43 @@
+<!-- <p>hotels works!</p> -->
+         <!-- begin choosing hotel div -->
+         <div class="choose-hotel">
+            <div class="top">
+                <h3> choose hotel </h3>
+                <h2> recommended hotels  </h2>
+                <p> Leading tour and travels booking website. Over 3,000 packages
+                    worldwide. Book travel packages and enjoy your holidays with
+                    distinctive experience
+                </p>
+            </div>
+
+            <div *ngIf="hotels" class="bottom hotel-div">
+
+
+                <!-- begin hotel card 1 -->
+                <div *ngFor="let hotel of hotels" class="hotel-card">
+                    <div class="img">
+                        <img src="{{hotel.imageUrl}}" alt="hotel pic">
+                    </div>
+                    <div class="content">
+
+                        <p class="title"> {{hotel.name}} </p>
+                        <p class="desc"> {{hotel.description}}</p>
+                        <p class="price"> {{hotel.price | currency:'Ksh.'}} </p>
+                        <p class="info"> See full Itenerary <i class='bx bx-right-arrow-alt'></i></p>
+                        <p>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </p>
+                    </div>
+                </div>
+                <!-- end hotel card 1 -->
+
+
+            </div>
+            <!-- end bottom cards section -->
+
+        </div>
+        <!-- end choosing hotel div -->
+

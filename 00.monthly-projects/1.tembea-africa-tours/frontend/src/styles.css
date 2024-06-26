@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+
+:root{
+  --mainColour: #212529;
+  --otherColor: #450920;
+  --royal-purple: #7209b7;
+  /* --royal-purple: #7851A9; */
+  --lighter-purple: #7209b7;
+  --white: #fff;
+  --black: #000;
+  --bright-yellow: #fdc600;
+  --dark-gray: #415a77;
+  --main-spacing: .3rem;
+  --word-spacing: .3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: .3rem 0;
+    gap:0;
+}

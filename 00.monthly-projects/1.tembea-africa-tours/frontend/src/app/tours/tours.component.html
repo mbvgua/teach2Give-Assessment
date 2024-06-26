@@ -1,0 +1,36 @@
+<!-- <p>tours works!</p> -->
+
+        <!-- begin choosing tour div -->
+        <div class="choose-tour">
+            <div class="top">
+                <h3> choose tour </h3>
+                <h2> popular tours  </h2>
+                <p> Leading tour and travels booking website. Over 3,000 packages
+                    worldwide. Book travel packages and enjoy your holidays with
+                    distinctive experience
+                </p>
+            </div>
+
+            <div *ngIf="tours" class="bottom tour-div" >
+
+                <!-- begin tour card 1 -->
+                <div *ngFor="let tour of tours" class="tour-card">
+                    <div class="img">
+                        <img src="{{tour.imageUrl}}" alt="tour pic">
+                    </div>
+                    <div class="content">
+                        <p class="title"> {{tour.name}} </p>
+                        <p class="desc"> {{tour.description}} </p>
+                        <p class="price"> {{tour.price | currency:'Ksh.'}} </p>
+                        <p class="info"> book tour <i class='bx bx-right-arrow-alt'></i></p>
+                    </div>
+                </div>
+    
+                <!-- end tour card 1 -->
+
+            </div>
+            <!-- end bottom cards section -->
+
+        </div>
+        <!-- end choosing tour div -->
+

@@ -1,0 +1,105 @@
+<!-- <p>navbar works!</p> -->
+
+<!-- header div -->
+<div class="both-headers">
+
+        <!-- contact info -->
+        <div class="header-contact">
+
+            <div class="contact-card">
+                <i class='bx bxs-map'></i>
+                <label> 1738, Ongata Rongai, Kenya </label>
+            </div>
+
+            <div class="contact-card">
+                <i class='bx bxs-envelope'></i>
+                <label> info&#64;tembeaafrica.co.ke </label>
+            </div>
+
+            <div class="contact-card">
+                <i class='bx bxs-phone'></i>
+                <label> +254 700 000 000 </label>
+            </div>
+
+            <div class="contact-card">
+                <i class='bx bxl-facebook'></i>
+                <i class='bx bxl-twitter'></i>
+                <i class='bx bxl-linkedin'></i>
+                <i class='bx bxl-discord-alt'></i>
+                <i class='bx bxl-whatsapp'></i>
+            </div>
+
+            <div class="contact-card undercover">
+                <label> Book Consultation </label>
+                <i class='bx bx-right-arrow-alt'></i>
+            </div>
+
+        </div>
+        <!-- end contact info -->
+
+        <!-- main header menu -->
+       <div class="header-main">
+        <div class="logo">
+            <img src="../../assets/images/airplane-svgrepo-com.svg" alt="company logo">
+            <h2> Tembea Africa </h2>
+        </div>
+
+        <div class="main-menu">
+            <ul>
+                <li>
+                  <a href="#" class="item">Home</a>
+                </li>
+                        
+                <li>
+                    <a href="#" class="item"> About Us </a>
+                </li>
+                
+                <li class="has-dropdown">
+                  <a href="#" class="item">Hotels</a>
+                  <i class='bx bx-chevron-down'></i>
+                  <!-- display the hotels? WHY ARE THEY OVERLAPPING? -->
+                  <section *ngFor="let hotel of hotels" class="dropdown-items hotel-dropdown">
+                    <a href="#">{{hotel.name}}</a>
+                  </section>
+                </li>
+                        
+                <li class="has-dropdown">
+                  <a href="#" class="item">Tours</a>
+                  <i class='bx bx-chevron-down'></i>
+                  <section *ngFor="let tour of tours" class="dropdown-items tour-dropdown">
+                    <a href="#"> {{ tour.name}}</a>
+                  </section>
+                </li>
+                        
+                <!-- <li>
+                    <a href="#" class="item"> Special Offers </a>
+                    <i class='bx bx-chevron-down'></i>
+                </li> -->
+                
+                <li>
+                    <a href="#" class="item"> Contact Us </a>
+                </li>
+            </ul
+            >
+        </div>
+
+        <div class="user-details">
+            <ul>
+              <li class="has-dropdown">
+                  <a href="#" class="item">Account</a>
+                  <i class='bx bx-chevron-down'></i>
+                  <section class="dropdown-items">
+                      <a href="#"><i class='bx bx-user-circle'></i>Profile</a>
+                    <a href="./login.html"><i class='bx bx-log-in-circle'></i>Login</a>
+                    <a href="#"><i class='bx bx-cog'></i>Settings</a>
+                    <a href="./signup.html"><i class='bx bx-log-out-circle'></i>Logout</a>
+                  </section>
+                </li>
+                    </ul>
+        </div>
+        </div>
+        <!-- end main-menu header menu -->
+
+
+</div>
+<!-- end header div -->

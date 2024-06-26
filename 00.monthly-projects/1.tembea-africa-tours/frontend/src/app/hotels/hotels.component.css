@@ -1,0 +1,117 @@
+/* ----begin choose hotels div */
+.choose-hotel{
+    display: flex;
+    flex-direction: column;
+    margin-top: .9rem;
+
+    /* border: 1px solid; */
+}
+
+.choose-hotel .top{
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose-hotel .top h3{
+    font-size: small;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+}
+.choose-hotel .top h2{
+    letter-spacing: .1rem;
+    text-transform: capitalize ;
+    font-weight: 300;
+    font-size: 1.7rem;
+}
+
+.choose-hotel .top p{
+    /* color: red; */
+    font-size: small;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: .1rem;
+    text-align: center;
+    /* border: 1px solid; */
+    width: 90%;
+    line-height: 1.5rem;
+    font-weight: 300;
+    font-stretch: expanded;
+    padding: .4rem;
+}
+.choose-hotel .bottom{
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px solid; */
+    padding: .9rem;
+    gap: .9rem;
+    justify-content: center;
+}
+
+.choose-hotel .hotel-card{
+    display: flex;
+    padding: .4rem;
+    gap: .4rem;
+    height: 22rem;
+    width: 31rem;
+    /* border: 1px solid; */
+    /* border: 2px solid rgba(255,255,255,.2); */
+    /* border-radius: 15px; */
+    /* box-shadow: 3px 3px 3px 3px rgba(140,140,140,0.5); */
+}
+.choose-hotel .hotel-card .img{
+    width: 55%;
+    overflow: hidden;
+    /* border: 1px solid; */
+    border-radius: 10px;
+}
+
+.choose-hotel .hotel-card .img img{
+    height: 100%;
+    width: 100%;
+}
+.choose-hotel .hotel-card .content{
+    width: 45%;
+    display: inline-flex;
+    flex-direction: column;
+    /* border: 1px solid; */
+    padding: .4rem;
+    gap: .7rem;
+    margin: 0px auto;
+    /* justify-content: center; */
+    align-items: center;
+}
+.choose-hotel .hotel-card .content .title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+}
+.choose-hotel .hotel-card .content .desc{
+    line-height: 1.8rem;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+.choose-hotel .hotel-card .content .price{
+    letter-spacing: .3rem;
+    font-weight: 300;
+}
+.choose-hotel .hotel-card .content .info{
+    border: 2px solid var(--royal-purple);
+    border-radius: 20px;
+    padding: .4rem;
+    font-size: smaller;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+    font-weight: 600;
+}
+.choose-hotel .hotel-card .content .info:hover{
+    color: var(--white);
+    background-color: var(--royal-purple);
+
+}
+/* ----end choose hotels div */
