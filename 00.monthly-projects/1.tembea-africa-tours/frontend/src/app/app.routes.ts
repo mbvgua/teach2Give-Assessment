@@ -8,17 +8,18 @@ import { ToursComponent } from './tours/tours.component';
 import { TourDetailsComponent } from './tour-details/tour-details.component';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { Error404Component } from './error-404/error-404.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     // {path: '', component:HomepageComponent,FooterComponent}
     {path: '', component:HomepageComponent},
     {path: 'login', component:LoginComponent},
     {path: 'signup', component:SignupComponent},
-    {path: 'hotels', children:[
+    {path: 'hotels', canActivate:[authGuard],children:[
         {path: '', component:HotelsComponent},
         {path: ':id', component:HotelDetailsComponent}
     ]},
-    {path: 'tours', children:[
+    {path: 'tours', canActivate:[authGuard],children:[
         {path: '', component:ToursComponent},
         {path: ':id', component:TourDetailsComponent}
     ] },

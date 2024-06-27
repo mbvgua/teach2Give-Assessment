@@ -2,7 +2,7 @@
 
 
 <!-- reactive formss -->
-<form method="POST">
+<form>
 
     <fieldset class="form-wrapper">
 
@@ -25,13 +25,13 @@
         </div>
 
         <div align="center" class="form-group">
-            <button id="login" class="btn btn-primary"> Login </button>
+            <button id="login" class="btn btn-primary" (click)="login()"> Login </button>
         </div>
 
 
         <div class="signup-link">
             <p>
-                Don't have an account? <a href="./signup.html"> Sign Up </a> now
+                Don't have an account? <a [routerLink]="['../signup']"> Sign Up </a> now
             </p>
         </div>
 
