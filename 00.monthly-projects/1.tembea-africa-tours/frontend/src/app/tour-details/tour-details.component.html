@@ -1,7 +1,25 @@
-<p>tour-details works!</p>
+<!-- <p>tour-details works!</p> -->
 
-{{tour.id}} <br/>
-{{tour.name}}   <br/>
-{{tour.description}}    <br/>
-{{tour.price}}  <br/>
+
+<div class="tour-div" id="{{tour.id}}">
+    <!-- left div -->
+    <div class="left">
+        <img src="{{tour.imageUrl}}" alt="Tour Image">
+    </div>
+
+    <!-- right div -->
+    <div class="right">
+        <h1> {{tour.name}} </h1>
+        <p> 
+            {{tour.destination}}
+            <a href="#"> Show on Map </a>
+            {{tour.description}}
+        </p>
+        <!-- <p> {{tour.starRating}} </p> -->
+        <p> {{tour.price}} </p>
+        <a href="#"> Make Booking</a>
+    </div>
+</div>
+
+
 

@@ -1,0 +1,23 @@
+.tour-div{
+    display: flex;
+    width: 80vw;
+    height: 500px;
+    border: 1px solid;
+    margin: 1rem auto;
+}
+.left{
+    width:60%;
+}
+.left img{
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.right{
+    width: 40%;
+    text-align: center;
+}
+
+.right a{
+    text-decoration: none;
+}

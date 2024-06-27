@@ -1,7 +1,21 @@
-<p>hotel-details works!</p>
+<!-- <p>hotel-details works!</p> -->
 
-{{hotel.id}}
-{{hotel.name}}
-{{hotel.description}}
-{{hotel.price}}
-{{hotel.starRating}}
+<div class="tour-div" id="{{hotel.id}}">
+    <!-- left div -->
+    <div class="left">
+        <img src="{{hotel.imageUrl}}" alt="hotel Image">
+    </div>
+
+    <!-- right div -->
+    <div class="right">
+        <h1> {{hotel.name}} </h1>
+        <p> 
+            {{hotel.location}}
+            <a href="#"> Show on Map </a>
+            {{hotel.description}}
+        </p>
+        <p> {{hotel.starRating}} </p>
+        <p> {{hotel.price}} </p>
+    </div>
+</div>
+
