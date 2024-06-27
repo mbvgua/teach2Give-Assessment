@@ -9,7 +9,7 @@ export class TourService {
   constructor() { }
 
   // hardcode the tours
-  private tours:Array<Tour> = [
+  tours:Array<Tour> = [
     {
       id: 1,
       name:'Altair',

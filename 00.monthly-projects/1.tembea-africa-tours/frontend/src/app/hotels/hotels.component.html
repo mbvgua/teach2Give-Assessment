@@ -23,7 +23,10 @@
                         <p class="title"> {{hotel.name}} </p>
                         <p class="desc"> {{hotel.description}}</p>
                         <p class="price"> {{hotel.price | currency:'Ksh.'}} </p>
-                        <p class="info"> See full Itenerary <i class='bx bx-right-arrow-alt'></i></p>
+                        <!-- using a relative path -->
+                        <p routerLink="{{hotel.id}}" class="info"> See full Itenerary <i class='bx bx-right-arrow-alt'></i></p>
+                        <!-- binding an absolute path.TOO COMPLEX FOR ME -->
+                        <!-- <p [routerLink]="['/hotels',hotel.id]" class="info"> See full Itenerary <i class='bx bx-right-arrow-alt'></i></p> -->
                         <p>
                             <i class='bx bx-star'></i>
                             <i class='bx bx-star'></i>

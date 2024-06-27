@@ -9,7 +9,8 @@ export class HotelService {
   constructor() { }
 
   // hardcode all the hotels
-  private hotels:Array<Hotel> = [
+  // made public to allow acces from the ***-details component
+  hotels:Array<Hotel> = [
     {
       id: 1,
       name:'Altair',

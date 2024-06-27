@@ -22,7 +22,10 @@
                         <p class="title"> {{tour.name}} </p>
                         <p class="desc"> {{tour.description}} </p>
                         <p class="price"> {{tour.price | currency:'Ksh.'}} </p>
-                        <p class="info"> book tour <i class='bx bx-right-arrow-alt'></i></p>
+                        <!-- use relative path to redirect to specific tour -->
+                        <p routerLink="{{tour.id}}" class="info"> book tour <i class='bx bx-right-arrow-alt'></i></p>
+                        <!-- use property binding absolute path to redirect to specific tour.TOO COMPLEX FOR ME -->
+                        <!-- <p [routerLink]="['/tours',tour.id]" class="info"> book tour <i class='bx bx-right-arrow-alt'></i></p> -->
                     </div>
                 </div>
     
