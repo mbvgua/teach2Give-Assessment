@@ -7,6 +7,7 @@ import { HotelsComponent } from './hotels/hotels.component';
 import { ToursComponent } from './tours/tours.component';
 import { TourDetailsComponent } from './tour-details/tour-details.component';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import { Error404Component } from './error-404/error-404.component';
 
 export const routes: Routes = [
     // {path: '', component:HomepageComponent,FooterComponent}
@@ -20,5 +21,8 @@ export const routes: Routes = [
     {path: 'tours', children:[
         {path: '', component:ToursComponent},
         {path: ':id', component:TourDetailsComponent}
-    ] }
+    ] },
+
+    // add the not found component using the ** wildcard
+    {path:'**', component:Error404Component}
 ];
