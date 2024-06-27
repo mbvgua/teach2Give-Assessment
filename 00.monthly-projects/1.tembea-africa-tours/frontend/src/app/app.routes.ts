@@ -13,8 +13,12 @@ export const routes: Routes = [
     {path: '', component:HomepageComponent},
     {path: 'login', component:LoginComponent},
     {path: 'signup', component:SignupComponent},
-    {path: 'hotels', component:HotelsComponent},
-    {path: 'tours', component:ToursComponent},
-    {path: 'tours/:id', component:TourDetailsComponent},
-    {path: 'hotels/:id', component:HotelDetailsComponent}
+    {path: 'hotels', children:[
+        {path: '', component:HotelsComponent},
+        {path: ':id', component:HotelDetailsComponent}
+    ]},
+    {path: 'tours', children:[
+        {path: '', component:ToursComponent},
+        {path: ':id', component:TourDetailsComponent}
+    ] }
 ];
