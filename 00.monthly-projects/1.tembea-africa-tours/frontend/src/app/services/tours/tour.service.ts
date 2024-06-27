@@ -14,34 +14,34 @@ export class TourService {
       id: 1,
       name:'Altair',
       destination:'Kwa mathe',
-      imageUrl:'https://cdn.pixabay.com/photo/2014/07/21/19/20/lobby-398845_640.jpg',
+      imageUrl:'https://cdn.pixabay.com/photo/2022/11/21/21/41/mountains-7608306_640.jpg',
       description:'The great',
       starRating:'The great',
       price:1738
     },
     {
       id: 2,
-      name:'Intercontinental Hotel',
+      name:'Nortre Dame',
       destination:'Kule Ndakas',
-      imageUrl:'https://cdn.pixabay.com/photo/2023/03/29/10/27/hotel-7885138_640.jpg',
+      imageUrl:'https://cdn.pixabay.com/photo/2021/11/22/07/37/tour-guide-6816049_640.jpg',
       description:'The great',
       starRating:'The great',
       price:1738
     },
     {
       id: 3,
-      name:'World Boss Hotel',
+      name:'Amazon in Winter',
       destination:'kwangu',
-      imageUrl:'https://cdn.pixabay.com/photo/2021/09/22/08/35/architecture-6646154_960_720.jpg',
+      imageUrl:'https://cdn.pixabay.com/photo/2015/10/01/19/40/paris-967518_640.jpg',
       description:'The great',
       starRating:'The great',
       price:1738
     },
     {
       id: 4,
-      name:'Hii Nayo haijulikani',
+      name:'Paris on Christmas',
       destination:'Tebu guess',
-      imageUrl:'https://cdn.pixabay.com/photo/2012/11/21/10/24/building-66789_640.jpg',
+      imageUrl:'https://cdn.pixabay.com/photo/2019/09/05/06/42/paris-4453237_640.jpg',
       description:'The great',
       starRating:'The great',
       price:1738

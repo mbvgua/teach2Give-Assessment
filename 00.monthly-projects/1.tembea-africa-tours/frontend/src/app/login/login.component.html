@@ -1,23 +1,25 @@
 <!-- <p>login works!</p> -->
 
+<!-- reactive form driven form -->
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-<!-- reactive formss -->
-<form>
+    <fieldset class="form-wrapper"  formGroupName="predefinedData">
 
-    <fieldset class="form-wrapper">
 
         <h1 align="center"> Login </h1>
 
         <div class="form-group">
             <label> Email: </label> <br/>
-            <input type="text" id="email" class="form-control" placeholder=" Enter Email">
-            <div class="error"></div>
+            <input name="email" type="email" formControlName="email" class="form-control" placeholder=" Enter Email">
+            <div class="error" *ngIf="form.get('predefinedData.email')?.touched && form.get('predefinedData.email')?.hasError('required')"> please enter an email adress</div>
+            <div class="error" *ngIf="form.get('predefinedData.email')?.touched && form.get('predefinedData.email')?.hasError('email')"> please enter a valid email address</div>
         </div>
+
 
         <div class="form-group">
             <label> Password: </label> <br/>
-            <input type="password" id="password" class="form-control" placeholder=" Enter Password">
-            <div class="error"></div>
+            <input name="password" type="password" formControlName="password" class="form-control" placeholder=" Enter Password">
+            <div class="error" *ngIf="form.get('predefinedData.password')?.touched && form.get('predefinedData.password')?.invalid"> please enter a valid password</div>
         </div>
 
         <div class="remember-forgot">

@@ -1,38 +1,33 @@
 <!-- <p>signup works!</p> -->
 
 <!-- reactive form driven form -->
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-    <fieldset class="form-wrapper">
+    <fieldset class="form-wrapper"  formGroupName="predefinedData">
 
 
         <h1 align="center"> Signup </h1>
 
         <div class="form-group">
             <label> Username: </label> <br/>
-            <input id="username" type="text" class="form-control" placeholder=" Enter Username">
-            <div class="error"></div>
+            <input name="username" type="text" formControlName="username" placeholder=" Enter Username" class="form-control">
+            <div class="error" *ngIf="form.get('predefinedData.username')?.touched && form.get('predefinedData.username')?.hasError('required')"> please enter a valid username</div>
+            <div class="error" *ngIf="form.get('predefinedData.username')?.touched && form.get('predefinedData.username')?.hasError('unallowedName')"> username not allowed</div>
         </div>
 
         <div class="form-group">
             <label> Email: </label> <br/>
-            <input id="email" type="email" class="form-control" placeholder=" Enter Email">
-            <div class="error"></div>
+            <input name="email" type="email" formControlName="email" class="form-control" placeholder=" Enter Email">
+            <div class="error" *ngIf="form.get('predefinedData.email')?.touched && form.get('predefinedData.email')?.hasError('required')"> please enter an email adress</div>
+            <div class="error" *ngIf="form.get('predefinedData.email')?.touched && form.get('predefinedData.email')?.hasError('email')"> please enter a valid email address</div>
         </div>
 
 
         <div class="form-group">
             <label> Password: </label> <br/>
-            <input id="password" type="password" class="form-control" placeholder=" Enter Password">
-            <div class="error"></div>
+            <input name="password" type="password" formControlName="password" class="form-control" placeholder=" Enter Password">
+            <div class="error" *ngIf="form.get('predefinedData.password')?.touched && form.get('predefinedData.password')?.invalid"> please enter a valid password</div>
         </div>
-
-        <div class="form-group">
-            <label> Confirm Password: </label> <br/>
-            <input id="confirm_password" type="password" class="form-control" placeholder=" Confirm Password">
-            <div class="error"></div>
-        </div>
-
 
         <div class="remember-forgot">
             <a href="#"> Forgot Password? </a>
@@ -40,7 +35,7 @@
 
 
         <div align="center" class="form-group">
-            <button class="btn btn-primary" id="signup" (click)="signup()"> Signup </button>
+            <button (click)="signup()" [disabled]="form.invalid" class="btn" id="signup" > Signup </button>
         </div>
 
         <div class="signup-link">
@@ -53,4 +48,5 @@
     </fieldset>
 
 
-</form>    
+</form>
+
