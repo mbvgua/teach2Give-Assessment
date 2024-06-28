@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User, userResponse } from '../../models/users';
+import { loginResponse, loginUser, registerResponse, registerUser } from '../../models/users';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -28,12 +28,12 @@ export class AuthService {
     this.isLoggedIn = false
   }
 
-  registerUser(newUser:User):Observable<userResponse>{
+  registerUser(newUser:registerUser):Observable<registerResponse>{
     // '' should be the path in your backend not your frontend
-    return this.http.post<userResponse>(this.baseUrl+'register', newUser)
+    return this.http.post<registerResponse>(this.baseUrl+'register', newUser)
   }
 
-  // loginUser(existingUser:User):Observable<userResponse>{
-  //   return this.http.get <userResponse>(this.baseUrl+ 'login',existingUser)
-  // }
+  loginUser(user:loginUser):Observable<loginResponse>{
+    return this.http.post <loginResponse>(this.baseUrl+'login',user)
+  }
 }

@@ -20,11 +20,12 @@ export class SignupComponent implements OnInit{
   unallowedNames = ['.','*','?','!']  //use regex
   router = inject(Router)   // create the router property to allow navigation to login page
 
+    //FIND A WAY TO NAVIGATE AFTER SUCCESFUL SIGNUP!!!
   // signup(){
-  //   if(this.form.valid){
+  //   if(this.form.valid ){
   //     // instead navigate to login
-  //     // this.router.navigate(['/login'])
-  //     console.log(this.form.value.predefinedData)      
+  //     this.router.navigate(['/login'])
+  //     // console.log(this.form.value.predefinedData)      
   //   } else {
   //     return (console.log('form not valid'))
   //   }

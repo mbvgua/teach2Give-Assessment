@@ -19,16 +19,16 @@ export class LoginComponent implements OnInit,OnDestroy{
   router = inject(Router)
   sub!:Subscription   //prevent memory leak on component switching
 
-  login(){
-    if (this.form.valid){
-      // change current property to true
-      this.auth.login()
-      this.router.navigate([''])
-    } else {
-      return (console.log('form not valid'))
-    }
+  // login(){
+  //   if (this.form.valid){
+  //     // change current property to true
+  //     this.auth.login()
+  //     this.router.navigate([''])
+  //   } else {
+  //     return (console.log('form not valid'))
+  //   }
 
-  }
+  // }
 
   // custom validators
   unallowedNames = ['.','*','?','!']  //use regex
@@ -36,6 +36,11 @@ export class LoginComponent implements OnInit,OnDestroy{
   onSubmit(){
     // console.log(this.form)
     // console.log(this.form.value)  //remove nesting
+    this.auth.loginUser(this.form.value.predefinedData)
+    .subscribe((response)=>{
+      console.log(response)
+      // localStorage.setItem('token',response.token)
+    })
     this.form.reset()
   }
 
@@ -48,47 +53,18 @@ export class LoginComponent implements OnInit,OnDestroy{
     }
     return null
   }
-  
-  // observables
-  obs = new Observable<number>((observer)=>{
-    let count:number = 0
-    setInterval(()=>{
-      observer.next(count)
-      count++
 
-      // if(count === 10){
-      //   observer.complete()
-      // } else if (count === 5){
-      //   observer.error({message:"error occured"})
-      // }
+  ngOnDestroy(): void {
+    console.log('Login component destroyed')
+  }
 
-    }, 1000)
-  })
-  
-  
   // prefilling data
   ngOnInit(): void {
     this.form = new FormGroup({
       predefinedData : new FormGroup({
-        email: new FormControl(null,[Validators.required, Validators.email]),
-        password: new FormControl(null, Validators.required),
+        u_email: new FormControl(null,[Validators.required, Validators.email]),
+        u_password: new FormControl(null, Validators.required),
       })
     })
-
-    // subscribe to the three callbacks
-    this.sub = this.obs.pipe(
-      map(x => x*20),
-      filter(x => x<100)
-    ).subscribe({
-      next: (value) => console.log(value),// takes in values arguments
-      error: (error) => console.log(error),// has error argument
-      complete: () => console.log('This is complete!') // no arguments
-  })
   }
-
-  ngOnDestroy(): void {
-    console.log('Login component destroyed')
-    this.sub.unsubscribe()  //prevent data leaks on component swicthing
-  }
-
 }
