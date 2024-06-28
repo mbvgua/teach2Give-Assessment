@@ -83,7 +83,7 @@ export async function loginUser (request:Request<{id:string}>, response:Response
         }
         }
     } catch(error){
-        response.status(500).send(error)
+        response.status(400).send(error)
     }
 } 
 
