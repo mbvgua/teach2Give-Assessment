@@ -1,0 +1,9 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* width: 90vw; */
+    margin: 0px auto;
+    background-color: var(--dark-blue);
+    border: 1px solid;
+}

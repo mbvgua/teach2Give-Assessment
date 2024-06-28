@@ -9,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+
+
+    // get the specific properties
+  name = ''
+  username = ''
+  website = ''
+  city = ''
+  catchPhrase = ''
 }
