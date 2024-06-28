@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
-import { FooterComponent } from './footer/footer.component';
+// import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HotelsComponent } from './hotels/hotels.component';
