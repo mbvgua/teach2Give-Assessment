@@ -45,9 +45,48 @@ export async function registerUser(request:Request,response:Response) {
         }
 
     } catch(error){
-        response.status(500).send(error)
+        response.status(400).send(error)
     }
 }
+
+
+// function for login
+export async function loginUser (request:Request<{id:string}>, response:Response){
+    try{
+        const {u_email,u_password} = request.body
+        const user = (await dbInstance.exec('getUserByEmail',{
+            u_email:u_email
+        })).recordset[0] as Array<User>
+        // console.log(user.id)
+        // console.log(user.u_password)
+        // console.log(u_password)
+
+        // user validation
+        
+        if(user.length !== 0 ){
+            // this had too much nesting. decided to use an array instaed
+            
+            const isValid = await bcrypt.compare(u_password,user.u_password)
+            
+            if(isValid){
+                const payload:UserPayload = {
+                    id: user.id,
+                    name: user.u_name
+                }
+
+                // const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'10d'})
+
+                return response.status(200).send({message:"login successful!"})
+                // return response.status(200).send({message:"login successful!",token})
+            } else{
+            return response.status(400).send({message:"invalid login credentials.try again?"})
+        }
+        }
+    } catch(error){
+        response.status(500).send(error)
+    }
+} 
+
 
 
 export async function getUsers (request:Request,response:Response){
@@ -141,39 +180,3 @@ export async function deleteUser (request:Request<{id:string}>,response:Response
 }
 
 
-
-// // function for login
-// export async function loginUser (request:Request<{id:string}>, response:Response){
-//     try{
-//         const {id,u_password} = request.body
-//         let pool = await mssql.connect(sqlConfig)
-//         let user = (await pool.request()
-//         .input('id',id)
-//         .execute('getUser')).recordset as Array<User>
-//         // console.log(user.u_password)
-
-//         // user validation
-        
-//         if(user.length !== 0 ){
-//             // this had too much nesting. decided to use an array instaed
-            
-//             const isValid = await bcrypt.compare(u_password,user[0].u_password)
-            
-//             if(isValid){
-//                 const payload:Payload = {
-//                     id: user[0].id,
-//                     name: user[0].u_name
-//                 }
-
-//                 const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'10d'})
-
-//                 return response.status(200).send({message:"login successful!"})
-//                 // return response.status(200).send({message:"login successful!",token})
-//             } else{
-//             return response.status(500).send({message:"invalid login credentials.try again?"})
-//         }
-//         }
-//     } catch(error){
-//         response.status(500).send(error)
-//     }
-// } 
