@@ -38,7 +38,7 @@ export async function registerUser(request:Request,response:Response) {
                 email: u_email
             }
 
-            const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'7d'})
+            const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'20d'})
 
             return response.status(200).send({message:"New User added succesfully!"})
             // return response.status(200).send({message:"New User added succesfully!",token})
