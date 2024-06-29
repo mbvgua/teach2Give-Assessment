@@ -1,6 +1,6 @@
 // create the hotels interface
 // export interface User{
-//     id?:string,  //FINALLU USE THIS 1.
+//     id?:string,  //FINALLY USE THIS 1.
 //     u_name?:string,
 //     u_email:string,
 //     u_password:string
@@ -13,17 +13,13 @@ export interface registerUser  {
     u_password:string
 }
 
-export interface registerResponse {
-    message:string
-}
-
 export interface loginUser  {
     id:string,
     u_email:string,
     u_password:string
 }
 
-export interface loginResponse {
+export interface userResponse {
     message:string,
     token:string
 }

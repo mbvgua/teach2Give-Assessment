@@ -1,3 +1,19 @@
+/* popup styling */
+.popup{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.popup label {
+    margin: .3rem;
+    line-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: large;
+}
 /********************/
 /****FORM STYLING***/
 /********************/

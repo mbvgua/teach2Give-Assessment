@@ -84,7 +84,7 @@
               <a *ngIf="auth.showStatus()"><i class='bx bx-chat' ></i>FAQ<sub>'s</sub></a>
               <a *ngIf="!auth.showStatus()" routerLink="../login" routerLinkActive="current"><i class='bx bx-log-in-circle'></i>Login</a>
               <a *ngIf="!auth.showStatus()" routerLink="../signup" routerLinkActive="current"><i class='bx bx-log-out-circle'></i>Signup</a>
-              <a *ngIf="auth.showStatus()" routerLink="" (click)="auth.logout()" class="item"><i class='bx bx-log-out-circle'></i>Logout</a>  
+              <a *ngIf="auth.showStatus()" routerLink="" (click)="auth.logout()"><i class='bx bx-log-out-circle'></i>Logout</a>  
             </section>
           </li>
       </ul>

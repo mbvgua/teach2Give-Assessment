@@ -18,23 +18,23 @@ export class LoginComponent implements OnInit,OnDestroy{
   form!: FormGroup
   router = inject(Router)
   sub!:Subscription   //prevent memory leak on component switching
-
-
-  // custom validators
-  unallowedNames = ['.','*','?','!']  //use regex
+  unallowedNames = ['.','*','?','!']  //update to regex later
+  message = ''  
   
   onSubmit(){
-    this.auth.loginUser(this.form.value.predefinedData)
-    .subscribe((response)=>{
-      console.log(response)
-      this.auth.login()
-      this.router.navigate([''])
-      // localStorage.setItem('token',response.token)
+    this.auth.loginUser(this.form.value).subscribe((response)=>{
+      // console.log(response)
+      this.message = response.message
+      // console.log(response.token)
+      localStorage.setItem('token',response.token)
+
+      setTimeout(()=>{    //delayed to read message on DOM
+        this.auth.login()
+        this.router.navigate([''])
+      })
     })
     this.form.reset()
   }
-
-
   
   // SYNCHRONOUS
   unallowedNamesValidator(control:FormControl):{[x:string]:boolean}|null{
@@ -48,13 +48,11 @@ export class LoginComponent implements OnInit,OnDestroy{
     console.log('Login component destroyed')
   }
 
-  // prefilling data
+  // pass value to the service, then db
   ngOnInit(): void {
     this.form = new FormGroup({
-      predefinedData : new FormGroup({
-        u_email: new FormControl(null,[Validators.required, Validators.email]),
-        u_password: new FormControl(null, Validators.required),
-      })
+      u_email: new FormControl(null,[Validators.required, Validators.email]),
+      u_password: new FormControl(null, Validators.required),
     })
   }
 }

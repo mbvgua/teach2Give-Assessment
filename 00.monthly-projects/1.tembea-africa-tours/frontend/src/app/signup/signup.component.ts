@@ -16,34 +16,31 @@ export class SignupComponent implements OnInit{
   constructor(private auth:AuthService){}
 
   form!: FormGroup
-  // custom validators
-  unallowedNames = ['.','*','?','!']  //use regex
-  router = inject(Router)   // create the router property to allow navigation to login page
+  router = inject(Router)   //router property to allow navigation to login page
+  unallowedNames = ['.','*','?','!']  // custom validators. Use REGEX
+  message = ''
 
   
   onSubmit(){
-    // console.log(this.form)
-    // console.log(this.form.value.predefinedData)  //remove nesting
-    this.auth.registerUser(this.form.value.predefinedData).subscribe((response)=>{
-      console.log(response.message)
-      this.router.navigate(['/login'])
+    // console.log(this.form.value) ->check values
+    this.auth.registerUser(this.form.value).subscribe((response)=>{
+      // console.log(response.message)
+      this.message = response.message
+
+      // delay redirection, allow user to read msg
+      setTimeout(()=>{
+        this.router.navigate(['/login'])
+      }, 1500)
     })
     this.form.reset()
   }
 
-
-  // prefilling data
   ngOnInit(): void {
     this.form = new FormGroup({
-      predefinedData : new FormGroup({
-        // pass values matching those in backend
-        u_name: new FormControl(null,[Validators.required, this.unallowedNamesValidator.bind(this)]),
-        u_email: new FormControl(null,[Validators.required, Validators.email]),
-        u_password: new FormControl(null, Validators.required)
-      })
+      u_name: new FormControl(null,[Validators.required, this.unallowedNamesValidator.bind(this)]),
+      u_email: new FormControl(null,[Validators.required, Validators.email]),
+      u_password: new FormControl(null, Validators.required)
     })
-
-    // observables syntax
   }
 
   // SYNCHRONOUS
