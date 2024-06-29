@@ -51,7 +51,7 @@
           </li>
           
           <li class="has-dropdown">
-            <a *ngIf="auth.showStatus()" routerLink="../hotels" routerLinkActive="current" class="item">Hotels <i class='bx bx-chevron-down'></i></a>
+            <a *ngIf="status.showStatus()" routerLink="../hotels" routerLinkActive="current" class="item">Hotels <i class='bx bx-chevron-down'></i></a>
             <!-- display the hotels? WHY ARE THEY OVERLAPPING? -->
             <!-- <section *ngFor="let hotel of hotels" class="dropdown-items hotel-dropdown">
               <a href="#">{{hotel.name}}</a>
@@ -59,7 +59,7 @@
           </li>
                   
           <li class="has-dropdown">
-            <a *ngIf="auth.showStatus()" routerLink="../tours" routerLinkActive="current" class="item">Tours <i class='bx bx-chevron-down'></i></a>
+            <a *ngIf="status.showStatus()" routerLink="../tours" routerLinkActive="current" class="item">Tours <i class='bx bx-chevron-down'></i></a>
             <!-- display the tours? WHY ARE THEY OVERLAPPING? -->
             <!-- <section *ngFor="let tour of tours" class="dropdown-items tour-dropdown">
               <a href="#"> {{ tour.name}}</a>
@@ -79,12 +79,12 @@
             <a  class="item">Account</a>
             <i class='bx bx-chevron-down'></i>
             <section class="dropdown-items">
-              <a *ngIf="auth.showStatus()"><i class='bx bx-user-circle'></i>Profile</a>
-              <a *ngIf="auth.showStatus()"><i class='bx bx-hotel' ></i>Bookings</a>
-              <a *ngIf="auth.showStatus()"><i class='bx bx-chat' ></i>FAQ<sub>'s</sub></a>
-              <a *ngIf="!auth.showStatus()" routerLink="../login" routerLinkActive="current"><i class='bx bx-log-in-circle'></i>Login</a>
-              <a *ngIf="!auth.showStatus()" routerLink="../signup" routerLinkActive="current"><i class='bx bx-log-out-circle'></i>Signup</a>
-              <a *ngIf="auth.showStatus()" routerLink="" (click)="auth.logout()"><i class='bx bx-log-out-circle'></i>Logout</a>  
+              <a *ngIf="status.showStatus()"><i class='bx bx-user-circle'></i>Profile</a>
+              <a *ngIf="status.showStatus()"><i class='bx bx-hotel' ></i>Bookings</a>
+              <a *ngIf="status.showStatus()"><i class='bx bx-chat' ></i>FAQ<sub>'s</sub></a>
+              <a *ngIf="!status.showStatus()" routerLink="../login" routerLinkActive="current"><i class='bx bx-log-in-circle'></i>Login</a>
+              <a *ngIf="!status.showStatus()" routerLink="../signup" routerLinkActive="current"><i class='bx bx-log-out-circle'></i>Signup</a>
+              <a *ngIf="status.showStatus()" routerLink="" (click)="status.logout()"><i class='bx bx-log-out-circle'></i>Logout</a>  
             </section>
           </li>
       </ul>

@@ -1,9 +1,10 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { AuthService } from '../services/auth/auth.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { filter, map, Observable, Subscription } from 'rxjs';
+import { StatusService } from '../services/auth/status.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { filter, map, Observable, Subscription } from 'rxjs';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit,OnDestroy{
-  constructor( private auth:AuthService){}
+  constructor( private auth:AuthService, private status:StatusService){}
 
   form!: FormGroup
   router = inject(Router)
@@ -25,13 +26,14 @@ export class LoginComponent implements OnInit,OnDestroy{
     this.auth.loginUser(this.form.value).subscribe((response)=>{
       // console.log(response)
       this.message = response.message
-      // console.log(response.token)
+      // console.log(response.message)
+      console.log(`this is the token: ${response.token}`)
       localStorage.setItem('token',response.token)
 
       setTimeout(()=>{    //delayed to read message on DOM
-        this.auth.login()
+        this.status.login()
         this.router.navigate([''])
-      })
+      }, 1000)
     })
     this.form.reset()
   }

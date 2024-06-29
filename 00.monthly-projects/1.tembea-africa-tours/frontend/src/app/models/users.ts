@@ -5,7 +5,6 @@
 //     u_email:string,
 //     u_password:string
 // }
-
 export interface registerUser  {
     id:string,
     u_name:string,
@@ -13,24 +12,20 @@ export interface registerUser  {
     u_password:string
 }
 
+export interface registerResponse {
+    message:string,
+}
+
+
 export interface loginUser  {
     id:string,
     u_email:string,
     u_password:string
 }
 
-export interface userResponse {
+
+export interface loginResponse {
     message:string,
     token:string
 }
 
-
-// export interface User{
-//     id:string,
-//     u_name:string,
-//     u_email:string,
-//     u_password:string,
-//     isEmailSent?:number, //set property to optional
-//     isDeleted?:number,  //set property to optional
-//     bookingsMade?:number
-// }

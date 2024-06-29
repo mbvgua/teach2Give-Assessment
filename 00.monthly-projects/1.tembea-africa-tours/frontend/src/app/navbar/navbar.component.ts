@@ -3,7 +3,7 @@ import { HotelService } from '../services/hotels/hotel.service';
 import { TourService } from '../services/tours/tour.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../services/auth/auth.service';
+import { StatusService } from '../services/auth/status.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit{
     constructor( 
       private hs:HotelService,
       private ts:TourService,
-      public auth:AuthService
+      public status:StatusService
     ){}
 
     // declare the properties
