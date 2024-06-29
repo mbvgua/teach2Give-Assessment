@@ -47,7 +47,11 @@
   <div class="main-menu">
       <ul>
           <li>
-            <a routerLink="" routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}" class="item">Home</a>
+            <a *ngIf="role !=='admin'" routerLink="" routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}" class="item">Home</a>
+          </li>
+
+          <li>
+            <a *ngIf="role ==='admin' && status.showStatus()" routerLink="/admin" routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}" class="item">Admin</a>
           </li>
           
           <li class="has-dropdown">

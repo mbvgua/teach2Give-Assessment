@@ -10,6 +10,6 @@ export interface Tours {
     isDeleted: number
 }
 
-export interface tourssResponse {
+export interface toursResponse {
     message:string
 }

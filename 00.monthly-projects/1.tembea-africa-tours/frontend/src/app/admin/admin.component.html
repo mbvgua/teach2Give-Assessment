@@ -1,1 +1,44 @@
-<p>admin works!</p>
+<!-- <p>admin works!</p> -->
+ <div *ngIf="role === 'admin'" class="container">
+    <h1> Admin Dashboard </h1>
+
+ <div class="users">
+
+   <div class="left">
+      <h2> Add Users </h2>
+      <form (ngSubmit)="submitUser()" [formGroup]="userForm">
+         <fieldset>
+            <div>
+               <label> Name: </label>
+               <input formControlName="u_name" type="text">
+            </div>
+   
+            <div>
+               <label> Email: </label>
+               <input formControlName="u_email" type="text">
+            </div>
+   
+            <div>
+               <label> Password: </label>
+               <input formControlName="u_password" type="text">
+            </div>
+   
+            <button> Add User </button>
+         </fieldset>
+
+      </form>
+   </div>
+
+    <!-- view existing hotesl -->
+    <div *ngIf="users" class="right">
+      <h2> Existing Users</h2>
+      <ol >
+         <li *ngFor="let user of users">
+            {{user.u_name}}
+            {{user.u_email}}
+         </li>
+      </ol>                
+    </div>
+
+
+ </div>

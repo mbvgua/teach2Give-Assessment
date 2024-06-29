@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Tours } from '../../models/tours';
-import { HttpClient } from '@angular/common/http';
+import { Tours, toursResponse } from '../../models/tours';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,6 +21,17 @@ export class TourService {
   getTour(id:string):Observable<Array<Tours>>{
     return this.http.get<Array<Tours>>(this.baseUrl + `${id}`) 
   }
+
+  // addTour
+  addTour(newTour:Tours):Observable<toursResponse>{
+    const token = localStorage.getItem('token') as string
+    return this.http.post<toursResponse>(this.baseUrl + '',newTour,{
+      headers: new HttpHeaders ({
+        token:token
+      })
+    })
+  }
+
   // updateHotel(id)
   // deleteHotel(id)
 }

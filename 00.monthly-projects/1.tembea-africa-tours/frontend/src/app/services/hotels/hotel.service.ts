@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Hotels } from '../../models/hotels';
-import { HttpClient } from '@angular/common/http';
+import { Hotels, hotelsResponse } from '../../models/hotels';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class HotelService {
 
   private readonly baseUrl:string = 'http://localhost:4000/hotels/' 
 
-  // get al the hotels
+  // get all the hotels
   getHotels():Observable<Array<Hotels>>{
     return this.http.get<Array<Hotels>>(this.baseUrl + '') 
   }
@@ -24,5 +24,15 @@ export class HotelService {
   }
   // updateHotel(id)
   // deleteHotel(id)
+
+  // addhotel
+  addHotel(newHotel:Hotels):Observable<hotelsResponse>{
+    const token = localStorage.getItem('token') as string
+    return this.http.post<hotelsResponse>(this.baseUrl+ '',newHotel,{
+      headers: new HttpHeaders ({
+        token:token
+      })
+    })
+  }
 
 }

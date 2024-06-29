@@ -21,19 +21,34 @@ export class LoginComponent implements OnInit,OnDestroy{
   sub!:Subscription   //prevent memory leak on component switching
   unallowedNames = ['.','*','?','!']  //update to regex later
   message = ''  
+  role = ''
   
   onSubmit(){
-    this.auth.loginUser(this.form.value).subscribe((response)=>{
-      // console.log(response)
-      this.message = response.message
-      // console.log(response.message)
+    this.auth.loginUser(this.form.value).subscribe(
+      (response)=>{
+      this.message = response.message //message to displayed in DOM
       console.log(`this is the token: ${response.token}`)
       localStorage.setItem('token',response.token)
+      localStorage.setItem('role','admin') 
+      // localStorage.setItem('role',response.role)  //change backedn to be able to use this
+      if (response.token){
+        this.role = localStorage.getItem('role') as string
 
-      setTimeout(()=>{    //delayed to read message on DOM
-        this.status.login()
-        this.router.navigate([''])
-      }, 1000)
+        if(this.role === 'admin'){
+          this.router.navigate(['/admin'])
+        } else {
+
+          setTimeout(()=>{    //delayed to read message on DOM
+            // this.status.login()
+            this.status.showStatus()
+            this.router.navigate([''])
+          }, 1000)
+        }
+        
+      }
+    },
+    (error)=>{
+      this.message = error.error.message //severe nesting
     })
     this.form.reset()
   }

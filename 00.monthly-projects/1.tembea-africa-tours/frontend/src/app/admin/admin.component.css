@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    width: 100%;
+    gap: .5rem;
+}
+
+/* users div styling */
+.users{
+    display: flex;
+    /* margin: 0px auto; */
+}
+
+.users .left{
+    width: 45%;
+    padding: .4rem;
+    margin: 1rem;
+}
+.users .right{
+    width: 45%;
+    padding: .4rem;
+    /* overflow-y: scroll; */
+}

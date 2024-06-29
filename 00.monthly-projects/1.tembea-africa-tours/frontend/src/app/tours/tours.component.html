@@ -1,7 +1,7 @@
 <!-- <p>tours works!</p> -->
 
-        <!-- begin choosing tour div -->
-        <div class="choose-tour">
+        <!-- User tours div -->
+        <div *ngIf="role !== 'admin'" class="choose-tour">
             <div class="top">
                 <h3> choose tour </h3>
                 <h2> popular tours  </h2>
@@ -36,4 +36,76 @@
 
         </div>
         <!-- end choosing tour div -->
+
+
+        <!-- Admin dashboard -->
+        <div *ngIf="role === 'admin'">
+            <h1> Admin dashboard </h1>
+            <div class="tours">
+               
+               <!-- add new tours -->
+               <div class="left"> 
+                  <div *ngIf="message" class="popup">
+                     <label> {{message}} </label>
+                  </div>
+                  <h2> Add Tours </h2>
+                   <form  (ngSubmit)="submitTour()" [formGroup]="tourForm">
+
+
+                      <fieldset>
+                         <div>
+                            <label> Name: </label>
+                            <input formControlName="t_name" type="text">
+                         </div>
+             
+                         <div>
+                            <label> Location: </label>
+                            <input formControlName="t_location" type="text">
+                         </div>
+             
+                         <div>
+                            <label> Image Url: </label>
+                            <input formControlName="t_image_url" type="text">
+                         </div>
+          
+                         <div>
+                            <label> rating: </label>
+                            <input formControlName="t_rating" type="text">
+                         </div>
+             
+                         <div>
+                            <label> Description: </label>
+                            <input formControlName="t_description" type="text">
+                         </div>
+             
+                         <div>
+                            <label> Price: </label>
+                            <input formControlName="t_price" type="text">
+                         </div>
+          
+                         <button> Add Tour </button>
+                      </fieldset>
+          
+                   </form>
+                </div>
+          
+          
+                <!-- current Tours -->
+                <div *ngIf="tours" class="right">
+                   <h2> Existing tours </h2>
+                   <ol >
+                      <li *ngFor="let tour of tours">
+                         {{tour.t_name}}
+                         {{tour.t_location}}
+                         {{tour.t_rating}}
+                         {{tour.t_price}}
+                      </li>
+                   </ol>
+                    
+                </div>
+          
+          
+              </div>
+        </div>
+  
 

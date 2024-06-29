@@ -14,7 +14,7 @@ export class StatusService {
   logout(){
     /*MAJOR PROBLEM WITH THIS. TO LOGIN YOU ARE FETCGIN FROM TH ELOCAL STORAGE,
      BUT IF YOU DELETE IT HERE HOW WILL YOU GET THE TOKEN FRO LOCAL STORAGE*/
-    //  -------->localStorage.clear()<----------------
+    localStorage.clear()
     this.isLoggedIn = false
   }
 
@@ -34,5 +34,10 @@ export class StatusService {
     
     this.isLoggedIn = false
     return this.isLoggedIn
+  }
+
+  // get the user roles
+  getRole(){
+    // return roles based on tokens
   }
 }

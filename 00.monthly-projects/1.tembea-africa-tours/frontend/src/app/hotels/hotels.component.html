@@ -1,6 +1,6 @@
 <!-- <p>hotels works!</p> -->
-         <!-- begin choosing hotel div -->
-         <div class="choose-hotel">
+         <!-- User hotel div -->
+         <div *ngIf="role !== 'admin'" class="choose-hotel">
             <div class="top">
                 <h3> choose hotel </h3>
                 <h2> recommended hotels  </h2>
@@ -43,4 +43,72 @@
 
         </div>
         <!-- end choosing hotel div -->
+
+<!-- Admin dashboard -->
+<div *ngIf="role === 'admin'">
+   <h1> Admin dashboard </h1>
+
+      <div class="hotels">
+
+         <!-- add hotesl -->
+         <div class="left">
+            <div *ngIf="message" class="popup">
+               <label> {{message}} </label>
+            </div>
+            <h2> Add Hotels </h2>
+
+            <form (ngSubmit)="submitHotel()" [formGroup]="hotelForm">
+               <fieldset>
+                  <div>
+                     <label> Name: </label>
+                     <input formControlName="h_name" type="text">
+                  </div>
+         
+                  <div>
+                     <label> Location: </label>
+                     <input formControlName="h_location" type="text">
+                  </div>
+         
+                  <div>
+                     <label> Image Url: </label>
+                     <input formControlName="h_image_url" type="text">
+                  </div>
+
+                  <div>
+                     <label> Description: </label>
+                     <input formControlName="h_description" type="text">
+                  </div>
+            
+                  <div>
+                     <label> Price: </label>
+                     <input formControlName="h_price" type="text">
+                  </div>
+         
+                  <div>
+                     <label> Star Rating: </label>
+                     <input formControlName="h_rating" type="text">
+                  </div>
+                  <button> Add Tour </button>
+               </fieldset>
+      
+            </form>
+         </div>
+      
+         <!-- view existing hotesl -->
+         <div *ngIf="hotels" class="right">
+            <h2> Existing hotels</h2>
+            <ol >
+               <li *ngFor="let hotel of hotels">
+                  {{hotel.h_name}}
+                  {{hotel.h_location}}
+                  {{hotel.h_rating}}
+                  {{hotel.h_price}}
+               </li>
+            </ol>                
+         </div>
+      
+      
+      </div>
+</div>
+
 

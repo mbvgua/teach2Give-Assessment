@@ -24,12 +24,15 @@ export class NavbarComponent implements OnInit{
     // declare the properties
     hotels!:string
     tours!:string
+    role:string = ''
 
     ngOnInit(): void {
       // this.hotels = this.hs.getHotels()
       // this.tours = this.ts.getTours()
       this.hotels = 'build this'
       this.tours = 'later'
+      this.role = localStorage.getItem('role') as string
+
     }
 
 }

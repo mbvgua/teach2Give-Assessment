@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit{
+
+  constructor(){}
+  role = ''
+
+  ngOnInit(): void {
+    this.role = localStorage.getItem('role') as string  
+  }
 
 }
