@@ -1,10 +1,15 @@
 // create the hotels interface
-export interface Hotel  {
+export interface Hotels  {
     id: number,
-    name:string,
-    location:string,
-    imageUrl:string,
-    description:string,
-    starRating:string,
-    price:number
+    h_name:string,
+    h_location:string,
+    h_image_url:string,
+    h_description:string,
+    h_rating:string,
+    h_price:number,
+    isDeleted: number
+}
+
+export interface hotelsResponse {
+    message:string
 }

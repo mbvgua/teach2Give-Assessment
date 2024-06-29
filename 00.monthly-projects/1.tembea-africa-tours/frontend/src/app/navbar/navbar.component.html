@@ -3,102 +3,94 @@
 <!-- header div -->
 <div class="both-headers">
 
-        <!-- contact info -->
-        <div class="header-contact">
+  <!-- contact info -->
+  <div class="header-contact">
 
-            <div class="contact-card">
-                <i class='bx bxs-map'></i>
-                <label> 1738, Ongata Rongai, Kenya </label>
-            </div>
+      <div class="contact-card">
+          <i class='bx bxs-map'></i>
+          <label> 1738, Ongata Rongai, Kenya </label>
+      </div>
 
-            <div class="contact-card">
-                <i class='bx bxs-envelope'></i>
-                <label> info&#64;tembeaafrica.co.ke </label>
-            </div>
+      <div class="contact-card">
+          <i class='bx bxs-envelope'></i>
+          <label> info&#64;tembeaafrica.co.ke </label>
+      </div>
 
-            <div class="contact-card">
-                <i class='bx bxs-phone'></i>
-                <label> +254 700 000 000 </label>
-            </div>
+      <div class="contact-card">
+          <i class='bx bxs-phone'></i>
+          <label> +254 700 000 000 </label>
+      </div>
 
-            <div class="contact-card">
-                <i class='bx bxl-facebook'></i>
-                <i class='bx bxl-twitter'></i>
-                <i class='bx bxl-linkedin'></i>
-                <i class='bx bxl-discord-alt'></i>
-                <i class='bx bxl-whatsapp'></i>
-            </div>
+      <div class="contact-card">
+          <i class='bx bxl-facebook'></i>
+          <i class='bx bxl-twitter'></i>
+          <i class='bx bxl-linkedin'></i>
+          <i class='bx bxl-discord-alt'></i>
+          <i class='bx bxl-whatsapp'></i>
+      </div>
 
-            <div class="contact-card undercover">
-                <label> Book Consultation </label>
-                <i class='bx bx-right-arrow-alt'></i>
-            </div>
+      <div class="contact-card undercover">
+          <label> Book Consultation </label>
+          <i class='bx bx-right-arrow-alt'></i>
+      </div>
 
-        </div>
-        <!-- end contact info -->
+  </div>
+  <!-- end contact info -->
 
-        <!-- main header menu -->
-       <div class="header-main">
-        <div class="logo">
-            <img src="../../assets/images/airplane-svgrepo-com.svg" alt="company logo">
-            <h2> Tembea Africa </h2>
-        </div>
+  <!-- main header menu -->
+ <div class="header-main">
+  <div class="logo">
+      <img src="../../assets/images/airplane-svgrepo-com.svg" alt="company logo">
+      <h2> Tembea Africa </h2>
+  </div>
 
-        <div class="main-menu">
-            <ul>
-                <li>
-                  <a routerLink="" routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}" class="item">Home</a>
-                </li>
-                
-                <li class="has-dropdown">
-                  <a *ngIf="auth.showStatus()" routerLink="../hotels" routerLinkActive="current" class="item">Hotels <i class='bx bx-chevron-down'></i></a>
-                  <!-- display the hotels? WHY ARE THEY OVERLAPPING? -->
-                  <section *ngFor="let hotel of hotels" class="dropdown-items hotel-dropdown">
-                    <a href="#">{{hotel.name}}</a>
-                  </section>
-                </li>
-                        
-                <li class="has-dropdown">
-                  <a *ngIf="auth.showStatus()" routerLink="../tours" routerLinkActive="current" class="item">Tours <i class='bx bx-chevron-down'></i></a>
-                  <!-- display the tours? WHY ARE THEY OVERLAPPING? -->
-                  <section *ngFor="let tour of tours" class="dropdown-items tour-dropdown">
-                    <a href="#"> {{ tour.name}}</a>
-                  </section>
-                </li>
-                
-                <li>
-                    <a routerLink="../contact-us" routerLinkActive="current" class="item"> Contact Us </a>
-                </li>
-            </ul
-            >
-        </div>
+  <div class="main-menu">
+      <ul>
+          <li>
+            <a routerLink="" routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}" class="item">Home</a>
+          </li>
+          
+          <li class="has-dropdown">
+            <a *ngIf="auth.showStatus()" routerLink="../hotels" routerLinkActive="current" class="item">Hotels <i class='bx bx-chevron-down'></i></a>
+            <!-- display the hotels? WHY ARE THEY OVERLAPPING? -->
+            <!-- <section *ngFor="let hotel of hotels" class="dropdown-items hotel-dropdown">
+              <a href="#">{{hotel.name}}</a>
+            </section> -->
+          </li>
+                  
+          <li class="has-dropdown">
+            <a *ngIf="auth.showStatus()" routerLink="../tours" routerLinkActive="current" class="item">Tours <i class='bx bx-chevron-down'></i></a>
+            <!-- display the tours? WHY ARE THEY OVERLAPPING? -->
+            <!-- <section *ngFor="let tour of tours" class="dropdown-items tour-dropdown">
+              <a href="#"> {{ tour.name}}</a>
+            </section> -->
+          </li>
+          
+          <li>
+              <a routerLink="../contact-us" routerLinkActive="current" class="item"> Contact Us </a>
+          </li>
+      </ul
+      >
+  </div>
 
-        <div class="user-details">
-            <ul>
-              <li class="has-dropdown">
-                  <a  class="item">Account</a>
-                  <i class='bx bx-chevron-down'></i>
-                  <section class="dropdown-items">
-                    <!-- <a *ngIf="auth.showStatus()"><i class='bx bx-user-circle'></i>Profile</a>
-                    <a *ngIf="auth.showStatus()"><i class='bx bx-hotel' ></i>Bookings</a>
-                    <a *ngIf="auth.showStatus()"><i class='bx bx-chat' ></i>FAQ<sub>'s</sub></a>
-                    <a *ngIf="!auth.showStatus()" routerLink="../login" routerLinkActive="current"><i class='bx bx-log-in-circle'></i>Login</a>
-                    <a *ngIf="!auth.showStatus()" routerLink="../signup" routerLinkActive="current"><i class='bx bx-log-out-circle'></i>Signup</a>
-                    <a *ngIf="auth.showStatus()" routerLink="" (click)="auth.logout()" class="item"><i class='bx bx-log-out-circle'></i>Logout</a> -->
-                    
-                    <a ><i class='bx bx-user-circle'></i>Profile</a>
-                    <a ><i class='bx bx-hotel' ></i>Bookings</a>
-                    <a ><i class='bx bx-chat' ></i>FAQ<sub>'s</sub></a>
-                    <a  routerLink="../login" routerLinkActive="current"><i class='bx bx-log-in-circle'></i>Login</a>
-                    <a  routerLink="../signup" routerLinkActive="current"><i class='bx bx-log-out-circle'></i>Signup</a>
-                    <a  routerLink="" (click)="auth.logout()" class="item"><i class='bx bx-log-out-circle'></i>Logout</a>
-  
-                  </section>
-                </li>
-            </ul>
-        </div>
-        </div>
-        <!-- end main-menu header menu -->
+  <div class="user-details">
+      <ul>
+        <li class="has-dropdown">
+            <a  class="item">Account</a>
+            <i class='bx bx-chevron-down'></i>
+            <section class="dropdown-items">
+              <a *ngIf="auth.showStatus()"><i class='bx bx-user-circle'></i>Profile</a>
+              <a *ngIf="auth.showStatus()"><i class='bx bx-hotel' ></i>Bookings</a>
+              <a *ngIf="auth.showStatus()"><i class='bx bx-chat' ></i>FAQ<sub>'s</sub></a>
+              <a *ngIf="!auth.showStatus()" routerLink="../login" routerLinkActive="current"><i class='bx bx-log-in-circle'></i>Login</a>
+              <a *ngIf="!auth.showStatus()" routerLink="../signup" routerLinkActive="current"><i class='bx bx-log-out-circle'></i>Signup</a>
+              <a *ngIf="auth.showStatus()" routerLink="" (click)="auth.logout()" class="item"><i class='bx bx-log-out-circle'></i>Logout</a>  
+            </section>
+          </li>
+      </ul>
+  </div>
+  </div>
+  <!-- end main-menu header menu -->
 
 
 </div>

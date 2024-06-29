@@ -1,55 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Tour } from '../../models/tours';
+import { Tours } from '../../models/tours';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TourService {
 
-  constructor() { }
+  constructor( private http:HttpClient) { }
+  private readonly baseUrl:string = 'http://localhost:4000/tours/'
 
-  // hardcode the tours
-  tours:Array<Tour> = [
-    {
-      id: 1,
-      name:'Altair',
-      destination:'Kwa mathe',
-      imageUrl:'https://cdn.pixabay.com/photo/2022/11/21/21/41/mountains-7608306_640.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    },
-    {
-      id: 2,
-      name:'Nortre Dame',
-      destination:'Kule Ndakas',
-      imageUrl:'https://cdn.pixabay.com/photo/2021/11/22/07/37/tour-guide-6816049_640.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    },
-    {
-      id: 3,
-      name:'Amazon in Winter',
-      destination:'kwangu',
-      imageUrl:'https://cdn.pixabay.com/photo/2015/10/01/19/40/paris-967518_640.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    },
-    {
-      id: 4,
-      name:'Paris on Christmas',
-      destination:'Tebu guess',
-      imageUrl:'https://cdn.pixabay.com/photo/2019/09/05/06/42/paris-4453237_640.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    }
-  ]
-
-  // define all the neccessary methods
-  getTours(){
-    return this.tours
+  // get al the tours
+  getTours():Observable<Array<Tours>>{
+    return this.http.get<Array<Tours>>(this.baseUrl + '') 
   }
+
+  // ADMIN ROLES
+  // getHotel(id)
+  getTour(id:string):Observable<Array<Tours>>{
+    return this.http.get<Array<Tours>>(this.baseUrl + `${id}`) 
+  }
+  // updateHotel(id)
+  // deleteHotel(id)
 }

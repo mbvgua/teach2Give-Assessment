@@ -1,6 +1,6 @@
 <!-- <p>hotel-details works!</p> -->
 
-<div class="tour-div" id="{{hotel.id}}">
+<div *ngIf="hotel" class="hotel-div" id="{{hotel.id}}">
     <!-- left div -->
     <div class="left">
         <img src="{{hotel.imageUrl}}" alt="hotel Image">
@@ -8,14 +8,19 @@
 
     <!-- right div -->
     <div class="right">
-        <h1> {{hotel.name}} </h1>
-        <p> 
-            {{hotel.location}}
-            <a href="#"> Show on Map </a>
-            {{hotel.description}}
-        </p>
+        <p class="title"> {{hotel.name}} </p>
+        <label class="location"> <a href="#"> Show on Map </a>{{hotel.location}} </label>
+        <p class="desc"> {{hotel.description}} </p>
         <p> {{hotel.starRating}} </p>
-        <p> {{hotel.price}} </p>
+        <p class="price"> {{hotel.price | currency:'Ksh.'}} </p>
+
+        <p href="#" class="info"> Make Booking</p>
     </div>
 </div>
+
+
+
+
+
+
 

@@ -1,58 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Hotel } from '../../models/hotels';
+import { Hotels } from '../../models/hotels';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelService {
 
-  constructor() { }
+  constructor( private http:HttpClient) { }
 
-  // hardcode all the hotels
-  // made public to allow acces from the ***-details component
-  hotels:Array<Hotel> = [
-    {
-      id: 1,
-      name:'Altair',
-      location:'Kwa mathe',
-      imageUrl:'https://cdn.pixabay.com/photo/2014/07/21/19/20/lobby-398845_640.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    },
-    {
-      id: 2,
-      name:'Intercontinental Hotel',
-      location:'Kule Ndakas',
-      imageUrl:'https://cdn.pixabay.com/photo/2023/03/29/10/27/hotel-7885138_640.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    },
-    {
-      id: 3,
-      name:'World Boss Hotel',
-      location:'kwangu',
-      imageUrl:'https://cdn.pixabay.com/photo/2021/09/22/08/35/architecture-6646154_960_720.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    },
-    {
-      id: 4,
-      name:'Hii Nayo haijulikani',
-      location:'Tebu guess',
-      imageUrl:'https://cdn.pixabay.com/photo/2012/11/21/10/24/building-66789_640.jpg',
-      description:'The great',
-      starRating:'The great',
-      price:1738
-    }
-  ]
+  private readonly baseUrl:string = 'http://localhost:4000/hotels/' 
 
-  // create all the hotels methods
   // get al the hotels
-  getHotels(){
-    return this.hotels
+  getHotels():Observable<Array<Hotels>>{
+    return this.http.get<Array<Hotels>>(this.baseUrl + '') 
   }
+
+  // ADMIN ROLES
+  // getHotel(id)
+  getHotel(id:string):Observable<Array<Hotels>>{
+    return this.http.get<Array<Hotels>>(this.baseUrl + `${id}`) 
+  }
+  // updateHotel(id)
+  // deleteHotel(id)
 
 }

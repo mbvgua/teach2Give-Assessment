@@ -9,15 +9,11 @@
 
     <!-- right div -->
     <div class="right">
-        <h1> {{tour.name}} </h1>
-        <p> 
-            {{tour.destination}}
-            <a href="#"> Show on Map </a>
-            {{tour.description}}
-        </p>
-        <!-- <p> {{tour.starRating}} </p> -->
-        <p> {{tour.price}} </p>
-        <a href="#"> Make Booking</a>
+        <p class="title"> {{tour.name}} </p>
+        <p class="desc"><a href="#"> Show on Map </a> {{tour.description}} </p>
+        <p class="price"> {{tour.price | currency:'Ksh.'}} </p>
+
+        <p href="#" class="info"> Make Booking</p>
     </div>
 </div>
 

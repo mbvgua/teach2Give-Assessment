@@ -16,13 +16,13 @@
                 <!-- begin hotel card 1 -->
                 <div *ngFor="let hotel of hotels" class="hotel-card">
                     <div class="img">
-                        <img src="{{hotel.imageUrl}}" alt="hotel pic">
+                        <img src="{{hotel.h_image_url}}" alt="hotel pic">
                     </div>
                     <div class="content">
 
-                        <p class="title"> {{hotel.name}} </p>
-                        <p class="desc"> {{hotel.description}}</p>
-                        <p class="price"> {{hotel.price | currency:'Ksh.'}} </p>
+                        <p class="title"> {{hotel.h_name}} </p>
+                        <p class="desc"> {{hotel.h_description}}</p>
+                        <p class="price"> {{hotel.h_price | currency:'Ksh.'}} </p>
                         <!-- using a relative path -->
                         <p routerLink="{{hotel.id}}" class="info"> See full Itenerary <i class='bx bx-right-arrow-alt'></i></p>
                         <!-- binding an absolute path.TOO COMPLEX FOR ME -->

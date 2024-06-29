@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HotelService } from '../services/hotels/hotel.service';
 import { TourService } from '../services/tours/tour.service';
 import { CommonModule } from '@angular/common';
-import { Hotel } from '../models/hotels';
-import { Tour } from '../models/tours';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 
@@ -24,12 +22,14 @@ export class NavbarComponent implements OnInit{
     ){}
 
     // declare the properties
-    hotels!:Array<Hotel>
-    tours!:Array<Tour>
+    hotels!:string
+    tours!:string
 
     ngOnInit(): void {
-      this.hotels = this.hs.getHotels()
-      this.tours = this.ts.getTours()
+      // this.hotels = this.hs.getHotels()
+      // this.tours = this.ts.getTours()
+      this.hotels = 'build this'
+      this.tours = 'later'
     }
 
 }

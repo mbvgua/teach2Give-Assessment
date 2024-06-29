@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hotel } from '../models/hotels';
+import { Hotels } from '../models/hotels';
 import { HotelService } from '../services/hotels/hotel.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -15,10 +15,20 @@ export class HotelsComponent implements OnInit{
 
   constructor( private hs:HotelService){}
 
-  hotels!: Array<Hotel>
+  hotels:Array<Hotels> = []
 
   ngOnInit(): void {
-    this.hotels = this.hs.getHotels()
+    // get all hotels
+    this.hs.getHotels().subscribe( response=>{
+      this.hotels = response
+      console.log(response)
+    })
+
+    // ADMIN ROLES
+    // getHotel(id)
+    // updateHotel(id)
+    // deleteHotel(id)
+
   }
 
 }

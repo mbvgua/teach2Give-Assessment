@@ -16,12 +16,12 @@
                 <!-- begin tour card 1 -->
                 <div *ngFor="let tour of tours" class="tour-card">
                     <div class="img">
-                        <img src="{{tour.imageUrl}}" alt="tour pic">
+                        <img src="{{tour.t_image_url}}" alt="tour pic">
                     </div>
                     <div class="content">
-                        <p class="title"> {{tour.name}} </p>
-                        <p class="desc"> {{tour.description}} </p>
-                        <p class="price"> {{tour.price | currency:'Ksh.'}} </p>
+                        <p class="title"> {{tour.t_name}} </p>
+                        <p class="desc"> {{tour.t_description}} </p>
+                        <p class="price"> {{tour.t_price | currency:'Ksh.'}} </p>
                         <!-- use relative path to redirect to specific tour -->
                         <p routerLink="{{tour.id}}" class="info"> book tour <i class='bx bx-right-arrow-alt'></i></p>
                         <!-- use property binding absolute path to redirect to specific tour.TOO COMPLEX FOR ME -->

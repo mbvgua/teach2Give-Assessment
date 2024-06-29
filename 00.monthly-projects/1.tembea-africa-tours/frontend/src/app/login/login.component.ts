@@ -19,26 +19,16 @@ export class LoginComponent implements OnInit,OnDestroy{
   router = inject(Router)
   sub!:Subscription   //prevent memory leak on component switching
 
-  // login(){
-  //   if (this.form.valid){
-  //     // change current property to true
-  //     this.auth.login()
-  //     this.router.navigate([''])
-  //   } else {
-  //     return (console.log('form not valid'))
-  //   }
-
-  // }
 
   // custom validators
   unallowedNames = ['.','*','?','!']  //use regex
   
   onSubmit(){
-    // console.log(this.form)
-    // console.log(this.form.value)  //remove nesting
     this.auth.loginUser(this.form.value.predefinedData)
     .subscribe((response)=>{
       console.log(response)
+      this.auth.login()
+      this.router.navigate([''])
       // localStorage.setItem('token',response.token)
     })
     this.form.reset()

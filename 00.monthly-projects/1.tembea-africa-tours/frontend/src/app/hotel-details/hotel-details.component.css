@@ -1,0 +1,55 @@
+.hotel-div{
+    display: flex;
+    width: 80vw;
+    height: 500px;
+    /* border: 1px solid; */
+    margin: 1rem auto;
+}
+.left{
+    width:60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.left img{
+    border-radius: 15px;
+    /* overflow: hidden; */
+}
+
+.right{
+    width: 40%;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding: .5rem;
+}
+
+.right .title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+}
+
+.right .price{
+    letter-spacing: .3rem;
+    font-weight: 300;
+}
+.right .info{
+    border: 2px solid var(--royal-purple);
+    border-radius: 20px;
+    padding: .4rem;
+    font-size: smaller;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+    font-weight: 600;
+}
+.right .info:hover{
+    color: var(--white);
+    background-color: var(--royal-purple);
+
+}
+/* ---end popular tours div */
