@@ -5,6 +5,8 @@ export interface Tour{
     t_name:string,
     t_image_url:string,
     t_rating:string,
+    t_description:string,
+    t_locattion:string,
     t_price:number
 }
 

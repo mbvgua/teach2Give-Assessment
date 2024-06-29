@@ -16,7 +16,7 @@ const dbInstance = new DbHelper()
 
 export async function addTour(request:Request,response:Response) {
     const id = uid()
-    const {t_name,t_image_url,t_rating,t_price} = request.body
+    const {t_name,t_image_url,t_rating,t_price,t_description,t_location} = request.body
 
     const { error } = tourSchema.validate(request.body)
     try{
@@ -28,7 +28,9 @@ export async function addTour(request:Request,response:Response) {
                 t_name:t_name,
                 t_image_url:t_image_url,
                 t_rating:t_rating,
-                t_price:t_price
+                t_price:t_price,
+                t_description: t_description,
+                t_location: t_location
             })
 
             const payload:TourPayload = {
@@ -98,13 +100,15 @@ export async function updateTour  (request:Request<{id:string}>,response:Respons
             return response.status(400).send(error.details[0].message)
         } else {
 
-            const {t_name,t_image_url,t_rating,t_price} = request.body
+            const {t_name,t_image_url,t_rating,t_price,t_description,t_location} = request.body
             await dbInstance.exec('updateTour',{
                 id:id,
                 t_name:t_name,
                 t_image_url:t_image_url,
                 t_rating:t_rating,
-                t_price:t_price
+                t_price:t_price,
+                t_description: t_description,
+                t_location: t_location
             })
     
             response.status(200).send({message:"Existing tour updated succesfully!"})

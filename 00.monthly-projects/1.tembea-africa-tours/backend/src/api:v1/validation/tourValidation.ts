@@ -4,5 +4,7 @@ export const tourSchema = Joi.object({
     t_name:Joi.string().required(),
     t_image_url:Joi.string().required(),
     t_rating:Joi.number().optional().min(0).max(5),
-    t_price:Joi.number().required()
+    t_price:Joi.number().required(),
+    t_description:Joi.string().required(),
+    t_location:Joi.string().required()
 })

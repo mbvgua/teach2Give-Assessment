@@ -5,7 +5,9 @@ export interface Hotel{
     h_name:string,
     h_image_url:string,
     h_rating:string,
-    h_price:number
+    h_price:number,
+    h_description:string,
+    h_location:string
 }
 
 export interface HotelPayload{

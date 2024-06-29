@@ -1,14 +1,16 @@
 # #######
 # add a new tour
 POST  http://localhost:4000/tours
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyZDZkOTBiLTRmZGMtNGQxOS1hNDIyLWFhZDFjZDQzY2M1NiIsIm5hbWUiOiJTaXIgTWFndWlyZSIsImVtYWlsIjoibWFndWlyZTFAZ21haWwuY29tIiwiaWF0IjoxNzE5NTM0OTA1LCJleHAiOjE3MjEyNjI5MDV9.dlI33zL2PlZQP0O5cdjxqzz1qVvTlWy25qB3X6bltbE
 Content-Type: application/json
 
 {
-    "t_name": "Slovakia in winter",
-    "t_image_url": "https://cdn.pixabay.com/photo/2022/08/26/07/57/tavern-7411977_640.jpg",
-    "t_rating": 5,
-    "t_price": 12000000
+    "t_name": "Sakura Tree season",
+    "t_image_url": "https://cdn.pixabay.com/photo/2020/06/02/01/33/sakura-5248955_640.jpg",
+    "t_rating": 4,
+    "t_description": "The sakura tree, also known as the cherry blossom tree, is an iconic symbol of Japan.  These beautiful trees boast delicate pink or white flowers that bloom for just a short period each spring.  Their fleeting beauty is a metaphor for the impermanence of life, but also a celebration of renewal and new beginnings",
+    "t_location": "Japan",
+    "t_price": 10000
 }
 
 
@@ -20,14 +22,14 @@ GET http://localhost:4000/tours
 #######
 # get a specific tour
 GET http://localhost:4000/tours/23bd47c7-97e4-413e-ae3a-b34cde17b4cd
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyZDZkOTBiLTRmZGMtNGQxOS1hNDIyLWFhZDFjZDQzY2M1NiIsIm5hbWUiOiJTaXIgTWFndWlyZSIsImVtYWlsIjoibWFndWlyZTFAZ21haWwuY29tIiwiaWF0IjoxNzE5NTM0OTA1LCJleHAiOjE3MjEyNjI5MDV9.dlI33zL2PlZQP0O5cdjxqzz1qVvTlWy25qB3X6bltbE
 
 
 
 #######
 # update a tour
 PUT http://localhost:4000/tours/23bd47c7-97e4-413e-ae3a-b34cde17b4cd
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyZDZkOTBiLTRmZGMtNGQxOS1hNDIyLWFhZDFjZDQzY2M1NiIsIm5hbWUiOiJTaXIgTWFndWlyZSIsImVtYWlsIjoibWFndWlyZTFAZ21haWwuY29tIiwiaWF0IjoxNzE5NTM0OTA1LCJleHAiOjE3MjEyNjI5MDV9.dlI33zL2PlZQP0O5cdjxqzz1qVvTlWy25qB3X6bltbE
 Content-Type: application/json
 
 {
@@ -41,6 +43,6 @@ Content-Type: application/json
 ###########
 # delete a tour
 DELETE http://localhost:4000/tours/23bd47c7-97e4-413e-ae3a-b34cde17b4cd
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxNTAyNjM0LWViYjUtNGY1Zi04OWNmLTVlZDE0YTczNDYxMiIsInRfbmFtZSI6IkdyZWVjZSBpbiBTdW1tZXIiLCJ0X3ByaWNlIjoxMjAwMDAwMCwiaWF0IjoxNzE4NjEzMjM0LCJleHAiOjE3MTkyMTgwMzR9.07GY_x3pMNyOXkRftTCV7aAfBC8NHeea-fLg8YBM7as
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyZDZkOTBiLTRmZGMtNGQxOS1hNDIyLWFhZDFjZDQzY2M1NiIsIm5hbWUiOiJTaXIgTWFndWlyZSIsImVtYWlsIjoibWFndWlyZTFAZ21haWwuY29tIiwiaWF0IjoxNzE5NTM0OTA1LCJleHAiOjE3MjEyNjI5MDV9.dlI33zL2PlZQP0O5cdjxqzz1qVvTlWy25qB3X6bltbE
 
 

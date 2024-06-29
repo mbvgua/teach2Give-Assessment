@@ -15,19 +15,21 @@ const dbInstance = new DbHelper()
 
 export async function addHotel(request:Request,response:Response) {
     const id = uid()
-    const {h_name,h_image_url,h_rating,h_price} = request.body
+    const {h_name,h_image_url,h_rating,h_price,h_description,h_location} = request.body
 
     const { error } = hotelSchema.validate(request.body)
     try{
         if(error){
-            return response.status(400).send(error.details[0].message)
+            return response.status(400).send(error)
         } else {
             await dbInstance.exec('addHotel',{
                 id:id,
                 h_name:h_name,
                 h_image_url:h_image_url,
                 h_rating:h_rating,
-                h_price:h_price
+                h_price:h_price,
+                h_description:h_description,
+                h_location:h_location
             })
 
             const payload:HotelPayload = {
@@ -97,12 +99,14 @@ export async function updateHotel  (request:Request<{id:string}>,response:Respon
             return response.status(400).send(error.details[0].message)
         } else {
 
-            const {h_name,h_image_url,h_rating,h_price} = request.body
+            const {h_name,h_image_url,h_rating,h_price,h_description,h_location} = request.body
             await dbInstance.exec('updateHotel',{
                 id:id,
                 h_name:h_name,
                 h_image_url:h_image_url,
                 h_rating:h_rating,
+                h_description:h_description,
+                h_location:h_location,
                 h_price:h_price
             })
     
