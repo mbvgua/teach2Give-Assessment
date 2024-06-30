@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
-import { registerUser } from '../models/users';
+import { User } from '../models/users';
 
 @Component({
   selector: 'app-admin',
@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit {
   // the forms
   role:string = ''
   userForm!: FormGroup
-  users:Array<registerUser> = []
+  users:Array<User> = []
 
   submitUser(){
     this.auth.registerUser(this.userForm.value).subscribe((response)=>{
@@ -32,7 +32,8 @@ export class AdminComponent implements OnInit {
 
     // CREATE OPERATIONS
 
-    this.auth.getUsers().subscribe( response=>{
+    this.auth.getUsers().subscribe( 
+      response=>{
       this.users = response
       // console.log(this.users)
     })

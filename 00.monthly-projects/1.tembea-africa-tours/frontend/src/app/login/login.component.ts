@@ -26,11 +26,13 @@ export class LoginComponent implements OnInit,OnDestroy{
   onSubmit(){
     this.auth.loginUser(this.form.value).subscribe(
       (response)=>{
-      this.message = response.message //message to displayed in DOM
-      console.log(`this is the token: ${response.token}`)
+        this.message = response.message //message to displayed in DOM
+        console.log(response)
+        console.log(response.token)
+        console.log(response.role)
+
       localStorage.setItem('token',response.token)
       localStorage.setItem('role','admin') 
-      // localStorage.setItem('role',response.role)  //change backedn to be able to use this
       if (response.token){
         this.role = localStorage.getItem('role') as string
 
@@ -48,7 +50,7 @@ export class LoginComponent implements OnInit,OnDestroy{
       }
     },
     (error)=>{
-      this.message = error.error.message //severe nesting
+      this.message = error.message //severe nesting
     })
     this.form.reset()
   }

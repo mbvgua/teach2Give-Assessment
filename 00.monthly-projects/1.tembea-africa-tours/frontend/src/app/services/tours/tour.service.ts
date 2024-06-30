@@ -25,11 +25,7 @@ export class TourService {
   // addTour
   addTour(newTour:Tours):Observable<toursResponse>{
     const token = localStorage.getItem('token') as string
-    return this.http.post<toursResponse>(this.baseUrl + '',newTour,{
-      headers: new HttpHeaders ({
-        token:token
-      })
-    })
+    return this.http.post<toursResponse>(this.baseUrl + '',newTour)
   }
 
   // updateHotel(id)

@@ -28,11 +28,7 @@ export class HotelService {
   // addhotel
   addHotel(newHotel:Hotels):Observable<hotelsResponse>{
     const token = localStorage.getItem('token') as string
-    return this.http.post<hotelsResponse>(this.baseUrl+ '',newHotel,{
-      headers: new HttpHeaders ({
-        token:token
-      })
-    })
+    return this.http.post<hotelsResponse>(this.baseUrl+ '',newHotel)
   }
 
 }

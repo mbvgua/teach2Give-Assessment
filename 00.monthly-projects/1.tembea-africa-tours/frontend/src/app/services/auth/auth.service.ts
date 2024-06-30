@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { loginResponse, loginUser, registerResponse, registerUser} from '../../models/users';
+import { loginResponse, loginUser, registerResponse, User} from '../../models/users';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthService {
   private readonly baseUrl:string = 'http://localhost:4000/auth/'
 
 
-  registerUser(newUser:registerUser):Observable<registerResponse>{
+  registerUser(newUser:User):Observable<registerResponse>{
     // '' should be the path in your backend not your frontend
     return this.http.post<registerResponse>(this.baseUrl+'register', newUser)
   }
@@ -22,23 +22,21 @@ export class AuthService {
     const token = localStorage.getItem('token') as string //define token as its required
     return this.http.post <loginResponse>(this.baseUrl+'login',user)
   }
-  /* //BREAKING MY LOGIN CODE!!
-  // loginUser(user:loginUser):Observable<loginResponse>{
-  //   const token = localStorage.getItem('token') as string //define token as its required
-  //   return this.http.post <loginResponse>(this.baseUrl+'login',user,{
-  //     headers : new HttpHeaders ({
-  //       token : token
-  //     })
-  //   })
-  // }*/
 
-  getUsers():Observable<Array<registerUser>>{
+
+//  //BREAKING MY LOGIN CODE!!
+//   loginUser(user:loginUser):Observable<loginResponse>{
+//     const token = localStorage.getItem('token') as string //define token as its required
+//     return this.http.post <loginResponse>(this.baseUrl+'login',user,{
+//       headers : new HttpHeaders ({
+//         token : token
+//       })
+//     })
+//   }
+
+  getUsers():Observable<Array<User>>{
     const token = localStorage.getItem('token') as string
-    return this.http.get <Array<registerUser>>(this.baseUrl + 'users',{
-      headers: new HttpHeaders({
-        token:token
-      })
-    })
+    return this.http.get <Array<User>>(this.baseUrl + 'users')
   }
 
 

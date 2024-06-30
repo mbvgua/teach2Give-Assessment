@@ -6,7 +6,7 @@
 //     u_password:string
 // }
 
-export interface registerUser  {
+export interface User  {
     id:string,
     u_name:string,
     u_email:string,
@@ -27,6 +27,6 @@ export interface loginUser  {
 export interface loginResponse {
     message:string,
     token:string
-    // role:string  ->change backend to use this
+    role:string  //change backend to use this. I DID :)
 }
 
