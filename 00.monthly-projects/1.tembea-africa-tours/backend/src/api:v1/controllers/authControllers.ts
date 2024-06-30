@@ -7,7 +7,7 @@ import dotenv from 'dotenv'
 
 import { DbHelper } from '../databaseHelpers'
 import { registerSchema } from '../validation/authValidation'
-import { User, UserPayload } from '../models/authModels'
+import { Roles, User, UserPayload } from '../models/authModels'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
 
 
@@ -16,6 +16,7 @@ const dbInstance = new DbHelper()
 
 export async function registerUser(request:Request,response:Response) {
     const id = uid()
+    const role = Roles.User     //change when you need to add admin
     const {u_name,u_email,u_password} = request.body
 
     const { error } = registerSchema.validate(request.body)
@@ -29,7 +30,8 @@ export async function registerUser(request:Request,response:Response) {
                 id: id,
                 u_name:u_name,
                 u_email: u_email,
-                u_password:hashedPassword
+                u_password:hashedPassword,
+                role:role   //hard coded to an admin to create an admin user. then change to normal
             })
 
             const payload:UserPayload = {
@@ -38,7 +40,7 @@ export async function registerUser(request:Request,response:Response) {
                 email: u_email
             }
 
-            const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'20d'})
+            // const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'20d'})
 
             return response.status(200).send({message:"New User added succesfully!"})
             // return response.status(200).send({message:"New User added succesfully!",token})
@@ -56,28 +58,31 @@ export async function loginUser (request:Request<{id:string}>, response:Response
         const {u_email,u_password} = request.body
         const user = (await dbInstance.exec('getUserByEmail',{
             u_email:u_email
-        })).recordset[0] as Array<User>
+        })).recordset[0] as User    //didnt use User Array as it gets only one
         // console.log(user.id)
         // console.log(user.u_password)
         // console.log(u_password)
 
         // user validation
-        
-        if(user.length !== 0 ){
+        if(user){
             // this had too much nesting. decided to use an array instaed
             
             const isValid = await bcrypt.compare(u_password,user.u_password)
             
             if(isValid){
+                // to be passed to the token.
                 const payload:UserPayload = {
                     id: user.id,
-                    name: user.u_name
+                    name: user.u_name,
+                    email:user.u_email,
+                    role: user.role
                 }
+                console.log(payload)
 
-                // const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'10d'})
+                const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'20d'})
 
-                return response.status(200).send({message:"login successful!"})
-                // return response.status(200).send({message:"login successful!",token})
+                return response.status(200).send({message:"login successful!",token})
+                // return response.status(200).send({message:"login successful!"})
             } else{
             return response.status(400).send({message:"invalid login credentials.try again?"})
         }
@@ -108,7 +113,7 @@ export async function getUser (request:Request<{id:string}>,response:Response){
         const user = (await dbInstance.exec('getUser',{
             id:id
         })).recordset[0] as Array<User>
-        console.log(user)
+        // console.log(user)
 
         if (user ){
             response.status(200).send(user)
@@ -127,6 +132,7 @@ export async function getUser (request:Request<{id:string}>,response:Response){
 export async function updateUser  (request:Request<{id:string}>,response:Response){
     try{
         const id = request.params.id
+        const role = Roles.User     //change if admin needs to update themselves
         // console.log(id)
         const user = (await dbInstance.exec('getUser',{
             id:id
@@ -139,7 +145,8 @@ export async function updateUser  (request:Request<{id:string}>,response:Respons
                 id: id,
                 u_name: u_name,
                 u_email:u_email,
-                u_password:u_password
+                u_password:u_password,
+                role:role
             })
 
             response.status(200).send({message:"Existing user updated succesfully!"})
