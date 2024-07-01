@@ -26,7 +26,12 @@ export interface loginUser  {
 
 export interface loginResponse {
     message:string,
-    token:string
-    role:string  //change backend to use this. I DID :)
+    token:string,
+    decodedToken: {
+        id: string,
+        name:string,
+        email: string,
+        role:string
+    }  //change backend to use this. I DID :)
 }
 

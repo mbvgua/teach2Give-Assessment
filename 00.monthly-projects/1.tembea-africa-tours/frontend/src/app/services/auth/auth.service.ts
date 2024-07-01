@@ -19,23 +19,11 @@ export class AuthService {
   }
 
   loginUser(user:loginUser):Observable<loginResponse>{
-    const token = localStorage.getItem('token') as string //define token as its required
     return this.http.post <loginResponse>(this.baseUrl+'login',user)
   }
 
 
-//  //BREAKING MY LOGIN CODE!!
-//   loginUser(user:loginUser):Observable<loginResponse>{
-//     const token = localStorage.getItem('token') as string //define token as its required
-//     return this.http.post <loginResponse>(this.baseUrl+'login',user,{
-//       headers : new HttpHeaders ({
-//         token : token
-//       })
-//     })
-//   }
-
   getUsers():Observable<Array<User>>{
-    const token = localStorage.getItem('token') as string
     return this.http.get <Array<User>>(this.baseUrl + 'users')
   }
 

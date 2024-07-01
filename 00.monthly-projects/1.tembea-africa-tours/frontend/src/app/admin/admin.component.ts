@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
     this.auth.getUsers().subscribe( 
       response=>{
       this.users = response
-      // console.log(this.users)
+      console.log(this.users)
     })
         
     

@@ -28,15 +28,20 @@ export class LoginComponent implements OnInit,OnDestroy{
       (response)=>{
         this.message = response.message //message to displayed in DOM
         console.log(response)
-        console.log(response.token)
-        console.log(response.role)
+        // CHECK IF TOKENS ARE WORKING PROPERLY
+        // console.log(response.token)
+        // console.log(response.decodedToken.role)
+        // console.log(response.decodedToken.id)
+        // console.log(response.decodedToken.email)
 
       localStorage.setItem('token',response.token)
-      localStorage.setItem('role','admin') 
+      localStorage.setItem('id',response.decodedToken.id) 
+      localStorage.setItem('role',response.decodedToken.role) 
       if (response.token){
         this.role = localStorage.getItem('role') as string
 
         if(this.role === 'admin'){
+          // this.status.showStatus()
           this.router.navigate(['/admin'])
         } else {
 
@@ -50,6 +55,7 @@ export class LoginComponent implements OnInit,OnDestroy{
       }
     },
     (error)=>{
+      console.log(error)
       this.message = error.message //severe nesting
     })
     this.form.reset()
