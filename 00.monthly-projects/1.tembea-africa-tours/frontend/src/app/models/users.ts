@@ -1,4 +1,3 @@
-// create the hotels interface
 // export interface User{
 //     id?:string,  //FINALLY USE THIS 1.
 //     u_name?:string,
@@ -10,7 +9,11 @@ export interface User  {
     id:string,
     u_name:string,
     u_email:string,
-    u_password:string
+    u_password:string,
+    role?:string,
+    isEmailSent?:number, 
+    isDeleted?:number,  
+    totalBookings?:number
 }
 
 export interface registerResponse {

@@ -1,44 +1,70 @@
 <!-- <p>admin works!</p> -->
- <div *ngIf="role === 'admin'" class="container">
-    <h1> Admin Dashboard </h1>
+<div *ngIf="role === 'admin'" class="admin-user">
+    <h1> Admin Dashboard </h1>   <input type="text" [(ngModel)]="searchThis" placeholder="Search">
+    <!-- {{searchThis}} -->
 
- <div class="users">
+   <div *ngIf="users" class="container" >
 
-   <div class="left">
-      <h2> Add Users </h2>
-      <form (ngSubmit)="submitUser()" [formGroup]="userForm">
-         <fieldset>
-            <div>
-               <label> Name: </label>
-               <input formControlName="u_name" type="text">
-            </div>
+      <div *ngFor="let user of users | searchUser:searchThis" class="users">
+      <!-- user image url -->
+      <div class="left" id="{{user.id}}">
+         <img src="" alt="avatar">
+         <!-- <img src="{{user.imageUrl}}" alt="avatar"> -->
+      </div>
    
-            <div>
-               <label> Email: </label>
-               <input formControlName="u_email" type="text">
-            </div>
-   
-            <div>
-               <label> Password: </label>
-               <input formControlName="u_password" type="text">
-            </div>
-   
-            <button> Add User </button>
-         </fieldset>
+      <!-- main content -->
+       <div class="right">
+         <!-- top -->
+          <div class="content">
+            <p id="id" align="right"> ID: {{user.id}} </p>
+            <p>
+               <label> Name: </label><label id="name"> {{user.u_name}} </label>
+            </p>
+            <p>
+               <label> Email: </label><label id="email"> {{user.u_email}}</label>
+            </p>
+            <p>
+               <label> Bookings Made: </label><label id="bookings"> {{user.totalBookings}}</label>
+            </p>
+          </div>
+         <!-- botton with buttons -->
+          <div class="buttons">
+            <button> Update </button>
+            <button> Delete </button>
+          </div>
+       </div>
 
-      </form>
+
    </div>
 
-    <!-- view existing hotesl -->
-    <div *ngIf="users" class="right">
-      <h2> Existing Users</h2>
-      <ol >
-         <li *ngFor="let user of users">
-            {{user.u_name}}
-            {{user.u_email}}
-         </li>
-      </ol>                
-    </div>
+
+</div>
 
 
- </div>
+<!-- 
+ <div class="left">
+   <h2> Add Users </h2>
+   <form (ngSubmit)="submitUser()" [formGroup]="userForm">
+      <fieldset>
+         <div>
+            <label> Name: </label>
+            <input formControlName="u_name" type="text">
+         </div>
+
+         <div>
+            <label> Email: </label>
+            <input formControlName="u_email" type="text">
+         </div>
+
+         <div>
+            <label> Password: </label>
+            <input formControlName="u_password" type="text">
+         </div>
+
+         <button> Add User </button>
+      </fieldset>
+
+   </form>
+</div>
+
+ -->

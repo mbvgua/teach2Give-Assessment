@@ -1,22 +1,62 @@
+.admin-user{
+    padding: .4rem;
+}
+
 .container{
     display: flex;
-    width: 100%;
-    gap: .5rem;
+    flex-direction: column;
+    gap: .7rem;
+    /* height: 90vh; */
+    overflow-y: scroll;     /*  LEARN HOW TO PUT SCROLL BAR LIKE IN THE TWITTER CLONE*/
 }
 
 /* users div styling */
 .users{
     display: flex;
-    /* margin: 0px auto; */
+    width: 70vw;
+    /* height: 8rem; */
+    border: 1px solid;
+    border-radius: 15px;
+    margin: 0px auto;
+    gap: 1rem;
+    padding: .4rem;
 }
 
 .users .left{
-    width: 45%;
+    width: 20%;
     padding: .4rem;
     margin: 1rem;
 }
 .users .right{
-    width: 45%;
+    width: 75%;
     padding: .4rem;
+    display: inline-flex;
+    flex-direction: column;
     /* overflow-y: scroll; */
+}
+
+.right .content #id{
+    font-size: x-small;
+    justify-content: left;
+}
+
+.right .content #name{
+    font-size: large;
+    font-weight: 700;
+}
+.right .content #email{
+    font-style: italic;
+}
+.right .content #bookings{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.right .buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.right button{
+    padding: .1rem;
+    width: 25%;
 }
