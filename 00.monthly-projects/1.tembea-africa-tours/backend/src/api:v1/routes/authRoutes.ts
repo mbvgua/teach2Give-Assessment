@@ -8,7 +8,7 @@ authRouter.post("/register",registerUser)
 // authRouter.post("/login",verifyAuthToken,loginUser)
 authRouter.post("/login",loginUser)
 authRouter.get("/users",verifyAuthToken,getUsers)
-authRouter.get("/:id",getUser)
+authRouter.get("/:id",verifyAuthToken,getUser)
 authRouter.put("/:id",updateUser)
 authRouter.delete("/:id",verifyAuthToken,deleteUser)
 

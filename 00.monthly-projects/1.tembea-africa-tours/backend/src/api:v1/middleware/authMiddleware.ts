@@ -18,11 +18,14 @@ export async function verifyAuthToken (request:ExtendedRequest, response:Respons
             // 3.read the token
             const decodedToken = jwt.verify(token, process.env.SECRET as string) as UserPayload
             request.info = decodedToken
+            console.log('...')
             console.log(decodedToken)
+            // return response.status(200).send({message:"Wagwan Bazzuuu",decodedToken})
+
         }
 
     } catch(error) {
-        return response.status(500).send(error)
+        return response.status(401).send(error)
     }
 
     next()

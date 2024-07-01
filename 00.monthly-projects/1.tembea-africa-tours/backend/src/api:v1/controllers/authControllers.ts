@@ -37,7 +37,8 @@ export async function registerUser(request:Request,response:Response) {
             const payload:UserPayload = {
                 id: id,
                 name: u_name,
-                email: u_email
+                email: u_email,
+                role: role
             }
 
             // const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'20d'})
@@ -58,7 +59,7 @@ export async function loginUser (request:Request<{id:string}>, response:Response
         const {u_email,u_password} = request.body
         const user = (await dbInstance.exec('getUserByEmail',{
             u_email:u_email
-        })).recordset[0] as User    //didnt use User Array as it gets only one
+        })).recordset as Array<User>    // used User Array gets all
         // console.log(user.id)
         // console.log(user.u_password)
         // console.log(u_password)
@@ -67,22 +68,26 @@ export async function loginUser (request:Request<{id:string}>, response:Response
         if(user){
             // this had too much nesting. decided to use an array instaed
             
-            const isValid = await bcrypt.compare(u_password,user.u_password)
+            const isValid = await bcrypt.compare(u_password,user[0].u_password)
             
             if(isValid){
                 // to be passed to the token.
                 const payload:UserPayload = {
-                    id: user.id,
-                    name: user.u_name,
-                    email:user.u_email,
-                    role: user.role
+                    id: user[0].id,
+                    name: user[0].u_name,
+                    email:user[0].u_email,
+                    role: user[0].role
                 }
-                console.log(payload)
+                // console.log(payload)
 
                 const token = jwt.sign(payload,process.env.SECRET as string,{expiresIn:'20d'})
+                const decodedToken = jwt.verify(token, process.env.SECRET as string) as UserPayload
+                // console.log(token)
+                
 
-                return response.status(200).send({message:"login successful!",token})
                 // return response.status(200).send({message:"login successful!"})
+                // return response.status(200).send({message:"login successful!",token, role:user[0].role})
+                return response.status(200).send({message:"login successful!",token:token,decodedToken:decodedToken})
             } else{
             return response.status(400).send({message:"invalid login credentials.try again?"})
         }
