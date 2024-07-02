@@ -1,1 +1,11 @@
-<p>contact-us works!</p>
+<!-- <p>contact-us works!</p> -->
+
+
+    <!-- state managaemnet using ngrx -->
+    <div class="sample">
+        <input type="checkbox" (change)="onChange()" [value]="showParagraph$ | async">
+        <p *ngIf="showParagraph$ | async">
+            Show this if true!!
+        </p>
+
+    </div>

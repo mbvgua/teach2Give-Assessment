@@ -10,6 +10,7 @@ import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { Error404Component } from './error-404/error-404.component';
 import { authGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 export const routes: Routes = [
     // {path: '', component:HomepageComponent,FooterComponent}
@@ -24,6 +25,7 @@ export const routes: Routes = [
         {path: '', component:ToursComponent},
         {path: ':id', component:TourDetailsComponent}
     ] },
+    {path:'contact-us', component:ContactUsComponent},
     {path: 'admin', component:AdminComponent},
 
     // add the not found component using the ** wildcard
