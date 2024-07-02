@@ -4,8 +4,8 @@
 
             <!-- state managaemnet using ngrx -->
              <div class="sample">
-                <input type="checkbox" (change)="onChange()" value="showParagraph">
-                <p *ngIf="showParagraph">
+                <input type="checkbox" (change)="onChange()" [value]="showParagraph$ | async">
+                <p *ngIf="showParagraph$ | async">
                   Show this if true!!
                 </p>
 

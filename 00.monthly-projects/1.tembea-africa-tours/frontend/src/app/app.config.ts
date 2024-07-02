@@ -6,10 +6,12 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors';
 import { provideStore } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { trialReducer } from './state-management/reducers/trial.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
   provideRouter(routes), 
   provideHttpClient(withInterceptors([TokenInterceptor])), 
-  provideStore(reducers, { metaReducers })]
+  provideStore({'trial': trialReducer})]
+  // provideStore(reducers, { metaReducers })]
 };

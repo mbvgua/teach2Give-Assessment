@@ -4,6 +4,7 @@ import { HotelService } from '../services/hotels/hotel.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-hotels',
@@ -14,16 +15,23 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class HotelsComponent implements OnInit{
 
-  constructor( private hs:HotelService){}
+  constructor( private hs:HotelService, private store:Store<any>){
+    this.store.subscribe(state =>{
+      console.log(state)
+    })
+  }
 
   hotelForm!: FormGroup
   hotels:Array<Hotels> = []
   role:string = ''
   message:string = ''
 
-  showParagraph:boolean = false
+  showParagraph$ = this.store.select(
+    state => state.trial.showParagraph
+  )
   onChange(){
-    this.showParagraph = !this.showParagraph
+    // this.showParagraph = !this.showParagraph
+    this.store.dispatch({type:'Checked'})
   }
 
   submitHotel(){
