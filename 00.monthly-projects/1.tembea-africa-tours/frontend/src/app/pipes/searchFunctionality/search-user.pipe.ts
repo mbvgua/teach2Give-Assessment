@@ -14,7 +14,8 @@ export class SearchUserPipe implements PipeTransform {
 
     let filteredArray = []
     for(let user of users){
-     if(user.u_name.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase())){
+      // search the user baased on either email or username
+     if(user.u_name.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase()) || user.u_email.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase())){
       filteredArray.push(user)
      }
     }

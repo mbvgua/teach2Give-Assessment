@@ -23,9 +23,18 @@
 }
 
 .users .left{
-    width: 20%;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
     padding: .4rem;
     margin: 1rem;
+    overflow: hidden;
+    /* border-radius: 10px; */
+}
+.left image{
+    width: 100%;
+    height: 100%;
 }
 .users .right{
     width: 75%;
@@ -37,7 +46,8 @@
 
 .right .content #id{
     font-size: x-small;
-    justify-content: left;
+    display: block;
+    text-align: right;
 }
 
 .right .content #name{
@@ -51,12 +61,69 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-.right .buttons{
+.buttons{
     display: flex;
     justify-content: space-evenly;
 }
 
-.right button{
+button{
     padding: .1rem;
     width: 25%;
 }
+
+
+
+/* --------popup---- */
+.popup .overlay {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+  }
+  
+  /* style the update popup */
+  .popup .content {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:500px;
+    height:250px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+  
+  .popup .close-btn {
+    cursor:pointer;
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:30px;
+    height:30px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+  }
+  
+  .popup.active .overlay {
+    display:block;
+  }
+  
+  .popup.active .content {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+  
+ 

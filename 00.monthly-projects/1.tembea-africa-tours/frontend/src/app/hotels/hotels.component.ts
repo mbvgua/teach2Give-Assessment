@@ -21,6 +21,11 @@ export class HotelsComponent implements OnInit{
   role:string = ''
   message:string = ''
 
+  showParagraph:boolean = false
+  onChange(){
+    this.showParagraph = !this.showParagraph
+  }
+
   submitHotel(){
     console.log(this.hotelForm.value)
     this.hs.addHotel(this.hotelForm.value).subscribe(

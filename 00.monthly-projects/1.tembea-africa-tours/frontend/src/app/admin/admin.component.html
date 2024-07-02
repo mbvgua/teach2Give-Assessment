@@ -8,7 +8,7 @@
       <div *ngFor="let user of users | searchUser:searchThis" class="users">
       <!-- user image url -->
       <div class="left" id="{{user.id}}">
-         <img src="" alt="avatar">
+         <img src="https://i.pinimg.com/236x/7a/a4/66/7aa466056aad44cd22cec1ab9ab6699f.jpg" alt="avatar">
          <!-- <img src="{{user.imageUrl}}" alt="avatar"> -->
       </div>
    
@@ -16,7 +16,7 @@
        <div class="right">
          <!-- top -->
           <div class="content">
-            <p id="id" align="right"> ID: {{user.id}} </p>
+            <p id="id" > ID: {{user.id}} </p>
             <p>
                <label> Name: </label><label id="name"> {{user.u_name}} </label>
             </p>
@@ -29,7 +29,7 @@
           </div>
          <!-- botton with buttons -->
           <div class="buttons">
-            <button> Update </button>
+            <button (click)="updatePopup()"> Update </button>
             <button> Delete </button>
           </div>
        </div>
@@ -39,6 +39,37 @@
 
 
 </div>
+
+
+<!-- POPUP TO APPEAR WHEN UPDATE IS CLICKED!! -->
+<div  class="popup" id="popup-1">
+   <div class="overlay"></div>
+      <div class="content">
+         <div class="close-btn" (click)="updatePopup()">&times;</div>
+         <h1> Update Form </h1>
+            <form (ngSubmit)="onSubmit()" [formGroup]="form">
+               <div>
+                  <label> Name: </label>
+                  <input type="text" formArrayName="u_name">
+               </div>
+               <div>
+                  <label> Email: </label>
+                  <input type="email" formArrayName="u_email">
+               </div>
+               <div>
+                  <label> Password: </label>
+                  <input type="text" formArrayName="u_password">
+               </div>
+
+               <div class="buttons">
+                  <button > Submit </button>
+               </div>
+
+            </form>
+      </div>
+ </div>
+ 
+ <!-- <button (click)="togglePopup()">Show Popup</button> -->
 
 
 <!-- 

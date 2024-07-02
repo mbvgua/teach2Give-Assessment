@@ -1,6 +1,17 @@
 <!-- <p>hotels works!</p> -->
          <!-- User hotel div -->
          <div *ngIf="role !== 'admin'" class="choose-hotel">
+
+            <!-- state managaemnet using ngrx -->
+             <div class="sample">
+                <input type="checkbox" (change)="onChange()" value="showParagraph">
+                <p *ngIf="showParagraph">
+                  Show this if true!!
+                </p>
+
+             </div>
+
+
             <div class="top">
                 <h3> choose hotel </h3>
                 <h2> recommended hotels  </h2>

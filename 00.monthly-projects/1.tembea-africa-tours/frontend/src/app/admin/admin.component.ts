@@ -18,18 +18,39 @@ export class AdminComponent implements OnInit {
 
   // the forms
   role:string = ''
-  userForm!: FormGroup
+  form!: FormGroup
   users:Array<User> = []
   searchThis:string = ''
 
-  submitUser(){
-    this.auth.registerUser(this.userForm.value).subscribe((response)=>{
-      console.log(response.message)
-    })
+  onSubmit(){
+
   }
+
+  // function for update popup
+  updatePopup(): void {
+    const popup = document.getElementById("popup-1")! as HTMLDivElement
+    if (popup) {
+      popup.classList.toggle("active");
+    }
+  }
+
+  // function for delete popup
 
 
   ngOnInit(): void {
+    // create and remove the update popup
+    this.updatePopup()
+
+    // get data from the forms
+    this.form = new FormGroup({
+      u_name: new FormControl(null, Validators.required),
+      u_email: new FormControl(null,[Validators.required, Validators.email]),
+      u_password: new FormControl(null, Validators.required)
+    })
+    // console.log(this.form)
+    console.log(this.form.value)
+
+
     this.role = localStorage.getItem('role') as string
 
     if(this.role === 'admin'){
@@ -50,13 +71,10 @@ export class AdminComponent implements OnInit {
     
     // booking operations
     
-    // get data from the forms
-    this.userForm = new FormGroup({
-      u_name: new FormControl(null, Validators.required),
-      u_email: new FormControl(null,[Validators.required, Validators.email]),
-      u_password: new FormControl(null, Validators.required)
-    })
+
 
   }
 
 }
+
+
