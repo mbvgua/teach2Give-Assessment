@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Toggle } from '../state-management/actions/trial.actions';
-import { AppState } from '../state-management';
+import { Toggle } from '../state/actions/trial.actions';
+import { AppState } from '../state';
+import { trialParagraphSelector } from '../state/selectors/trial.selector';
+import { counterCountSelector } from '../state/selectors/count.selector';
 
 
 @Component({
@@ -21,10 +23,12 @@ export class ContactUsComponent{
     // })
   }
 
+  // shift logic to using selectors
+  // showParagraph$ = this.store.select(
+  //   state => state.trial.showParagraph
+  // )
 
-  showParagraph$ = this.store.select(
-    state => state.trial.showParagraph
-  )
+  showParagraph$ = this.store.select(trialParagraphSelector)
   onChange(){
     // this.showParagraph = !this.showParagraph
     // this.store.dispatch({type:'Toggle'})
@@ -33,7 +37,8 @@ export class ContactUsComponent{
   }
 
   // logic for increment 
-  count$ = this.store.select(state=>state.counter.count)
+  // count$ = this.store.select(state=>state.counter.count) -> shift to using selectors
+  count$ = this.store.select(counterCountSelector) 
 
   // increments
   onIncrement(){
