@@ -1,6 +1,7 @@
 import { createAction, createReducer, on } from "@ngrx/store";
+import { Toggle } from "../actions/trial.actions";
 
-interface trialRI {
+export interface trialRI {
     showParagraph:boolean,
     name:string
 }
@@ -12,7 +13,7 @@ const initialState:trialRI = {
 
 export const trialReducer = createReducer (
     initialState,
-    on(createAction('Checked'),(state)=>{
+    on(Toggle,(state)=>{
         return{
             ...state,
             showParagraph:!state.showParagraph,

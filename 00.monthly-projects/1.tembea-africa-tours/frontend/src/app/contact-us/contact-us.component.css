@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    align-items: center;
+    margin: 1rem;
+}
+.sample{
+    border: 1px solid black;
+    width: 30vw;
+    padding: .7rem;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .4rem;
+}

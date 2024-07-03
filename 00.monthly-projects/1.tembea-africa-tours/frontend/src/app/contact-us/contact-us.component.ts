@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Toggle } from '../state-management/actions/trial.actions';
+import { AppState } from '../state-management';
 
 
 @Component({
@@ -10,12 +12,13 @@ import { Store } from '@ngrx/store';
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css'
 })
-export class ContactUsComponent {
+export class ContactUsComponent{
 
-  constructor(private store:Store<any>){
-    this.store.subscribe(state =>{
-      console.log(state)
-    })
+  constructor(private store:Store<AppState>){
+    // only for confirming, use redux dev tools instead
+    // this.store.subscribe(state =>{
+    //   console.log(state)
+    // })
   }
 
 
@@ -24,8 +27,27 @@ export class ContactUsComponent {
   )
   onChange(){
     // this.showParagraph = !this.showParagraph
-    this.store.dispatch({type:'Checked'})
+    // this.store.dispatch({type:'Toggle'})
+    this.store.dispatch(Toggle())
 
   }
+
+  // logic for increment 
+  count$ = this.store.select(state=>state.counter.count)
+
+  // increments
+  onIncrement(){
+    this.store.dispatch({type:'Increment'})
+  }
+
+  // decrements
+  onDecrement(){
+    this.store.dispatch({type:'Decrement'})
+  }
+  // increments
+  onReset(){
+    this.store.dispatch({type:'Reset'})
+  }
+
 
 }

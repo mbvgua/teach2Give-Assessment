@@ -1,6 +1,7 @@
 <!-- <p>contact-us works!</p> -->
 
 
+<div class="container">
     <!-- state managaemnet using ngrx -->
     <div class="sample">
         <input type="checkbox" (change)="onChange()" [value]="showParagraph$ | async">
@@ -8,4 +9,12 @@
             Show this if true!!
         </p>
 
+        <br/>
+
+        <button (click)="onIncrement()"> + </button>
+        <h1> {{count$ | async}}</h1>
+        <button (click)="onDecrement()"> - </button>    <br/>
+        <button (click)="onReset()"> Reset </button>
+
     </div>
+</div>
