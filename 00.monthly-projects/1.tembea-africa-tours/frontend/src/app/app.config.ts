@@ -10,6 +10,8 @@ import { trialReducer } from './state/reducers/trial.reducer';
 import { countReducer } from './state/reducers/counter.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { authReducer } from './state/reducers/auth.reducer';
+import { tourReducer } from './state/reducers/tours.reducers';
+import { hotelReducer } from './state/reducers/hotels.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -20,7 +22,8 @@ export const appConfig: ApplicationConfig = {
       'counter': countReducer,
       'auth': authReducer,
       'tours': tourReducer,
-      'hotels': hotelReducer }),
+      'hotels': hotelReducer 
+    }),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })]
   // provideStore(reducers, { metaReducers })]
 };

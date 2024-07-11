@@ -8,7 +8,7 @@ export interface User{
     role:string,
     isEmailSent?:number, //set property to optional
     isDeleted?:number,  //set property to optional
-    bookingsMade?:number
+    totalBookings?:number
 }
 
 export interface UserPayload{
